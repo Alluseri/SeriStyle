@@ -37,6 +37,12 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Hide recommendation filters(All videos, New content, etc.)
   - Disable notification count limit
   - Bring back old playlist UI
+  - Remove roundings
+    - Search bar
+    - Recommended thumbnails
+    - Homepage thumbnails
+    - Playlist thumbnails
+    - A lot of buttons
 - Convert to Chrome extension
 ### Done
 - Upper Layout Changes(Channel Owner & Above)
