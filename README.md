@@ -2,7 +2,7 @@
 Bring back the Early-2021 UI back to YouTube!
 
 ## Warning
-I genuinely have no clue how you got there at this point unless I invited you(hi to commit history checkers), but this isn't ready for prod.
+I genuinely have no clue how you got there at this point unless I or someone else I invited invited you(hi to commit history checkers), but this isn't ready for prod.
 
 ## Style Clarification
 I try adapting most styles and layouts directly from the old UI, but sometimes it is virtually impossible(e.g. because of script differences or I simply couldn't find what I was looking for), so there might be minor differences between what you remember and what I implemented.
