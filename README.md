@@ -50,3 +50,5 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Nothing yet!
 - Videoplayer Changes
   - Cancel autoplay when scrolled past video(I have no idea why they removed this in the last update)
+- Website Changes
+  - Nothing yet!
