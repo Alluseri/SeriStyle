@@ -1,7 +1,10 @@
 https://web.archive.org/web/20210731125954/https://www.youtube.com/watch?v=jNQXAC9IVRw
+/*
+У самой иконки паддинг 6 6 6 6
+Кнопке надо паддинги 0 и 6 слева и справа
+Диву(родителю) иконки надо убрать левый и правый марджины, а также display: table
 
-
-
+*/
 #info - top bar
 #meta - bottom bar
 
@@ -16,3 +19,79 @@ Share:
 
 Save:
 <yt-icon class="style-scope ytd-button-renderer"><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z" class="style-scope yt-icon"></path></g></svg><!--css-build:shady--></yt-icon>
+
+
+
+var Observer = new MutationObserver(async Mutations => {
+	try {
+		// Wait for changes to settle
+		await WaitTime(Settings_InjectedSettleTime);
+
+		var AllButtons = Array.from(document.querySelectorAll(SelFlexibleButtons));
+		var InjectedSvgElements = FindAllByExel(AllButtons, ExelOldAddToPlaylist);
+		if (InjectedSvgElements.length > 1) {
+			InjectedSvgElements.find(x.innerText == SeriClipLabel).remove();
+		}
+		var InjectedSvgElement = InjectedSvgElements[0];
+		var AddedButtons = [];
+		Mutations.forEach(Mutation => {
+			for (let i = 0; i < Mutation.addedNodes.length; i++) {
+				AddedButtons.push(Mutation.addedNodes[i]);
+			}
+		});
+		if (AddedButtons.length == 0) return;
+		var AddToPlaylist = FindByExel(AddedButtons, ExelAddToPlaylist);
+		var CreateClip = FindByExel(AllButtons, ExelCreateClip) || FindByExel(AddedButtons, ExelCreateClip);
+		if (AddToPlaylist && !void (SeriSaveLabel = AddToPlaylist.innerText) && (IsVisible(AddToPlaylist) || AddToPlaylist.remove())) // Means there was AddToPlaylist injected
+			if (InjectedSvgElement)
+				InjectedSvgElement.remove(); // Remove modded CreateClip
+			else CreateClip?.remove(); // Remove unmodded CreateClip
+		else // It wasn't injected
+			if (InjectedSvgElement) return; // Modded CreateClip is doing the job, no need to reapply SVG
+			else if (CreateClip && IsVisible(CreateClip)) {
+				SeriClipLabel = CreateClip.innerText;
+				var InteractBtn = FindByExel(Array.from(document.querySelectorAll(SelContextMenuButtons)), ExelAddToPlaylist);
+				if (!InteractBtn) {
+					var Neee = document.querySelector(SelContentMenuOpen);
+					Neee?.click();
+					await WaitTime(Settings_InjectedAddToPlaylistCallbackTime);
+					InteractBtn = FindByExel(Array.from(document.querySelectorAll(SelContextMenuButtons)), ExelAddToPlaylist);
+					Neee?.click();
+					if (!InteractBtn) {
+						await WaitTime(Settings_InjectedAddToPlaylistCallbackTime);
+						Neee?.click();
+						await WaitTime(Settings_InjectedAddToPlaylistCallbackTime);
+						InteractBtn = FindByExel(Array.from(document.querySelectorAll(SelContextMenuButtons)), ExelAddToPlaylist);
+						Neee?.click();
+						if (!InteractBtn)
+							return console.log("[SeriStyle] Unable to inject AddToPlaylist(no interact found).");
+					}
+				}
+
+				AddToPlaylist = CreateClip;
+
+				AddToPlaylist.onclick = async () => {
+					var InteractBtn = FindByExel(Array.from(document.querySelectorAll(SelContextMenuButtons)), ExelAddToPlaylist);
+					if (!InteractBtn) {
+						document.querySelector(SelContentMenuOpen)?.click();
+						await WaitTime(500);
+						InteractBtn = FindByExel(Array.from(document.querySelectorAll(SelContextMenuButtons)), ExelAddToPlaylist);
+						if (!InteractBtn)
+							return console.log("[SeriStyle] Injected AddToPlaylist invocation failed(no interact found).");
+					}
+					InteractBtn.click();
+				};
+
+				AddToPlaylist.querySelector(SelActionButtonText).innerText = InteractBtn.innerText;
+				AddToPlaylist.lastElementChild.firstElementChild.innerText = `\n  ${InteractBtn.innerText}\n`;
+			} else return console.log("[SeriStyle] Unable to inject AddToPlaylist(no donor CreateClip found)");
+		// Inject SVG
+		AddToPlaylist.querySelector("yt-icon").innerHTML = SvgAddToPlaylist;
+	} catch (e) {
+		console.log(e);
+	}
+});
+Observer.observe($(SelFlexibleButtonsBar), {
+	childList: true
+});
+

@@ -27,11 +27,12 @@ var DomUtils = {
 // Subbed: "yt-spec-button-shape-next yt-spec-button-shape-next--tonal yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m "
 // Not subbed: "yt-spec-button-shape-next yt-spec-button-shape-next--filled yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m "
 document.head.appendChild(DomUtils.BuildElement("style", {
-	"innerText": ".yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start::after{display:none;}\n" + // Remove like/dislike pseudo splitter
+	"innerText":
+		".yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start::after{display:none;}\n" + // Remove like/dislike pseudo splitter
 		"div#owner{justify-content:space-between;}" + // Reposition subscribe
 		"#subscribe-button>ytd-subscribe-button-renderer>yt-button-shape>button{border-radius:3px;}" + // Bring back proper rounding for subscribe
-		"#subscribe-button > ytd-subscribe-button-renderer > yt-button-shape > button.yt-spec-button-shape-next--tonal{background-color:#2C2C2C;color:#A8A8A8;}" + // Subbed
-		"#subscribe-button > ytd-subscribe-button-renderer > yt-button-shape > button.yt-spec-button-shape-next--filled{background-color:#CC0100;color:#FFF;}" // Not subbed
+		"#subscribe-button>ytd-subscribe-button-renderer>yt-button-shape>button.yt-spec-button-shape-next--tonal{background-color:#2C2C2C;color:#A8A8A8;}" + // Subbed
+		"#subscribe-button>ytd-subscribe-button-renderer>yt-button-shape>button.yt-spec-button-shape-next--filled{background-color:#CC0100;color:#FFF;}" + // Not subbed
 }));
 
 var MDCB = (MDCB, MetadataElement, $) => {
