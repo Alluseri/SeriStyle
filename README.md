@@ -13,8 +13,6 @@ Most features are/will be optional, but some might misbehave without each other!
 Features might appear or disappear over time, NOT THE FINAL VERSION.
 ### TODO (NOT by priority)
 - Upper Layout Changes
-  - Complete layout fix
-  - Optimize CSS & selectors
   - Old Menu icon
   - Old Like/Dislike icons
     - Functionality
