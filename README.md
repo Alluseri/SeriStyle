@@ -14,24 +14,24 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
 ### TODO (NOT by priority)
 - Upper Layout Changes
   - Complete layout fix
-  - Old Share icon
+  - Optimize CSS & selectors
   - Old Menu icon
   - Old Like/Dislike icons
+    - Functionality
     - RYD Compatibility
-  - Remove action bar buttons' backgrounds
   - Fix margins
     - Action bar
     - Views/Action bar
     - Whole/Splitter
 - Lower Layout Changes
   - Fix description(will be split into steps later)
+  - Remove wide left margin
 - Videoplayer Changes
   - Remove heatmap
   - Remove precise drag if functionally possible
   - Forcefully disable ambient lighting
 - Website Changes
   - Fix theme colors
-  - Remove wide left margin
   - Old fonts
   - Hide playlists on home page & recommended(or use API to restore them into videos)
   - Hide recommendation filters(All videos, New content, etc.)
@@ -46,15 +46,19 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
 - Convert to Chrome extension
 ### Done
 - Upper Layout Changes(Channel Owner & Above)
+  - Old Share icon
   - Old Like/Dislike icons
     - Remove splitter
   - Old subscribe button style & location(+ uppercase option)
   - Sacrifice Create Clip to fit Add to Playlist on smaller screens
   - Old Add to Playlist icon
   - Old view count & publish date
+  - Remove action bar buttons' backgrounds
 - Lower Layout Changes(Below Channel Owner)
   - Nothing yet!
 - Videoplayer Changes
   - Cancel autoplay when scrolled past video(I have no idea why they removed this in the last update)
+    - Basic mode: Cancel when scrolled
+    - Alternative mode: Suspend timer when scrolled
 - Website Changes
   - Nothing yet!
