@@ -1,6 +1,9 @@
 # SeriStyle
 Bring back the Early-2021 UI back to YouTube!
 
+## Prerequisites
+- RYD(Return YouTube Dislike). It's not mandatory, but the action bar will be significantly misaligned if you don't use it.
+
 ## Warning
 I genuinely have no clue how you got there at this point unless I or someone else I invited invited you(hi to commit history checkers), but this isn't ready for prod.
 
@@ -17,11 +20,8 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
 - Videopage
   - Upper Layout Changes
     - Old Menu icon
-    - Old Like/Dislike icons
-      - Functionality
-      - RYD Compatibility
+    - Fix RYD styles being utter trash
     - Fix margins
-      - Action bar
       - Views/Action bar
       - Whole/Splitter
   - Lower Layout Changes
@@ -35,6 +35,7 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Old UI(will be split into steps later)
 - General
   - Fix theme colors
+    - Stuff that isn't in Done
   - Old fonts
   - Hide playlists in recommendations(or use API to restore them into videos)
   - Disable notification count limit
@@ -50,12 +51,13 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Upper Layout Changes
     - Old Share icon
     - Old Like/Dislike icons
-      - Remove splitter
     - Old subscribe button style & location(+ uppercase option)
     - Sacrifice Create Clip to fit Add to Playlist on smaller screens
     - Old Add to Playlist icon
     - Old view count & publish date
     - Remove action bar buttons' backgrounds
+    - Fix margins
+      - Action bar
   - Lower Layout Changes
     - Nothing yet!
   - Videoplayer Changes
@@ -65,4 +67,5 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
 - Playlists
   - Nothing yet!
 - General
-  - Nothing yet!
+  - Fix theme colors
+    - Background
