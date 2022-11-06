@@ -1,9 +1,18 @@
 https://web.archive.org/web/20210731125954/https://www.youtube.com/watch?v=jNQXAC9IVRw
 /*
+Кнопки:
 У самой иконки паддинг 6 6 6 6
 Кнопке надо паддинги 0 и 6 слева и справа
 Диву(родителю) иконки надо убрать левый и правый марджины, а также display: table
 
+Лайк/дизлайк:
+У иконки паддинг 6 6 6 6
+У контейнера паддинги 0 и 6 слева и справа
+Маргин у всей кнопки 8 слева
+
+$0.addEventListener("click", function(){
+	this.ariaPressed);
+});
 */
 #info - top bar
 #meta - bottom bar
