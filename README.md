@@ -19,6 +19,8 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Nothing yet!
 - Videopage
   - Upper Layout Changes
+    - Sacrifice Create Clip to fit Add to Playlist on smaller screens [CURRENTLY BROKEN]
+    - Fix icon colors to match like/dislike
     - Old Menu icon
     - Fix RYD styles being utter trash
     - Fix margins
@@ -34,8 +36,6 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
 - Playlists
   - Old UI(will be split into steps later)
 - General
-  - Fix theme colors
-    - Stuff that isn't in Done
   - Old fonts
   - Hide playlists in recommendations(or use API to restore them into videos)
   - Disable notification count limit
@@ -52,7 +52,6 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
     - Old Share icon
     - Old Like/Dislike icons
     - Old subscribe button style & location(+ uppercase option)
-    - Sacrifice Create Clip to fit Add to Playlist on smaller screens
     - Old Add to Playlist icon
     - Old view count & publish date
     - Remove action bar buttons' backgrounds
@@ -68,4 +67,3 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Nothing yet!
 - General
   - Fix theme colors
-    - Background
