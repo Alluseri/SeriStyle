@@ -1,11 +1,12 @@
 # SeriStyle
 Bring back the Early-2021 UI back to YouTube!
 
-## Prerequisites
-- RYD(Return YouTube Dislike). It's not mandatory, but the action bar will be significantly misaligned if you don't use it.
+## Dependencies
+### Optional
+- RYD(Return YouTube Dislike) - SeriStyle is fully compatible with RYD and even fixes its injected styles.
 
 ## Warning
-I genuinely have no clue how you got there at this point unless I or someone else I invited invited you(hi to commit history checkers), but this isn't ready for prod.
+This isn't ready for prod.
 
 ## Style Clarification
 I try adapting most styles and layouts directly from the old UI, but sometimes it is virtually impossible(e.g. because of script differences or I simply couldn't find what I was looking for), so there might be minor differences between what you remember and what I implemented.
@@ -60,9 +61,9 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Lower Layout Changes
     - Nothing yet!
   - Videoplayer Changes
-    - Cancel autoplay when scrolled past video(I have no idea why they removed this in the last update)
+    - Cancel autoplay when scrolled past video
       - Basic mode: Cancel when scrolled
-      - Alternative mode: Suspend timer when scrolled
+      - Alternative mode: Suspend timer when scrolled [COULD BE IMPROVED]
 - Playlists
   - Nothing yet!
 - General
