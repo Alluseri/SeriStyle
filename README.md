@@ -1,9 +1,8 @@
 # SeriStyle
 Bring back the Early-2021 UI back to YouTube!
 
-## Dependencies
-### Optional
-- RYD(Return YouTube Dislike) - SeriStyle is fully compatible with RYD and even fixes its injected styles.
+## Incompatible
+- **RYD(Return YouTube Dislike)** - SeriStyle can emulate RYD by using its API, providing better styles adapted directly from YouTube, and improved stability compared to the original extension.
 
 ## Warning
 This isn't ready for prod.
@@ -20,10 +19,13 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Nothing yet!
 - Videopage
   - Upper Layout Changes
-    - Sacrifice Create Clip to fit Add to Playlist on smaller screens [CURRENTLY BROKEN]
     - Fix icon colors to match like/dislike
     - Old Menu icon
-    - Fix RYD styles being utter trash
+    - Emulate RYD
+      - Dislike Label
+      - Dislike Functionality
+      - Like/Dislike Ratio
+      - Unhide
     - Fix margins
       - Views/Action bar
       - Whole/Splitter
@@ -50,6 +52,7 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Nothing yet!
 - Videopage
   - Upper Layout Changes
+    - Sacrifice Create Clip to fit Add to Playlist on smaller screens
     - Old Share icon
     - Old Like/Dislike icons
     - Old subscribe button style & location(+ uppercase option)
