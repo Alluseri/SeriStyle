@@ -19,8 +19,6 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Nothing yet!
 - Videopage
   - Upper Layout Changes
-    - Fix icon colors to match like/dislike
-    - Old Menu icon
     - Emulate RYD
       - Dislike Label
       - Dislike Functionality
@@ -39,7 +37,7 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
 - Playlists
   - Old UI(will be split into steps later)
 - General
-  - Old fonts
+  - Old Notification Bubble Color
   - Hide playlists in recommendations(or use API to restore them into videos)
   - Disable notification count limit
   - Remove roundings
@@ -61,6 +59,8 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
     - Remove action bar buttons' backgrounds
     - Fix margins
       - Action bar
+    - Fix icon colors to match like/dislike
+    - Old Menu icon
   - Lower Layout Changes
     - Nothing yet!
   - Videoplayer Changes
@@ -71,3 +71,4 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Nothing yet!
 - General
   - Fix theme colors
+  - Old fonts(where applicable)
