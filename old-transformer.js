@@ -32,7 +32,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 		"div#owner{justify-content:space-between;}" + // Reposition subscribe
 		"#subscribe-button>ytd-subscribe-button-renderer>yt-button-shape>button{border-radius:3px;}" + // Bring back proper rounding for subscribe
 		"#subscribe-button>ytd-subscribe-button-renderer>yt-button-shape>button.yt-spec-button-shape-next--tonal{background-color:#2C2C2C;color:#A8A8A8;}" + // Subbed
-		"#subscribe-button>ytd-subscribe-button-renderer>yt-button-shape>button.yt-spec-button-shape-next--filled{background-color:#CC0100;color:#FFF;}" + // Not subbed
+		"#subscribe-button>ytd-subscribe-button-renderer>yt-button-shape>button.yt-spec-button-shape-next--filled{background-color:#CC0100;color:#FFF;}" // Not subbed
 }));
 
 var MDCB = (MDCB, MetadataElement, $) => {
