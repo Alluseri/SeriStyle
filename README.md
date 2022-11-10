@@ -2,7 +2,9 @@
 Bring back the Early-2021 UI back to YouTube!
 
 ## Incompatible
+You will not receive support if you have any of the following extensions installed:
 - **RYD(Return YouTube Dislike)** - SeriStyle can emulate RYD by using its API, providing better styles adapted directly from YouTube, and improved stability compared to the original extension.
+  - Lazy compatibility exists to some degree, but you will still not receive support with RYD installed.
 
 ## Warning
 This isn't ready for prod.
@@ -18,20 +20,17 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
 - Homepage
   - Nothing yet!
 - Videopage
-  - Upper Layout Changes
+  - **Upper Layout Changes**
     - Emulate RYD
       - Dislike Label
       - Dislike Functionality
       - Like/Dislike Ratio
       - Unhide
-    - Fix margins
-      - Views/Action bar
-      - Whole/Splitter
-  - Lower Layout Changes
+  - **Lower Layout Changes**
     - Fix description(will be split into steps later)
     - Remove wide left margin
     - Hide recommendation filters(All videos, New content, etc.)
-  - Videoplayer Changes
+  - **Videoplayer Changes**
     - Remove heatmap
     - Remove precise drag if functionally possible
 - Playlists
@@ -49,7 +48,7 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
 - Homepage
   - Nothing yet!
 - Videopage
-  - Upper Layout Changes
+  - **Upper Layout Changes**
     - Sacrifice Create Clip to fit Add to Playlist on smaller screens
     - Old Share icon
     - Old Like/Dislike icons
@@ -61,9 +60,10 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
       - Action bar
     - Fix icon colors to match like/dislike
     - Old Menu icon
-  - Lower Layout Changes
+    - Fix margins
+  - **Lower Layout Changes**
     - Nothing yet!
-  - Videoplayer Changes
+  - **Videoplayer Changes**
     - Cancel autoplay when scrolled past video
       - Basic mode: Cancel when scrolled
       - Alternative mode: Suspend timer when scrolled [COULD BE IMPROVED]
