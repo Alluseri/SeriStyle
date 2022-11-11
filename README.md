@@ -3,7 +3,7 @@ Bring back the Early-2021 UI back to YouTube!
 
 ## Incompatible
 You will not receive support if you have any of the following extensions installed:
-- **RYD(Return YouTube Dislike)** - SeriStyle can emulate RYD by using its API, providing better styles adapted directly from YouTube, and improved stability compared to the original extension.
+- <del>**RYD(Return YouTube Dislike)** - SeriStyle can emulate RYD by using its API, providing better styles adapted directly from YouTube, and improved stability compared to the original extension.</del>
   - Lazy compatibility exists to some degree, but you will still not receive support with RYD installed.
 
 ## Warning
