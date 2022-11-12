@@ -26,8 +26,12 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
       - Dislike Functionality
       - Like/Dislike Ratio
       - Unhide
+    - Fix margins
   - **Lower Layout Changes**
-    - Fix description(will be split into steps later)
+    - Fix margins
+    - Disable scroll on collapse
+    - Uppercase, font, weight, color on "Show More"
+    - Offset description by pfp
     - Remove wide left margin
     - Hide recommendation filters(All videos, New content, etc.)
   - **Videoplayer Changes**
@@ -56,7 +60,6 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
     - Old Add to Playlist icon
     - Old view count & publish date
     - Remove action bar buttons' backgrounds
-    - Fix margins
     - Fix icon colors to match like/dislike
     - Old Menu icon
   - **Lower Layout Changes**
