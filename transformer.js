@@ -15,30 +15,22 @@ var Settings_ScrollWatcherInterval = 1000; // Non-alternative needs 1k at most
 var Settings_ScrollThreshold = 100;
 var Settings_EmulateRYD = false; // TODO
 var Settings_UnhideRYD = true; // Use RYD API for hidden likes
+var Settings_RemoveDescShade = true;
 
 var Localize_AutoplaySuspended = "Автовоспроизведение приостановлено."; // "Autoplay suspended.";
 var Localize_DislikesHidden = "Не нравится"; // "Dislike";
 
 var SelBottomRow = "#bottom-row";
 var SelTopRow = "#above-the-fold>#top-row";
-var SelTitle = "#title>h1";
 var SelOwner = "#above-the-fold #owner";
-var SelActions = "#actions";
 var SelViews = "#count>ytd-video-view-count-renderer>span.view-count.style-scope.ytd-video-view-count-renderer";
-var SelNativeMenu = "#actions-inner>#menu";
 var SelFullDate = "#info-strings>yt-formatted-string";
 var SelFlexibleButtonsBar = "#menu.ytd-watch-metadata #flexible-item-buttons";
 var SelFlexibleButtons = SelFlexibleButtonsBar + ">.style-scope";
-var SelLikeSplitter = ".yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start::after";
 var SelSubPassiveBtn = "#subscribe-button yt-button-shape>button";
-var SelSubSubbedBtn = SelSubPassiveBtn + ".yt-spec-button-shape-next--tonal";
-var SelSubUnsubbedBtn = SelSubPassiveBtn + ".yt-spec-button-shape-next--filled";
 var SelContextMenuButtons = "#items>ytd-menu-service-item-renderer";
 var SelContextMenuOpen = "#actions #button-shape button";
 var SelShareBtn = "#actions-inner #top-level-buttons-computed>ytd-button-renderer";
-var SelActionBarButtons = "#actions button"; //"#actions #top-level-buttons-computed button";
-var SelActionBarIcons = "#actions yt-icon";
-var SelActionBarIconDivs = "#actions .yt-spec-button-shape-next__icon";
 var SelLikeButtons = "#actions-inner ytd-segmented-like-dislike-button-renderer button";
 
 var ExelCreateClip = "TTgsN2MwLDAuNTUtMC40NSwxLTEsMVM2LDcuNTUsNiw3YzAtMC41NSwwLjQ1LTEsMS0xUzgsNi40NSw4LDd6IE03LDE2Yy0wLjU1LDAtMSwwLjQ1LTEsMWMwLDAuNTUsMC40NSwxLDEsMXMxLTAuNDUsMS0xIEM4LDE2LjQ1LDcuNTUsMTYsNywxNnogTTEwLjc5LDguMjNMMjEsMTguNDRWMjBoLTMuMjdsLTUuNzYtNS43NmwtMS4yNywxLjI3QzEwLjg5LDE1Ljk3LDExLDE2LjQ3LDExLDE3YzAsMi4yMS0xLjc5LDQtNCw0IGMtMi4yMSwwLTQtMS43OS00LTRjMC0yLjIxLDEuNzktNCw0LTRjMC40MiwwLDAuODEsMC4wOCwxLjE5LDAuMmwxLjM3LTEuMzdsLTEuMTEtMS4xMUM4LDEwLjg5LDcuNTEsMTEsNywxMWMtMi4yMSwwLTQtMS43OS00LTQgYzAtMi4yMSwxLjc5LTQsNC00YzIuMjEsMCw0LDEuNzksNCw0QzExLDcuNDMsMTAuOTEsNy44NCwxMC43OSw4LjIzeiBNMTAuMDgsOC45NEw5LjY1LDguNWwwLjE5LTAuNThDOS45NSw3LjU4LDEwLDcuMjgsMTAsNyBjMC0xLjY1LTEuMzUtMy0zLTNTNCw1LjM1LDQsN2MwLDEuNjUsMS4zNSwzLDMsM2MwLjM2LDAsMC43My0wLjA3LDEuMDktMC4yMUw4LjcsOS41NWwwLjQ2LDAuNDZsMS4xMSwxLjExbDAuNzEsMC43MWwtMC43MSwwLjcxIEw4LjksMTMuOTFsLTAuNDMsMC40M2wtMC41OC0wLjE4QzcuNTUsMTQuMDUsNy4yNywxNCw3LDE0Yy0xLjY1LDAtMywxLjM1LTMsM2MwLDEuNjUsMS4zNSwzLDMsM3MzLTEuMzUsMy0zIGMwLTAuMzgtMC4wNy0wLjc1LTAuMjItMS4xMmwtMC4yNS0wLjYxTDEwLDE0LjhsMS4yNy0xLjI3bDAuNzEtMC43MWwwLjcxLDAuNzFMMTguMTUsMTlIMjB2LTAuMTVMMTAuMDgsOC45NHogTTE3LjczLDRIMjF2MS41NiBsLTUuNTIsNS41MmwtMi40MS0yLjQxTDE3LjczLDR6IE0xOC4xNSw1bC0zLjY3LDMuNjdsMSwxTDIwLDUuMTVWNUgxOC4xNXo=";
@@ -86,21 +78,32 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 		"#seristyle_oldpanel{display:block;font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;letter-spacing:0.2px;line-height:20px;max-height:20px;overflow:hidden}" +
 		".seristyle_subpanel{color:rgb(170,170,170);display:inline;font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;height:auto;letter-spacing:0.2px;line-height:20px;text-size-adjust:100%;width:auto;}" +
 		".seristyle_firstpanel::after{content:'•';margin:0px 4px;}" +
-		SelLikeSplitter + "{display:none;}" +
+		".yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start::after{display:none;}" +
 		SelOwner + "{justify-content:space-between;}" +
 		SelSubPassiveBtn + "{border-radius:3px;" + (Settings_UppercaseSubscribe ? "text-transform:uppercase;" : "") + "}" +
-		SelSubSubbedBtn + "{background-color:#2C2C2C;color:#A8A8A8;}" +
-		SelSubUnsubbedBtn + "{background-color:#C00;color:#FFF;}" +
+		SelSubPassiveBtn + ".yt-spec-button-shape-next--tonal{background-color:#2C2C2C;color:#A8A8A8;}" +
+		SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background-color:#C00;color:#FFF;}" +
 		"#seristyle_autoplay{color:rgba(255, 255, 255, 0.7);direction:ltr;font-family:\"YouTube Noto\", Roboto, Arial, Helvetica, sans-serif;font-size:14px;font-weight:500;line-height:18px;text-align:left;text-size-adjust:100%;}" +
-		SelActionBarButtons + "{letter-spacing:0.5px;color:#909090;background-color:#0000;padding-left:0px;padding-right:6px;" + (Settings_UppercaseActionBar ? "text-transform:uppercase;" : "") + "}" +
+		"#actions button{letter-spacing:0.5px;color:#909090;background-color:#0000;padding-left:0px;padding-right:6px;" + (Settings_UppercaseActionBar ? "text-transform:uppercase;" : "") + "}" +
 		SelLikeButtons + "{margin-left:10px;}" + // 8px in og, 9px in ss2
 		SelLikeButtons + "[aria-pressed=false]{color:#909090;}" +
 		SelLikeButtons + "[aria-pressed=true]{color:#FFF;}" +
-		SelActionBarIcons + "{padding:6px 6px 6px 6px;}" +
-		SelActionBarIconDivs + "{margin-left:0px;margin-right:0px;display:table;}" +
+		"#actions yt-icon{padding:6px 6px 6px 6px;}" +
+		"#actions .yt-spec-button-shape-next__icon{margin-left:0px;margin-right:0px;display:table;}" +
 		"yt-touch-feedback-shape{display:none;}" +
 		SelContextMenuOpen + "{margin-left:5px;}" +
-		SelTitle + "{font-family:Roboto,Arial,sans-serif;font-size:18px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-weight:400;line-height:26px;text-shadow:none;text-size-adjust:100%;word-break:break-word;}" +
+		"#title>h1{font-family:Roboto,Arial,sans-serif;font-size:18px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-weight:400;line-height:26px;text-shadow:none;text-size-adjust:100%;word-break:break-word;}" +
+		SelBottomRow + "{border-bottom-color:rgba(255,255,255,0.1);border-bottom-style:solid;border-bottom-width:1px;}" +
+		"#comment-teaser{display:none;}" +
+		"#description.ytd-watch-metadata{background-color:#0000!important;}" +
+		"#info-container{display:none;}" +
+		"tp-yt-paper-button#expand>paper-ripple{display:none;}" +
+		"tp-yt-paper-button#collapse>paper-ripple{display:none;}" +
+		"#description-interaction{display:none;}" +
+		"#expand.ytd-text-inline-expander{position:relative!important;left:unset!important;}" +
+		"#ellipsis{display:none;}" +
+		(Settings_RemoveDescShade ? "#snippet{-webkit-mask-image:unset!important;}" : "") +
+		"#actions{margin-top:0px;}" +
 		""
 }));
 
