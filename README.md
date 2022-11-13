@@ -37,6 +37,7 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - **Videoplayer Changes**
     - Remove heatmap
     - Remove precise drag if functionally possible
+    - Automatically refresh when Internet connection is lost(new YT glitch)
 - Playlists
   - Old UI(will be split into steps later)
 - General
