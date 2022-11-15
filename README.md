@@ -3,7 +3,7 @@ Bring back the Early-2021 UI back to YouTube!
 
 ## Incompatible
 You will not receive support if you have any of the following extensions installed:
-- <del>**RYD(Return YouTube Dislike)** - SeriStyle can emulate RYD by using its API, providing better styles adapted directly from YouTube, and improved stability compared to the original extension.</del>
+- <del>**RYD(Return YouTube Dislike)** - SeriStyle can emulate RYD by using its API, providing better styles adapted directly from YouTube, and improved stability compared to the original extension.</del> Not yet implemented.
   - Lazy compatibility exists to some degree, but you will still not receive support with RYD installed.
 
 ## Warning
@@ -21,20 +21,18 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Nothing yet!
 - Videopage
   - **Upper Layout Changes**
+    - [Compat] Hide RYD sentiment bar
     - Emulate RYD
       - Dislike Label
       - Dislike Functionality
-      - Like/Dislike Ratio
+      - Sentiment Bar
       - Unhide
-    - Fix margins
     - Realign Sponsor & Analytics
+    - Localize (E)RYDless/Hidden dislike button
   - **Lower Layout Changes**
-    - Fix margins
     - Disable scroll on collapse
-    - Uppercase, font, weight, color on "Show More"
-    - Offset description by pfp
-    - Remove wide left margin
     - Hide recommendation filters(All videos, New content, etc.)
+    - Localization on Show More/Show Less
   - **Videoplayer Changes**
     - Remove heatmap
     - Remove precise drag if functionally possible
@@ -42,7 +40,7 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
 - Playlists
   - Old UI(will be split into steps later)
 - General
-  - Old Notification Bubble Color
+  - Old notification bubble color
   - Hide playlists in recommendations(or use API to restore them into videos)
   - Disable notification count limit
   - Remove roundings
@@ -64,8 +62,13 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
     - Remove action bar buttons' backgrounds
     - Fix icon colors to match like/dislike
     - Old Menu icon
+    - Fix margins
+    - Old pfp style
   - **Lower Layout Changes**
-    - Nothing yet!
+    - Remove background
+    - Old expander style
+    - Correct description positioning
+    - Fix margins
   - **Videoplayer Changes**
     - Cancel autoplay when scrolled past video
       - Basic mode: Cancel when scrolled
