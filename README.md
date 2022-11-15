@@ -27,6 +27,7 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
       - Like/Dislike Ratio
       - Unhide
     - Fix margins
+    - Realign Sponsor & Analytics
   - **Lower Layout Changes**
     - Fix margins
     - Disable scroll on collapse
