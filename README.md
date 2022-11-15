@@ -21,7 +21,6 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Nothing yet!
 - Videopage
   - **Upper Layout Changes**
-    - [Compat] Hide RYD sentiment bar
     - Emulate RYD
       - Dislike Label
       - Dislike Functionality
@@ -53,6 +52,7 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Nothing yet!
 - Videopage
   - **Upper Layout Changes**
+    - Hide RYD sentiment bar
     - Sacrifice Create Clip to fit Add to Playlist on smaller screens
     - Old Share icon
     - Old Like/Dislike icons
