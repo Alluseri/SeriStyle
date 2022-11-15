@@ -6,6 +6,7 @@
 
 var Settings_UppercaseSubscribe = true;
 var Settings_UppercaseActionBar = true;
+var Settings_UppercaseDescriptionInteracts = true;
 var Settings_DisableAutoplayScroll = true;
 var Settings_AlternativeDisableAutoplayScroll = false;
 var Settings_InjectedAddToPlaylistCallbackTime = 300;
@@ -19,6 +20,8 @@ var Settings_RemoveDescShade = true;
 
 var Localize_AutoplaySuspended = "Автовоспроизведение приостановлено."; // "Autoplay suspended.";
 var Localize_DislikesHidden = "Не нравится"; // "Dislike";
+var Localize_ShowMore = "Развернуть"; // "Show more"
+var Localize_ShowLess = "Свернуть"; // "Show less"
 
 var SelBottomRow = "#bottom-row";
 var SelTopRow = "#above-the-fold>#top-row";
@@ -93,17 +96,19 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 		"yt-touch-feedback-shape{display:none;}" +
 		SelContextMenuOpen + "{margin-left:5px;}" +
 		"#title>h1{font-family:Roboto,Arial,sans-serif;font-size:18px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-weight:400;line-height:26px;text-shadow:none;text-size-adjust:100%;word-break:break-word;}" +
-		SelBottomRow + "{border-bottom-color:rgba(255,255,255,0.1);border-bottom-style:solid;border-bottom-width:1px;}" +
+		SelBottomRow + "{border-bottom-color:rgba(255,255,255,0.1);border-bottom-style:solid;border-bottom-width:1px;padding-bottom:16px;}" +
 		"#comment-teaser{display:none;}" +
 		"#description.ytd-watch-metadata{background-color:#0000!important;}" +
 		"#info-container{display:none;}" +
-		"tp-yt-paper-button#expand>paper-ripple{display:none;}" +
-		"tp-yt-paper-button#collapse>paper-ripple{display:none;}" +
+		"tp-yt-paper-button.ytd-text-inline-expander{position:relative!important;left:unset!important;justify-content:flex-start;color:#AAA;font-family:Roboto,Arial,sans-serif;margin-top:8px;font-size:1.3rem;font-weight:500;letter-spacing:0.007px;" + (Settings_UppercaseDescriptionInteracts ? "text-transform:uppercase;" : "") + "}" +
+		"tp-yt-paper-button.ytd-text-inline-expander>paper-ripple{display:none;}" +
 		"#description-interaction{display:none;}" +
-		"#expand.ytd-text-inline-expander{position:relative!important;left:unset!important;}" +
-		"#ellipsis{display:none;}" +
+		"#ellipsis{display:none!important;}" +
 		(Settings_RemoveDescShade ? "#snippet{-webkit-mask-image:unset!important;}" : "") +
 		"#actions{margin-top:0px;}" +
+		"#description-inline-expander{margin-left:64px;}" +
+		"#owner #avatar{width:48px!important;height:48px!important;max-width:48px!important;max-height:48px!important;margin-right:16px;}" +
+		"#owner #avatar>#img{width:48px!important;height:48px!important;max-width:48px!important;max-height:48px!important;}" +
 		""
 }));
 
