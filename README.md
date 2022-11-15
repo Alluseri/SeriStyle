@@ -33,6 +33,7 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
     - Hide recommendation filters(All videos, New content, etc.)
     - Localization on Show More/Show Less
     - Old copyright flairs in description
+    - Old comment section
   - **Videoplayer Changes**
     - Remove heatmap
     - Remove precise drag if functionally possible
@@ -40,11 +41,15 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
 - Playlists
   - Old UI(will be split into steps later)
 - General
-  - Old notification bubble color
   - Hide playlists in recommendations(or use API to restore them into videos)
+  - Old top bar style
+    - Old search bar
+    - Old notification bubble color
+    - Old Menu icon
+    - Old Mic Input icon
+    - Old Search icon
   - Disable notification count limit
   - Remove roundings
-    - Search bar
     - Thumbnails
     - Buttons(might be distributed between other sections later)
 - Convert to Chrome extension
