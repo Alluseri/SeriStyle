@@ -32,6 +32,7 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
     - Disable scroll on collapse
     - Hide recommendation filters(All videos, New content, etc.)
     - Localization on Show More/Show Less
+    - Old copyright flairs in description
   - **Videoplayer Changes**
     - Remove heatmap
     - Remove precise drag if functionally possible
