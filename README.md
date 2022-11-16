@@ -38,6 +38,7 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
     - Remove heatmap
     - Remove precise drag if functionally possible
     - Automatically refresh when Internet connection is lost(new YT glitch)
+    - Rework "Cancel autoplay" to use the Scroll event and a MutationObserver instead of an interval
 - Playlists
   - Old UI(will be split into steps later)
 - General
