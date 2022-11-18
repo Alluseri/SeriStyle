@@ -1,0 +1,57 @@
+just data here.
+
+			SelTopRow + "{margin-top:4px;display:flex;align-items:center;border-bottom-color:rgba(255,255,255,0.1);border-bottom-style:solid;border-bottom-width:1px;font-family:Roboto,Arial,sans-serif;font-size:10px;padding-bottom:8px;align-items:center;}" +
+			"#seristyle_oldpanel{display:block;font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;letter-spacing:0.2px;line-height:20px;max-height:20px;overflow:hidden;margin-top:-3px;}" +
+			".seristyle_subpanel{color:rgb(170,170,170);display:inline;font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;height:auto;letter-spacing:0.2px;line-height:20px;text-size-adjust:100%;width:auto;}" +
+			".seristyle_firstpanel::after{content:'•';margin:0px 4px;}" +
+			".yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start::after{display:none;}" +
+			SelOwner + "{justify-content:space-between;}" +
+			SelSubPassiveBtn + "{border-radius:3px;" + (Settings_UppercaseSubscribe ? "text-transform:uppercase;" : "") + "}" +
+			SelSubPassiveBtn + ".yt-spec-button-shape-next--tonal{background-color:#2C2C2C;color:#A8A8A8;}" +
+			SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background-color:#C00;color:#FFF;}" +
+			"#seristyle_autoplay{color:rgba(255, 255, 255, 0.7);direction:ltr;font-family:\"YouTube Noto\", Roboto, Arial, Helvetica, sans-serif;font-size:14px;font-weight:500;line-height:18px;text-align:left;text-size-adjust:100%;}" +
+			"#actions button{letter-spacing:0.5px;color:#909090;background-color:#0000;padding-left:0px;padding-right:6px;" + (Settings_UppercaseActionBar ? "text-transform:uppercase;" : "") + "}" +
+			SelLikeButtons + "{margin-left:10px;}" + // 8px in og, 9px in ss2
+			SelLikeButtons + "[aria-pressed=false]{color:#909090;}" +
+			SelLikeButtons + "[aria-pressed=true]{color:#FFF;}" +
+			"#actions yt-icon{padding:6px 6px 6px 6px;}" +
+			"#actions .yt-spec-button-shape-next__icon{margin-left:0px;margin-right:0px;display:table;}" +
+			"yt-touch-feedback-shape{display:none;}" +
+			SelContextMenuOpen + "{margin-left:5px;}" +
+			"#title>h1{font-family:Roboto,Arial,sans-serif;font-size:18px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-weight:400;line-height:26px;text-shadow:none;text-size-adjust:100%;word-break:break-word;}" +
+			SelBottomRow + "{border-bottom-color:rgba(255,255,255,0.1);border-bottom-style:solid;border-bottom-width:1px;padding-bottom:16px;}" +
+			"#comment-teaser{display:none;}" +
+			"#description.ytd-watch-metadata{background-color:#0000!important;}" +
+			"#info-container{display:none;}" +
+			"tp-yt-paper-button.ytd-text-inline-expander{position:relative!important;left:unset!important;justify-content:flex-start;color:#AAA!important;font-family:Roboto,Arial,sans-serif!important;margin-top:8px!important;font-size:1.3rem!important;font-weight:500!important;letter-spacing:0.007px;" + (Settings_UppercaseDescriptionInteracts ? "text-transform:uppercase!important;" : "") + "}" +
+			"tp-yt-paper-button.ytd-text-inline-expander>paper-ripple{display:none;}" +
+			"#description-interaction{display:none;}" +
+			"#ellipsis{display:none!important;}" +
+			(Settings_RemoveDescShade ? "#snippet{-webkit-mask-image:unset!important;}" : "") +
+			"#actions{margin-top:0px;}" +
+			"#description-inline-expander{margin-left:64px;}" +
+			"#owner #avatar{width:48px!important;height:48px!important;max-width:48px!important;max-height:48px!important;margin-right:16px;}" +
+			"#owner #avatar>#img{width:48px!important;height:48px!important;max-width:48px!important;max-height:48px!important;}" +
+			"#description-inner{margin:0px!important;}" +
+			".ryd-tooltip{display:none;}"
+
+			Settings_AlternativeDisableAutoplayScroll ? () => {
+		var AutonavLabel = $(".ytp-autonav-endscreen-upnext-header");
+		if (AutonavLabel) {
+			var SeriLabel = $("#seristyle_autoplay") || DomUtils.BuildElement("span", { id: "seristyle_autoplay", innerText: Localize_AutoplaySuspended }, [], Element => {
+				Element.style.display = "none";
+				AutonavLabel.parentElement.prepend(Element);
+				return Element;
+			});
+			if ((document.documentElement.scrollTop || document.body.scrollTop) > Settings_ScrollThreshold) {
+				AutonavLabel.style.display = "none";
+				SeriLabel.style.display = "block";
+				PauseDate = Date.now();
+				Date.now = () => 0;
+			} else {
+				AutonavLabel.style.display = "";
+				SeriLabel.style.display = "none";
+				Date.now = OriginalDateNow;
+			}
+		}
+	}
