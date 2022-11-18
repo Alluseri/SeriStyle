@@ -6,9 +6,6 @@ You will not receive support if you have any of the following extensions install
 - <del>**RYD(Return YouTube Dislike)** - SeriStyle can emulate RYD by using its API, providing better styles adapted directly from YouTube, and improved stability compared to the original extension.</del> Not yet implemented.
   - Lazy compatibility exists to some degree, but you will still not receive support with RYD installed.
 
-## Warning
-This isn't ready for prod.
-
 ## Style Clarification
 I try adapting most styles and layouts directly from the old UI, but sometimes it is virtually impossible(e.g. because of script differences or I simply couldn't find what I was looking for), so there might be minor differences between what you remember and what I implemented.
 
@@ -30,6 +27,8 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
     - Localize (E)RYDless/Hidden dislike button
     - Remove Premiere chat on published videos
       - Only when it's hidden
+    - Fix notification bell color
+      - [Bonus functionality] Autoswitch on click(hide context menu)
   - **Lower Layout Changes**
     - Disable scroll on collapse
     - Hide recommendation filters(All videos, New content, etc.)
@@ -41,6 +40,7 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
     - Remove heatmap
     - Remove precise drag if functionally possible
     - Better autoplay canceller(requires a switch-resistant pausable Date.now implementation)
+    - Add MutationObserver impl. to current autoplay canceller(watch "hidden" attribute, style.display or element creation)
 - Playlists
   - Old UI(will be split into steps later)
 - General
