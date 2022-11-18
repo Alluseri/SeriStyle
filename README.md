@@ -1,11 +1,6 @@
 # SeriStyle
 Bring back the Early-2021 UI back to YouTube!
 
-## Incompatible
-You will not receive support if you have any of the following extensions installed:
-- <del>**RYD(Return YouTube Dislike)** - SeriStyle can emulate RYD by using its API, providing better styles adapted directly from YouTube, and improved stability compared to the original extension.</del> Not yet implemented.
-  - Lazy compatibility exists to some degree, but you will still not receive support with RYD installed.
-
 ## Style Clarification
 I try adapting most styles and layouts directly from the old UI, but sometimes it is virtually impossible(e.g. because of script differences or I simply couldn't find what I was looking for), so there might be minor differences between what you remember and what I implemented.
 
@@ -18,11 +13,10 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Fix the background color of categories at the top(opt. remove them)
 - Videopage
   - **Upper Layout Changes**
-    - Emulate RYD
-      - Dislike Label
-      - Dislike Functionality
-      - Sentiment Bar
-      - Unhide
+    - Fix RYD's awful sentiment bar
+      - Cleanup(it doesn't, what a meme)
+      - Fix position on the panel
+      - Fix size
     - Realign Sponsor & Analytics
     - Localize (E)RYDless/Hidden dislike button
     - Remove Premiere chat on published videos
@@ -55,10 +49,11 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Remove roundings
     - Thumbnails
     - Buttons(might be distributed between other sections later)
-- Post-transition
+- Extension & its structure
   - Verify compatibility with latest Chrome and Firefox
   - Make every transformation configurable(only some, currently)
   - Functional popup & settings page
+  - Migrate necessary transformations to the general transformer
   - More to come
 ### Done
 - Homepage
