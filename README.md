@@ -5,9 +5,6 @@ Bring back the Early-2021 UI back to YouTube!
 I try adapting most styles and layouts directly from the old UI, but sometimes it is virtually impossible(e.g. because of script differences or I simply couldn't find what I was looking for), so there might be minor differences between what you remember and what I implemented.
 
 ## Roadmap
-Most features are/will be optional, but some might misbehave without each other!
-
-Features might appear or disappear over time, NOT THE FINAL VERSION.
 ### TODO (NOT by priority)
 - Homepage
   - Fix the background color of categories at the top(opt. remove them)
