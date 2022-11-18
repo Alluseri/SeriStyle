@@ -28,6 +28,8 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
       - Unhide
     - Realign Sponsor & Analytics
     - Localize (E)RYDless/Hidden dislike button
+    - Remove Premiere chat on published videos
+      - Only when it's hidden
   - **Lower Layout Changes**
     - Disable scroll on collapse
     - Hide recommendation filters(All videos, New content, etc.)
