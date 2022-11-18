@@ -36,6 +36,7 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
     - Localization on Show More/Show Less
     - Old copyright flairs in description
     - Old comment section
+    - Fix "Show More" button's hitbox being too wide
   - **Videoplayer Changes**
     - Remove heatmap
     - Remove precise drag if functionally possible
@@ -46,10 +47,10 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Hide playlists in recommendations(or use API to restore them into videos)
   - Old top bar style
     - Old search bar
+      - Old Search icon
     - Old notification bubble color
     - Old Menu icon
     - Old Mic Input icon
-    - Old Search icon
   - Disable notification count limit
   - Remove roundings
     - Thumbnails
