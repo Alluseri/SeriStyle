@@ -18,7 +18,7 @@ Most features are/will be optional, but some might misbehave without each other!
 Features might appear or disappear over time, NOT THE FINAL VERSION.
 ### TODO (NOT by priority)
 - Homepage
-  - Nothing yet!
+  - Fix the background color of categories at the top(opt. remove them)
 - Videopage
   - **Upper Layout Changes**
     - Emulate RYD
@@ -37,8 +37,7 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - **Videoplayer Changes**
     - Remove heatmap
     - Remove precise drag if functionally possible
-    - Automatically refresh when Internet connection is lost(new YT glitch)
-    - Rework "Cancel autoplay" to use the Scroll event and a MutationObserver instead of an interval
+    - Better autoplay canceller(requires a switch-resistant pausable Date.now implementation)
 - Playlists
   - Old UI(will be split into steps later)
 - General
@@ -53,7 +52,11 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
   - Remove roundings
     - Thumbnails
     - Buttons(might be distributed between other sections later)
-- Convert to Chrome extension
+- Post-transition
+  - Verify compatibility with latest Chrome and Firefox
+  - Make every transformation configurable(only some, currently)
+  - Functional popup & settings page
+  - More to come
 ### Done
 - Homepage
   - Nothing yet!
@@ -76,12 +79,12 @@ Features might appear or disappear over time, NOT THE FINAL VERSION.
     - Old expander style
     - Correct description positioning
     - Fix margins
+    - Remove "Explicit Lyrics" flair
   - **Videoplayer Changes**
     - Cancel autoplay when scrolled past video
-      - Basic mode: Cancel when scrolled
-      - Alternative mode: Suspend timer when scrolled [COULD BE IMPROVED]
 - Playlists
   - Nothing yet!
 - General
   - Fix theme colors
   - Old fonts(where applicable)
+- Convert to Chrome extension
