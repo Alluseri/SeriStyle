@@ -15,6 +15,7 @@ I try adapting most styles and layouts directly from the old UI, but sometimes i
       - Fix position on the panel
       - Fix size
     - Realign Sponsor & Analytics
+    - Hide context menu during mCC interaction cycle
     - [Specially restyle "Try It Free" button if applicable](https://www.reddit.com/r/youtube/comments/z12tk3/subscibersonly_chat_is_enabled_subscribe_button/)
     - Localize (E)RYDless/Hidden dislike button
     - Remove Premiere chat on published videos
