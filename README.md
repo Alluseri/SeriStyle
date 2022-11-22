@@ -48,9 +48,11 @@ I try adapting most styles and layouts directly from the old UI, but sometimes i
     - Buttons(might be distributed between other sections later)
 - Extension & its structure
   - Verify compatibility with latest Chrome and Firefox
-  - Make every transformation configurable(only some, currently)
   - Functional popup & settings page
   - Migrate necessary transformations to the general transformer
+  - Letter spacing explicitly configurable
+  - Fix early transformer burning causing issues
+  - Fix old theme colors
   - More to come
 ### Done
 - Homepage
