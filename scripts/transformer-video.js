@@ -4,27 +4,16 @@
 
 /* jshint esversion: 11, -W084 */
 
-var Settings_UppercaseSubscribe = true;
-var Settings_UppercaseActionBar = true;
-var Settings_UppercaseDescriptionInteracts = true;
 var Settings_DisableAutoplayScroll = true;
 var Settings_InjectedAddToPlaylistCallbackTime = 300;
-var Settings_InjectedAddToPlaylistRetryTime = 300;
 var Settings_InjectedSettleTime = 100;
 var Settings_ScrollThreshold = 100;
-var Settings_EmulateRYD = false; // TODO
-var Settings_UnhideRYD = true; // Use RYD API for hidden likes
 var Settings_RemoveDescShade = true;
-
-var Localize_AutoplaySuspended = "Автовоспроизведение приостановлено."; // "Autoplay suspended.";
-var Localize_DislikesHidden = "Не нравится"; // "Dislike";
-var Localize_ShowMore = "Развернуть"; // "Show more"
-var Localize_ShowLess = "Свернуть"; // "Show less"
 
 var SelBottomRow = "#bottom-row";
 var SelTopRow = "#top-row.ytd-watch-metadata";
 var SelOwner = "#above-the-fold #owner"; // Basing off a row breaks in circumstances.
-var SelViews = "#count>ytd-video-view-count-renderer>span.view-count.style-scope.ytd-video-view-count-renderer";
+var SelViews = ".view-count";
 var SelFullDate = "#info-strings>yt-formatted-string";
 var SelFlexibleButtonsBar = "#menu.ytd-watch-metadata #flexible-item-buttons";
 var SelFlexibleButtons = SelFlexibleButtonsBar + ">.style-scope";
@@ -47,8 +36,6 @@ var SvgMenu = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focu
 
 // Init
 var _;
-$ = document.querySelector.bind(document);
-$$ = (Query) => Array.from(document.querySelectorAll(Query));
 var FindByExel = (Elements, ExelArg) => Elements.find(x => btoa(x?.querySelector("path")?.attributes.d?.value) == ExelArg);
 var FindAllByExel = (Elements, ExelArg) => Elements.filter(x => btoa(x?.querySelector("path")?.attributes.d?.value) == ExelArg);
 var Exists = (Element) => Element.parentElement != null;
@@ -82,11 +69,11 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			".seristyle_firstpanel::after{content:'•';margin:0px 4px;}" +
 			".yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start::after{display:none;}" +
 			SelOwner + "{justify-content:space-between;}" +
-			SelSubPassiveBtn + "{border-radius:3px;" + (Settings_UppercaseSubscribe ? "text-transform:uppercase;" : "") + "}" +
+			SelSubPassiveBtn + "{border-radius:3px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
 			SelSubPassiveBtn + ".yt-spec-button-shape-next--tonal{background-color:#2C2C2C;color:#A8A8A8;}" +
 			SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background-color:#C00;color:#FFF;}" +
 			"#seristyle_autoplay{color:rgba(255, 255, 255, 0.7);direction:ltr;font-family:\"YouTube Noto\", Roboto, Arial, Helvetica, sans-serif;font-size:14px;font-weight:500;line-height:18px;text-align:left;text-size-adjust:100%;}" +
-			"#actions button{letter-spacing:0.5px;color:#909090;background-color:#0000;padding-left:0px;padding-right:6px;" + (Settings_UppercaseActionBar ? "text-transform:uppercase;" : "") + "}" +
+			"#actions button{" + (SeriStyleSettings.General.LetterSpacing.Value ? "letter-spacing:0.5px;" : "") + "color:#909090;background-color:#0000;padding-left:0px;padding-right:6px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
 			SelLikeButtons + "{margin-left:10px;}" + // 8px in og, 9px in ss2
 			SelLikeButtons + "[aria-pressed=false]{color:#909090;}" +
 			SelLikeButtons + "[aria-pressed=true]{color:#FFF;}" +
@@ -99,7 +86,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#comment-teaser{display:none;}" +
 			"#description.ytd-watch-metadata{background-color:#0000;}" +
 			"#info-container{display:none;}" +
-			"tp-yt-paper-button.ytd-text-inline-expander{position:relative;left:unset;justify-content:flex-start;color:#AAA;font-family:Roboto,Arial,sans-serif;margin-top:8px;font-size:1.3rem;font-weight:500;letter-spacing:0.007px;" + (Settings_UppercaseDescriptionInteracts ? "text-transform:uppercase;" : "") + "}" +
+			"tp-yt-paper-button.ytd-text-inline-expander{position:relative;left:unset;justify-content:flex-start;color:#AAA;font-family:Roboto,Arial,sans-serif;margin-top:8px;font-size:1.3rem;font-weight:500;letter-spacing:0.007px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
 			"tp-yt-paper-button.ytd-text-inline-expander>paper-ripple{display:none;}" +
 			"#description-interaction{display:none;}" +
 			"#ellipsis{display:none;}" +
@@ -113,6 +100,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#snippet>.ytd-text-inline-expander:not([id]){display:none;}" + // Cringe selector but it works
 			"#expand-sizer{display:none;}" +
 			"#below>ytd-watch-metadata>ytd-metadata-row-container-renderer{display:none;}" +
+			"ytd-download-button-renderer{display:none;}" +
 			""
 		).replaceAll(/(?<!!important);/g, "!important;") // <3 yt
 }));
@@ -135,9 +123,6 @@ var LikeDislikeArray = $$(SelLikeButtons);
 LikeDislikeArray[0].querySelector("yt-icon").innerHTML = SvgLike;
 LikeDislikeArray[1].querySelector("yt-icon").innerHTML = SvgDislike;
 
-// Old colors... Temporary solution cause they will fosho enforce it later, maybe it will be easier to bypass at that point
-$$("[darker-dark-theme]").forEach(Element => Element.removeAttribute("darker-dark-theme"));
-
 // RYD Lazy Compatibility
 if (_ = $(SelTopRow).attributes.style) _.value = ""; // Remove RYD's border because it overrides SeriStyle's
 
@@ -147,12 +132,12 @@ var ATPonClick = async () => {
 	if (!InteractBtn) {
 		var OpenMenuBtn = $(SelContextMenuOpen);
 		if (!OpenMenuBtn)
-			return console.log("[SeriStyle|ERROR] Mod-ATP runtime: No menu button found.");
+			return;
 		OpenMenuBtn.click();
 		await WaitTime(Settings_InjectedAddToPlaylistCallbackTime);
 		InteractBtn = FindByExel($$(SelContextMenuButtons), ExelAddToPlaylist);
 		if (!InteractBtn)
-			return console.log("[SeriStyle|ERROR] Mod-ATP runtime: No interact found.");
+			return;
 		OpenMenuBtn.click();
 	}
 	InteractBtn.click();
@@ -218,7 +203,7 @@ var ActionBarEventListeners = [
 
 var ActionBarObserver = new MutationObserver(async Mutations => {
 	// Wait for changes to settle
-	await WaitTime(Settings_InjectedSettleTime);
+	await WaitTime(Settings_InjectedSettleTime); // TODO Perhaps we should looking into getting rid of this
 
 	var Inserted = [];
 	var Removed = [];

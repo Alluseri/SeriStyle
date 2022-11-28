@@ -34,6 +34,7 @@
 				"*://*.youtube.com/*"
 			],
 			"js": [
+				"/scripts/server.js",
 				"/scripts/page-observer.js"
 			],
 			"run_at": "document_end"
