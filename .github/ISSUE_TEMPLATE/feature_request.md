@@ -14,5 +14,6 @@ A clear and concise description of what you want this feature to implement.
 1. Open homepage
 2. Click button
 3. See feature in action
+
 Please also include side implementation, such as the settings changes here, e.g.:
 - New setting to toggle this feature: "Setting name"
