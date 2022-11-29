@@ -37,7 +37,7 @@ I try adapting most styles and layouts directly from the old UI, but sometimes i
 - Playlists
   - Old UI(will be split into steps later)
 - General
-  - Fixes [1](https://www.measurethat.net/Benchmarks/Show/22176/0/replace-classnamereplace-vs-classnamereplaceall-vs-clas), [2](https://www.measurethat.net/Benchmarks/Show/22177/0/contains-classname-vs-classlist), [3](https://groups.google.com/a/chromium.org/g/chromium-extensions/c/q18Zuz0tuUs?pli=1)
+  - Fixes [1](https://www.measurethat.net/Benchmarks/Show/22176/0/replace-classnamereplace-vs-classnamereplaceall-vs-clas), [2](https://www.measurethat.net/Benchmarks/Show/22177/0/contains-classname-vs-classlist)
   - Hide playlists in recommendations(or use API to restore them into videos)
   - Old top bar style
     - Old search bar
