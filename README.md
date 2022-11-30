@@ -1,5 +1,5 @@
 # SeriStyle
-Bring back the Early-2021 UI back to YouTube!
+Bring the Early-2021 UI back to YouTube!
 
 ## Style Clarification
 I try adapting most styles and layouts directly from the old UI, but sometimes it is virtually impossible(e.g. because of script differences or I simply couldn't find what I was looking for), so there might be minor differences between what you remember and what I implemented.
@@ -17,7 +17,7 @@ I try adapting most styles and layouts directly from the old UI, but sometimes i
     - Realign Sponsor & Analytics
     - Hide context menu during mCC interaction cycle
     - [Specially restyle "Try It Free" button if applicable](https://www.reddit.com/r/youtube/comments/z12tk3/subscibersonly_chat_is_enabled_subscribe_button/)
-    - Localize (E)RYDless/Hidden dislike button
+    - Localize RYDless/Hidden dislike button
     - Remove Premiere chat on published videos
       - Only when it's hidden
     - Fix notification bell color
