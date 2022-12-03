@@ -11,9 +11,7 @@ I try adapting most styles and layouts directly from the old UI, but sometimes i
 - Videopage
   - **Upper Layout Changes**
     - Fix RYD's awful sentiment bar
-      - Cleanup(it doesn't, what a meme)
-      - Fix position on the panel
-      - Fix size
+      - Changing the residing panel and a few styles should be enough
     - Realign Sponsor & Analytics
     - Hide context menu during mCC interaction cycle
     - [Specially restyle "Try It Free" button if applicable](https://www.reddit.com/r/youtube/comments/z12tk3/subscibersonly_chat_is_enabled_subscribe_button/)
@@ -22,13 +20,11 @@ I try adapting most styles and layouts directly from the old UI, but sometimes i
       - Only when it's hidden
     - Fix notification bell color
       - [Bonus functionality] Autoswitch on click(hide context menu)
+	- Fix Save tooltip being too high
   - **Lower Layout Changes**
-    - Disable scroll on collapse
     - Hide recommendation filters(All videos, New content, etc.)
-    - Localization on Show More/Show Less
     - Old copyright flairs in description
-    - Old comment section
-    - Fix "Show More" button's hitbox being too wide
+    - Old comment section(will be split into steps later)
   - **Videoplayer Changes**
     - Remove heatmap
     - Remove precise drag if functionally possible
@@ -37,26 +33,16 @@ I try adapting most styles and layouts directly from the old UI, but sometimes i
 - Playlists
   - Old UI(will be split into steps later)
 - General
-  - Fixes [1](https://www.measurethat.net/Benchmarks/Show/22176/0/replace-classnamereplace-vs-classnamereplaceall-vs-clas), [2](https://www.measurethat.net/Benchmarks/Show/22177/0/contains-classname-vs-classlist)
   - Hide playlists in recommendations(or use API to restore them into videos)
   - Old top bar style
-    - Old search bar
-      - Old Search icon
     - Old notification bubble color
     - Old Menu icon
-    - Old Mic Input icon
   - Disable notification count limit
   - Remove roundings
     - Thumbnails
     - Buttons(might be distributed between other sections later)
-- Extension & its structure
-  - Verify compatibility with latest Chrome and Firefox
-  - Functional popup & settings page
-  - Migrate necessary transformations to the general transformer
-  - Letter spacing explicitly configurable
-  - Fix early transformer burning causing issues
-  - Fix old theme colors
-  - More to come
+- Extension & its structure (Will not be merged into Done)
+  - Add icons to settings page
 ### Done
 - Homepage
   - Nothing yet!
@@ -80,6 +66,7 @@ I try adapting most styles and layouts directly from the old UI, but sometimes i
     - Correct description positioning
     - Fix margins
     - Remove "Explicit Lyrics" flair
+    - Fix "Show More" button's hitbox being the whole description
   - **Videoplayer Changes**
     - Cancel autoplay when scrolled past video
 - Playlists
@@ -87,4 +74,5 @@ I try adapting most styles and layouts directly from the old UI, but sometimes i
 - General
   - Fix theme colors
   - Old fonts(where applicable)
-- Convert to Chrome extension
+  - Old top bar style
+    - Old search bar

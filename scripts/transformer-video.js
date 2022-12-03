@@ -1,14 +1,13 @@
 /*
-	I'll put some jpop lyrics here later just you wait
+	ゼロの位置を指した針が
+	反撃のTime Limit
+	レールを外れ
+	ひた突き進め
+
+	This transformer does not work without this comment, do not remove
 */
 
-/* jshint esversion: 11, -W084 */
-
-var Settings_DisableAutoplayScroll = true;
-var Settings_InjectedAddToPlaylistCallbackTime = 300;
-var Settings_InjectedSettleTime = 100;
-var Settings_ScrollThreshold = 100;
-var Settings_RemoveDescShade = true;
+/* jshint esversion: 11, -W084, -W093 */
 
 var SelBottomRow = "#bottom-row";
 var SelTopRow = "#top-row.ytd-watch-metadata";
@@ -22,6 +21,8 @@ var SelContextMenuButtons = "#items>ytd-menu-service-item-renderer";
 var SelContextMenuOpen = "#actions #button-shape button";
 var SelShareBtn = "#actions-inner #top-level-buttons-computed>ytd-button-renderer";
 var SelLikeButtons = "#actions-inner ytd-segmented-like-dislike-button-renderer button";
+var SelDescription = "#description.ytd-watch-metadata";
+var SelDropdown = "tp-yt-iron-dropdown.ytd-popup-container";
 
 var ExelCreateClip = "TTgsN2MwLDAuNTUtMC40NSwxLTEsMVM2LDcuNTUsNiw3YzAtMC41NSwwLjQ1LTEsMS0xUzgsNi40NSw4LDd6IE03LDE2Yy0wLjU1LDAtMSwwLjQ1LTEsMWMwLDAuNTUsMC40NSwxLDEsMXMxLTAuNDUsMS0xIEM4LDE2LjQ1LDcuNTUsMTYsNywxNnogTTEwLjc5LDguMjNMMjEsMTguNDRWMjBoLTMuMjdsLTUuNzYtNS43NmwtMS4yNywxLjI3QzEwLjg5LDE1Ljk3LDExLDE2LjQ3LDExLDE3YzAsMi4yMS0xLjc5LDQtNCw0IGMtMi4yMSwwLTQtMS43OS00LTRjMC0yLjIxLDEuNzktNCw0LTRjMC40MiwwLDAuODEsMC4wOCwxLjE5LDAuMmwxLjM3LTEuMzdsLTEuMTEtMS4xMUM4LDEwLjg5LDcuNTEsMTEsNywxMWMtMi4yMSwwLTQtMS43OS00LTQgYzAtMi4yMSwxLjc5LTQsNC00YzIuMjEsMCw0LDEuNzksNCw0QzExLDcuNDMsMTAuOTEsNy44NCwxMC43OSw4LjIzeiBNMTAuMDgsOC45NEw5LjY1LDguNWwwLjE5LTAuNThDOS45NSw3LjU4LDEwLDcuMjgsMTAsNyBjMC0xLjY1LTEuMzUtMy0zLTNTNCw1LjM1LDQsN2MwLDEuNjUsMS4zNSwzLDMsM2MwLjM2LDAsMC43My0wLjA3LDEuMDktMC4yMUw4LjcsOS41NWwwLjQ2LDAuNDZsMS4xMSwxLjExbDAuNzEsMC43MWwtMC43MSwwLjcxIEw4LjksMTMuOTFsLTAuNDMsMC40M2wtMC41OC0wLjE4QzcuNTUsMTQuMDUsNy4yNywxNCw3LDE0Yy0xLjY1LDAtMywxLjM1LTMsM2MwLDEuNjUsMS4zNSwzLDMsM3MzLTEuMzUsMy0zIGMwLTAuMzgtMC4wNy0wLjc1LTAuMjItMS4xMmwtMC4yNS0wLjYxTDEwLDE0LjhsMS4yNy0xLjI3bDAuNzEtMC43MWwwLjcxLDAuNzFMMTguMTUsMTlIMjB2LTAuMTVMMTAuMDgsOC45NHogTTE3LjczLDRIMjF2MS41NiBsLTUuNTIsNS41MmwtMi40MS0yLjQxTDE3LjczLDR6IE0xOC4xNSw1bC0zLjY3LDMuNjdsMSwxTDIwLDUuMTVWNUgxOC4xNXo=";
 var ExelAddToPlaylist = "TTIyLDEzaC00djRoLTJ2LTRoLTR2LTJoNFY3aDJ2NGg0VjEzeiBNMTQsN0gydjFoMTJWN3ogTTIsMTJoOHYtMUgyVjEyeiBNMiwxNmg4di0xSDJWMTZ6";
@@ -73,7 +74,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			SelSubPassiveBtn + ".yt-spec-button-shape-next--tonal{background-color:#2C2C2C;color:#A8A8A8;}" +
 			SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background-color:#C00;color:#FFF;}" +
 			"#seristyle_autoplay{color:rgba(255, 255, 255, 0.7);direction:ltr;font-family:\"YouTube Noto\", Roboto, Arial, Helvetica, sans-serif;font-size:14px;font-weight:500;line-height:18px;text-align:left;text-size-adjust:100%;}" +
-			"#actions button{" + (SeriStyleSettings.General.LetterSpacing.Value ? "letter-spacing:0.5px;" : "") + "color:#909090;background-color:#0000;padding-left:0px;padding-right:6px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
+			"#actions button{" + (SeriStyleSettings.VideoPage.LetterSpacing.Value ? "letter-spacing:0.5px;" : "") + "color:#909090;background-color:#0000;padding-left:0px;padding-right:6px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
 			SelLikeButtons + "{margin-left:10px;}" + // 8px in og, 9px in ss2
 			SelLikeButtons + "[aria-pressed=false]{color:#909090;}" +
 			SelLikeButtons + "[aria-pressed=true]{color:#FFF;}" +
@@ -84,13 +85,13 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#title>h1{font-family:Roboto,Arial,sans-serif;font-size:18px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-weight:400;line-height:26px;text-shadow:none;text-size-adjust:100%;word-break:break-word;}" +
 			SelBottomRow + "{border-bottom-color:rgba(255,255,255,0.1);border-bottom-style:solid;border-bottom-width:1px;padding-bottom:16px;}" +
 			"#comment-teaser{display:none;}" +
-			"#description.ytd-watch-metadata{background-color:#0000;}" +
+			SelDescription + "{background-color:#0000;cursor:unset;}" +
 			"#info-container{display:none;}" +
 			"tp-yt-paper-button.ytd-text-inline-expander{position:relative;left:unset;justify-content:flex-start;color:#AAA;font-family:Roboto,Arial,sans-serif;margin-top:8px;font-size:1.3rem;font-weight:500;letter-spacing:0.007px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
 			"tp-yt-paper-button.ytd-text-inline-expander>paper-ripple{display:none;}" +
 			"#description-interaction{display:none;}" +
 			"#ellipsis{display:none;}" +
-			(Settings_RemoveDescShade ? "#snippet{-webkit-mask-image:unset;}" : "") +
+			(SeriStyleSettings.VideoPage.HideDescriptionShade.Value ? "#snippet{-webkit-mask-image:unset;}" : "") +
 			"#actions{margin-top:0px;}" +
 			"#description-inline-expander{margin-left:64px;}" +
 			"#owner #avatar{width:48px;height:48px;max-width:48px;max-height:48px;margin-right:16px;}" +
@@ -100,7 +101,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#snippet>.ytd-text-inline-expander:not([id]){display:none;}" + // Cringe selector but it works
 			"#expand-sizer{display:none;}" +
 			"#below>ytd-watch-metadata>ytd-metadata-row-container-renderer{display:none;}" +
-			"ytd-download-button-renderer{display:none;}" +
+			(SeriStyleSettings.VideoPage.HideDownloadButton.Value ? "ytd-download-button-renderer{display:none;}" : "") +
 			""
 		).replaceAll(/(?<!!important);/g, "!important;") // <3 yt
 }));
@@ -126,6 +127,11 @@ LikeDislikeArray[1].querySelector("yt-icon").innerHTML = SvgDislike;
 // RYD Lazy Compatibility
 if (_ = $(SelTopRow).attributes.style) _.value = ""; // Remove RYD's border because it overrides SeriStyle's
 
+// iqless limitations circumvented ez (Fix description hitbox)
+var Description = $(SelDescription);
+$(SelBottomRow).appendChild(DomUtils.BuildElement("div", { className: Description.className, id: Description.id }, [Description.children[0]]));
+Description.remove();
+
 // Setup observer
 var ATPonClick = async () => {
 	var InteractBtn = FindByExel($$(SelContextMenuButtons), ExelAddToPlaylist);
@@ -134,7 +140,7 @@ var ATPonClick = async () => {
 		if (!OpenMenuBtn)
 			return;
 		OpenMenuBtn.click();
-		await WaitTime(Settings_InjectedAddToPlaylistCallbackTime);
+		await WaitTime(SeriStyleSettings.Advanced.InjectedATPCallbackTime.Value);
 		InteractBtn = FindByExel($$(SelContextMenuButtons), ExelAddToPlaylist);
 		if (!InteractBtn)
 			return;
@@ -147,13 +153,13 @@ var FindATPInteract = async () => {
 	if (!InteractBtn) {
 		var Neee = $(SelContextMenuOpen);
 		Neee?.click();
-		await WaitTime(Settings_InjectedAddToPlaylistCallbackTime);
+		await WaitTime(SeriStyleSettings.Advanced.InjectedATPCallbackTime.Value);
 		InteractBtn = FindByExel($$(SelContextMenuButtons), ExelAddToPlaylist);
 		Neee?.click();
 		if (!InteractBtn) {
-			await WaitTime(Settings_InjectedAddToPlaylistCallbackTime);
+			await WaitTime(SeriStyleSettings.Advanced.InjectedATPCallbackTime.Value);
 			Neee?.click();
-			await WaitTime(Settings_InjectedAddToPlaylistCallbackTime);
+			await WaitTime(SeriStyleSettings.Advanced.InjectedATPCallbackTime.Value);
 			InteractBtn = FindByExel($$(SelContextMenuButtons), ExelAddToPlaylist);
 			Neee?.click();
 		}
@@ -185,7 +191,7 @@ var ActionBarEventListeners = [
 			AddToPlaylist.querySelector("span").innerText = InteractBtn.innerText;
 			AddToPlaylist.lastElementChild.firstElementChild.innerText = `\n  ${InteractBtn.innerText}\n`;
 			AddToPlaylist.classList.add("seristyle-ax-mcc");
-		} else if (Modded && Modded.classList.contains("seristyle-ax-mcc")) {
+		} else if (Modded && Modded.className.includes("seristyle-ax-mcc")) {
 			var InteractBtn = await FindATPInteract(); // jshint ignore: line
 			if (!InteractBtn) {
 				Modded.querySelector("yt-icon").innerHTML = SvgCreateClip;
@@ -203,7 +209,7 @@ var ActionBarEventListeners = [
 
 var ActionBarObserver = new MutationObserver(async Mutations => {
 	// Wait for changes to settle
-	await WaitTime(Settings_InjectedSettleTime); // TODO Perhaps we should looking into getting rid of this
+	await WaitTime(SeriStyleSettings.Advanced.InjectedSettleTime.Value); // TODO Perhaps we should looking into getting rid of this
 
 	var Inserted = [];
 	var Removed = [];
@@ -229,10 +235,10 @@ var ElementUpdater = function (Selector) { // Optimizes old fixer
 	var Element = $(Selector);
 	this.GetElement = this.E = () => (Element && Element.parentElement) ? Element : Element = $(Selector);
 };
-if (Settings_DisableAutoplayScroll) {
+if (SeriStyleSettings.VideoPlayer.DisableAutoplayScroll.Value) {
 	var AutoNavButton = new ElementUpdater("#movie_player > div.ytp-autonav-endscreen-countdown-overlay > div > div.ytp-autonav-endscreen-button-container > button");
 	window.addEventListener("scroll", () => {
-		if ((document.documentElement.scrollTop || document.body.scrollTop) < Settings_ScrollThreshold) return; // TODO: Use event's scroll
+		if ((document.documentElement.scrollTop || document.body.scrollTop) < SeriStyleSettings.VideoPlayer.DisableAutoplayScrollThreshold.Value) return; // TODO: Use event's scroll
 		else if (IsVisible(AutoNavButton.E())) AutoNavButton.E().click();
 	});
 }

@@ -2,7 +2,7 @@
 
 const SeriStyle_GX = false;
 
-chrome.runtime.onMessage.addListener((Message, Sender) => {
+chrome.runtime.onMessage.addListener((Message, Sender, Respond) => {
 	switch (Message.Operation) {
 		case "SeriStyle_LoadScript":
 			chrome.scripting.executeScript({

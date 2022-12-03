@@ -12,7 +12,7 @@
 		"128": "icons/default128.png"
 	},
 	"action": {
-		"default_popup": "/popup/popup.html"
+		"default_popup": "/html/popup.html"
 	},
 	"offline_enabled": true,
 	"incognito": "spanning",
@@ -34,8 +34,8 @@
 				"*://*.youtube.com/*"
 			],
 			"js": [
-				"/scripts/server.js",
-				"/scripts/page-observer.js"
+				"/scripts/defaults.js",
+				"/scripts/server.js"
 			],
 			"run_at": "document_end"
 		}
