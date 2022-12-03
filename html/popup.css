@@ -1,0 +1,62 @@
+body {
+	display: flex;
+	background-color: rgb(8, 8, 8);
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+	width: max-content;
+	flex-direction: column;
+	align-items: center;
+}
+
+span {
+	color: #FFF;
+	font-size: 14px;
+}
+
+#central-logo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
+#central-name {
+	font-size: 28px;
+}
+
+#central-version {
+	font-size: 10px;
+}
+
+#low {
+	margin-top: 50px;
+	justify-self: flex-end;
+}
+
+a {
+	color: #99A;
+	text-decoration: underline solid #99A 1px;
+}
+
+a:hover {
+	color: #55F;
+	text-decoration: underline solid #55F 1px;
+	cursor: pointer;
+}
+
+#interactions {
+	display: flex;
+	width: 80%;
+	padding-left: 20px;
+	padding-right: 20px;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+button {
+	background-color: rgb(70, 70, 70);
+	border-style: none;
+	border-radius: 4px;
+	color: #FFF;
+	padding: 5px 6px 5px 6px;
+	cursor: pointer;
+}

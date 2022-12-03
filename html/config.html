@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SeriStyle</title>
+	<script src="../scripts/defaults.js"></script>
+	<script src="config.js"></script>
+	<link rel="stylesheet" href="config.css">
+</head>
+
+<body>
+	<div id="page">
+		<div id="left">
+			<div id="top-logo">
+				<img src="../icons/default32.png">
+				<span id="logo-name">SeriStyle</span>
+			</div>
+			<div id="navigation">
+			</div>
+		</div>
+		<div id="right">
+			<div id="top-bar">
+				<span id="title">Uh oh, looks like something went wrong! Refresh the page?</span>
+			</div>
+			<div id="precontent">
+				<div id="content">
+					<div class="setting-container">
+						<input type="checkbox">
+						<span>Test Checkbox</span>
+					</div>
+					<div class="setting-container">
+						<img src="info-cc0.svg">
+						<input type="checkbox">
+						<span>Checkbox with Info Icon</span>
+					</div>
+					<div class="setting-container">
+						<img src="warn-cc0.svg">
+						<input type="checkbox">
+						<span>Checkbox with Warn Icon</span>
+					</div>
+					<div class="setting-container">
+						<span>Combo Box</span>
+						<select>
+							<option>English</option>
+							<option>Russian</option>
+						</select>
+					</div>
+					<div class="setting-container">
+						<span>Slider Int</span>
+						<input type="range" min="0" max="100" value="34" class="next-formatter">
+						<span format="$ ms.">???</span>
+					</div>
+				</div>
+				<div id="actions">
+					<button id="btn-reset" class="localize" value=""></button>
+					<button id="btn-save" class="localize" value=""></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+body {
+	/* I'd like to have a photo here but everything is licensed af :skull: */
+	background-color: #000;
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+	width: 100%;
+	align-items: center;
+}
+
+span {
+	color: #FFF;
+	font-size: 14px;
+}
+
+#page {
+	display: flex;
+	flex-direction: row;
+	background-color: #080808CC;
+	margin: 30px 40px;
+	width: auto;
+}
+
+#left {
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+	background-color: #000;
+	border: 1px solid #FFF;
+}
+
+#top-logo {
+	display: flex;
+	flex-direction: row;
+	padding: 2px 18px 2px 2px;
+	border-bottom: 1px solid #FFF;
+}
+
+#logo-name {
+	font-size: 28px;
+	margin-left: 4px;
+	margin-top: -2px;
+}
+
+#right {
+	display: flex;
+	flex-direction: column;
+	flex-flow: column;
+	width: 100%;
+}
+
+#navigation {
+	display: flex;
+	flex-direction: column;
+	width: max-content;
+}
+
+#top-bar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: auto;
+	height: 38px;
+	background-color: #DC0808;
+}
+
+.modern-tab {
+	/* TODO: Disable tab selection ugly border */
+	width: 100%;
+	height: 32px;
+	font-size: 22px;
+	color: #FFF;
+	background-color: #000;
+	border-style: none;
+	transition: background-color 200ms;
+	cursor: pointer;
+}
+
+.modern-tab:hover {
+	background-color: #F00;
+	transition: background-color 0ms;
+}
+
+#content {
+	display: flex;
+	flex-direction: column;
+	margin-left: 3px;
+	margin-top: 2px;
+}
+
+.setting-container {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 2px;
+}
+
+.setting-container>img {
+	height: 17px;
+	margin-right: 4px;
+}
+
+input[type="checkbox"] {
+	margin-top: 2px;
+	margin-left: 0px;
+}
+
+input[type="range"] {
+	margin-left: 4px;
+	margin-right: 3px;
+}
+
+select {
+	margin-top: -1px;
+	margin-left: 4px;
+}
+
+#title {
+	font-size: 22px;
+	margin-left: 4px;
+}
+
+#precontent {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex: 1 0 auto;
+}
+
+#actions {
+	margin-left: 3px;
+}
+
+#actions>button {
+	border: 2px solid #FFF;
+	border-radius: 4px;
+	background-color: #0000;
+	height: 32px;
+	color: #FFF;
+	font-size: 18px;
+	transition: background-color 200ms;
+	cursor: pointer;
+}
+
+#actions>button:hover {
+	background-color: #F00;
+	transition: background-color 0ms;
+}
