@@ -1,5 +1,3 @@
-/* jshint esversion: 11 */
-
 const SeriStyle_GX = false;
 
 chrome.runtime.onMessage.addListener((Message, Sender, Respond) => {

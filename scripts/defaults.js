@@ -13,7 +13,7 @@ this.SeriStyleLocales = {
 			Advanced: "Advanced settings"
 		},
 		Other: {
-			SlowModeTooltip: "This feature only works with Low performance mode disabled."
+			SlowFeatureTooltip: "This feature might cause performance issues on slow PCs."
 		}
 	},
 	"ru-RU": {
@@ -24,13 +24,13 @@ this.SeriStyleLocales = {
 		},
 		Categories: {
 			SeriStyle: "SeriStyle",
-			General: "Общие настройки",
-			VideoPage: "Изменения видеостраниц",
-			VideoPlayer: "Изменения проигрывателя",
+			General: "Общие изменения",
+			VideoPage: "Изменения на видеостраницах",
+			VideoPlayer: "Изменения в проигрывателе",
 			Advanced: "Продвинутые настройки"
 		},
 		Other: {
-			SlowModeTooltip: "Данная функция не работает с включенным режимом низкой производительности."
+			SlowFeatureTooltip: "Данная функция может вызывать проблемы с производительностью на медленных ПК."
 		}
 	}
 };
@@ -54,19 +54,6 @@ this.SeriStyleSettings = {
 				}
 			},
 			Value: "en-US"
-		},
-		SlowMode: {
-			Kind: 0,
-			Name: {
-				"en-US": "Low performance mode",
-				"ru-RU": "Режим низкой производительности"
-			},
-			Value: true,
-			Tooltip: {
-				Kind: 0,
-				"en-US": "Disables some performance-hungry features, primarily features using MutationObservers.",
-				"ru-RU": "Отключает некоторые ресурсозатратные функции, в основном те, которые используют MutationObserver'ы."
-			}
 		}
 	},
 	General: {
@@ -77,7 +64,7 @@ this.SeriStyleSettings = {
 				"ru-RU": "Старые цвета тёмной темы"
 			},
 			Value: false,
-			DisableOnSlowMode: true
+			SlowFeature: true
 		},
 		ResizeSearchBar: {
 			Kind: 0,
@@ -121,6 +108,14 @@ this.SeriStyleSettings = {
 			},
 			Value: false
 		},
+		NoSponsorComments: {
+			Kind: 0,
+			Name: {
+				"en-US": "Hide donation flair & background from comments",
+				"ru-RU": "Скрыть плашку и цветной фон комментариев с пожертвованиями"
+			},
+			Value: false
+		}
 		/*RYD: {
 			Kind: 0,
 			Name: {
@@ -130,11 +125,27 @@ this.SeriStyleSettings = {
 		}*/
 	},
 	VideoPlayer: {
-		DisableAutoplayScroll: {
+		DisableGradient: {
 			Kind: 0,
 			Name: {
-				"en-US": "Pause autoplay when scrolling down the page (Possibly reimplemented by YouTube again...)",
-				"ru-RU": "Приостанавливать автовопроизведение при прокрутке страницы вниз (Возможно, добавлено ютубом снова...)"
+				"en-US": "Hide the transparent bottom gradient",
+				"ru-RU": "Скрыть высокий полупрозрачный градиент снизу"
+			},
+			Value: false
+		},
+		DisableHeatmap: {
+			Kind: 0,
+			Name: {
+				"en-US": "Hide \"Most replayed\" heat-map",
+				"ru-RU": "Скрыть график с самыми воспроизводимыми фрагментами видео" // TODO воспроизводимыми?
+			},
+			Value: false
+		}
+		/*DisableAutoplayScroll: {
+			Kind: 0,
+			Name: {
+				"en-US": "Pause autoplay when scrolling down the page",
+				"ru-RU": "Приостанавливать автовопроизведение при прокрутке страницы вниз"
 			},
 			Value: false
 		},
@@ -150,7 +161,7 @@ this.SeriStyleSettings = {
 				"en-US": "$px",
 				"ru-RU": "$ пикселей"
 			}
-		}
+		}*/
 	},
 	Advanced: {
 		InjectedATPCallbackTime: {
@@ -179,5 +190,19 @@ this.SeriStyleSettings = {
 				"ru-RU": "$ мс."
 			}
 		}
+	}
+};
+
+this.DomUtils = {
+	"GetValue": (Element) => Element.value || Element.innerText,
+	"BuildElement": function (Tag, Characteristics, Inner, Callback) {
+		var elem = document.createElement(Tag);
+		for (let _ in (Characteristics || {})) {
+			elem[_] = Characteristics[_];
+		}
+		for (let _ in (Inner || [])) {
+			elem.appendChild(Inner[_]);
+		}
+		return (Callback || ((x) => x))(elem);
 	}
 };

@@ -7,7 +7,7 @@
 	This transformer does not work without this comment, do not remove
 */
 
-/* jshint esversion: 11, -W084, -W093 */
+/* jshint -W084 */
 
 var SelBottomRow = "#bottom-row";
 var SelTopRow = "#top-row.ytd-watch-metadata";
@@ -16,7 +16,6 @@ var SelViews = ".view-count";
 var SelFullDate = "#info-strings>yt-formatted-string";
 var SelFlexibleButtonsBar = "#menu.ytd-watch-metadata #flexible-item-buttons";
 var SelFlexibleButtons = SelFlexibleButtonsBar + ">.style-scope";
-var SelSubPassiveBtn = "#subscribe-button yt-button-shape>button";
 var SelContextMenuButtons = "#items>ytd-menu-service-item-renderer";
 var SelContextMenuOpen = "#actions #button-shape button";
 var SelShareBtn = "#actions-inner #top-level-buttons-computed>ytd-button-renderer";
@@ -41,19 +40,6 @@ var FindByExel = (Elements, ExelArg) => Elements.find(x => btoa(x?.querySelector
 var FindAllByExel = (Elements, ExelArg) => Elements.filter(x => btoa(x?.querySelector("path")?.attributes.d?.value) == ExelArg);
 var Exists = (Element) => Element.parentElement != null;
 var IsVisible = (Element) => !!(Element && (Element.offsetWidth || Element.offsetHeight || Element.getClientRects().length));
-var DomUtils = {
-	"GetValue": (Element) => Element.value || Element.innerText,
-	"BuildElement": function (Tag, Characteristics, Inner, Callback) {
-		var elem = document.createElement(Tag);
-		for (let _ in (Characteristics || {})) {
-			elem[_] = Characteristics[_];
-		}
-		for (let _ in (Inner || [])) {
-			elem.appendChild(Inner[_]);
-		}
-		return (Callback || ((x) => x))(elem);
-	}
-};
 async function WaitTime(ms) {
 	return await new Promise(function (response, reject) {
 		setTimeout(response, ms);
@@ -70,12 +56,9 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			".seristyle_firstpanel::after{content:'•';margin:0px 4px;}" +
 			".yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start::after{display:none;}" +
 			SelOwner + "{justify-content:space-between;}" +
-			SelSubPassiveBtn + "{border-radius:3px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
-			SelSubPassiveBtn + ".yt-spec-button-shape-next--tonal{background-color:#2C2C2C;color:#A8A8A8;}" +
-			SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background-color:#C00;color:#FFF;}" +
 			"#seristyle_autoplay{color:rgba(255, 255, 255, 0.7);direction:ltr;font-family:\"YouTube Noto\", Roboto, Arial, Helvetica, sans-serif;font-size:14px;font-weight:500;line-height:18px;text-align:left;text-size-adjust:100%;}" +
 			"#actions button{" + (SeriStyleSettings.VideoPage.LetterSpacing.Value ? "letter-spacing:0.5px;" : "") + "color:#909090;background-color:#0000;padding-left:0px;padding-right:6px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
-			SelLikeButtons + "{margin-left:10px;}" + // 8px in og, 9px in ss2
+			SelLikeButtons + "{margin-left:10px;}" +
 			SelLikeButtons + "[aria-pressed=false]{color:#909090;}" +
 			SelLikeButtons + "[aria-pressed=true]{color:#FFF;}" +
 			"#actions yt-icon{padding:6px 6px 6px 6px;}" +
@@ -102,8 +85,10 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#expand-sizer{display:none;}" +
 			"#below>ytd-watch-metadata>ytd-metadata-row-container-renderer{display:none;}" +
 			(SeriStyleSettings.VideoPage.HideDownloadButton.Value ? "ytd-download-button-renderer{display:none;}" : "") +
+			(SeriStyleSettings.VideoPage.NoSponsorComments.Value ? "yt-pdg-comment-chip-renderer{display:none;}#paid-comment-background{display:none;}" : "") +
 			""
-		).replaceAll(/(?<!!important);/g, "!important;") // <3 yt
+		).replaceAll(/(?<!!important);/g, "!important;"), // <3 yt
+	"id": "seristyle-tf-videopage"
 }));
 
 // Move #owner
@@ -127,12 +112,14 @@ LikeDislikeArray[1].querySelector("yt-icon").innerHTML = SvgDislike;
 // RYD Lazy Compatibility
 if (_ = $(SelTopRow).attributes.style) _.value = ""; // Remove RYD's border because it overrides SeriStyle's
 
-// iqless limitations circumvented ez (Fix description hitbox)
+// Fix description hitbox
 var Description = $(SelDescription);
 $(SelBottomRow).appendChild(DomUtils.BuildElement("div", { className: Description.className, id: Description.id }, [Description.children[0]]));
 Description.remove();
 
 // Setup observer
+
+// TODO: This breaks if you have another video context menu opened.
 var ATPonClick = async () => {
 	var InteractBtn = FindByExel($$(SelContextMenuButtons), ExelAddToPlaylist);
 	if (!InteractBtn) {
@@ -166,6 +153,9 @@ var FindATPInteract = async () => {
 	}
 	return InteractBtn;
 };
+
+// TODO: Test if WaitTime is needed and rework method if so(I DON'T WANT ANY DELAY)
+
 var ActionBarEventListeners = [
 	async (Inserted, Removed, Remained) => {
 		if (Inserted.length > 0 && Inserted.some(Element => !IsVisible(Element))) return;
@@ -209,7 +199,7 @@ var ActionBarEventListeners = [
 
 var ActionBarObserver = new MutationObserver(async Mutations => {
 	// Wait for changes to settle
-	await WaitTime(SeriStyleSettings.Advanced.InjectedSettleTime.Value); // TODO Perhaps we should looking into getting rid of this
+	await WaitTime(SeriStyleSettings.Advanced.InjectedSettleTime.Value);
 
 	var Inserted = [];
 	var Removed = [];
@@ -230,15 +220,3 @@ ActionBarObserver.observe($(SelFlexibleButtonsBar), {
 });
 
 ActionBarEventListeners.forEach(async Listener => await Listener([], [], $$(SelFlexibleButtons)));
-
-var ElementUpdater = function (Selector) { // Optimizes old fixer
-	var Element = $(Selector);
-	this.GetElement = this.E = () => (Element && Element.parentElement) ? Element : Element = $(Selector);
-};
-if (SeriStyleSettings.VideoPlayer.DisableAutoplayScroll.Value) {
-	var AutoNavButton = new ElementUpdater("#movie_player > div.ytp-autonav-endscreen-countdown-overlay > div > div.ytp-autonav-endscreen-button-container > button");
-	window.addEventListener("scroll", () => {
-		if ((document.documentElement.scrollTop || document.body.scrollTop) < SeriStyleSettings.VideoPlayer.DisableAutoplayScrollThreshold.Value) return; // TODO: Use event's scroll
-		else if (IsVisible(AutoNavButton.E())) AutoNavButton.E().click();
-	});
-}

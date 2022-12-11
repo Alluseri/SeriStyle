@@ -1,5 +1,3 @@
-/* jshint esversion: 11 */
-
 (async () => {
 	if (!document.location.href.includes("youtube")) return; // I don't know... Chrome Extension API is just that horrible.
 	var Environment = this.browser || this.chrome;

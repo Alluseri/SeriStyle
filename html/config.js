@@ -1,4 +1,4 @@
-/* jshint esversion: 11, -W083, -W004 */
+/* jshint -W083, -W004 */
 
 var Environment = (this.browser || this.chrome);
 
@@ -43,17 +43,17 @@ function Navigate(Category) {
 					}
 				}));
 				var Span = DomUtils.BuildElement("span", { innerText: SettingMeta.Name[Language] });
-				if (SettingMeta.DisableOnSlowMode) {
+				if (SettingMeta.SlowFeature) {
 					Span.style.color = "#FFCCCC";
-					Span.title = SeriStyleLocales[Language].Other.SlowModeTooltip;
+					Span.title = SeriStyleLocales[Language].Other.SlowFeatureTooltip;
 				}
 				SettingDiv.appendChild(Span);
 				break;
 			case 1:
 				var Span = DomUtils.BuildElement("span", { innerText: SettingMeta.Name[Language] });
-				if (SettingMeta.DisableOnSlowMode) {
+				if (SettingMeta.SlowFeature) {
 					Span.style.color = "#FFCCCC";
-					Span.title = SeriStyleLocales[Language].Other.SlowModeTooltip;
+					Span.title = SeriStyleLocales[Language].Other.SlowFeatureTooltip;
 				}
 				SettingDiv.appendChild(Span);
 				var ComboElm = DomUtils.BuildElement("select", {
@@ -75,9 +75,9 @@ function Navigate(Category) {
 				break;
 			case 2:
 				var Span = DomUtils.BuildElement("span", { innerText: SettingMeta.Name[Language] });
-				if (SettingMeta.DisableOnSlowMode) {
+				if (SettingMeta.SlowFeature) {
 					Span.style.color = "#FFCCCC";
-					Span.title = SeriStyleLocales[Language].Other.SlowModeTooltip;
+					Span.title = SeriStyleLocales[Language].Other.SlowFeatureTooltip;
 				}
 				SettingDiv.appendChild(Span);
 				SettingDiv.appendChild(X = DomUtils.BuildElement("input", {

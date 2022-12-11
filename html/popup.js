@@ -1,5 +1,3 @@
-/* jshint esversion: 11 */
-
 document.addEventListener('DOMContentLoaded', function () {
 	Array.from(document.querySelectorAll('[inject-href]')).forEach(Element => {
 		var OPath = Element.attributes["inject-href"].value;
@@ -12,9 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 	document.getElementById("low-i-debug").onclick = async () => {
 		var DebugInfo = [
-			"- SeriStyle v1.0.0-rolling",
-			"- " + navigator.userAgent,
-			"- Slow mode: " + window.SeriStyleSettings?.General.SlowMode.Value
+			"- SeriStyle v1.1.0-rolling",
+			"- " + navigator.userAgent
 		];
 		try {
 			await navigator.clipboard.writeText(DebugInfo.join("\r\n"));
