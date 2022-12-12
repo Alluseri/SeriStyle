@@ -8,6 +8,7 @@ this.SeriStyleLocales = {
 		Categories: {
 			SeriStyle: "SeriStyle",
 			General: "General changes",
+			SidebarBuilder: "Sidebar Builder",
 			VideoPage: "Videopage changes",
 			VideoPlayer: "Videoplayer changes",
 			Advanced: "Advanced settings"
@@ -25,6 +26,7 @@ this.SeriStyleLocales = {
 		Categories: {
 			SeriStyle: "SeriStyle",
 			General: "Общие изменения",
+			SidebarBuilder: "Конструктор боковой панели",
 			VideoPage: "Изменения на видеостраницах",
 			VideoPlayer: "Изменения в проигрывателе",
 			Advanced: "Продвинутые настройки"
@@ -73,8 +75,34 @@ this.SeriStyleSettings = {
 				"ru-RU": "Старый размер строки поиска"
 			},
 			Value: true
+		},
+		NormalizeSearchBar: {
+			Kind: 0,
+			Name: {
+				"en-US": "Normalize search bar size",
+				"ru-RU": "Нормализировать размер строки поиска"
+			},
+			Value: false
+		},
+		ThumbnailRoundings: {
+			Kind: 0,
+			Name: {
+				"en-US": "Remove thumbnails' rounded corners",
+				"ru-RU": "Убрать закругленные края у превьюшек"
+			},
+			Value: true
 		}
 	},
+	/*SidebarBuilder: {
+		OldHomeButton: {
+			Kind: 0,
+			Name: {
+				"en-US": "Old Home button icon",
+				"ru-RU": "Старая кнопка Домой"
+			},
+			Value: true
+		}
+	},*/
 	VideoPage: {
 		Uppercase: {
 			Kind: 0,

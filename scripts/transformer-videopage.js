@@ -50,22 +50,30 @@ async function WaitTime(ms) {
 document.head.appendChild(DomUtils.BuildElement("style", {
 	"innerText":
 		(
+			// Panel things
 			SelTopRow + "{margin-top:4px;display:flex;align-items:center;border-bottom-color:rgba(255,255,255,0.1);border-bottom-style:solid;border-bottom-width:1px;font-family:Roboto,Arial,sans-serif;font-size:10px;padding-bottom:8px;align-items:center;}" +
 			"#seristyle_oldpanel{display:block;font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;letter-spacing:0.2px;line-height:20px;max-height:20px;overflow:hidden;margin-top:-3px;}" +
 			".seristyle_subpanel{color:rgb(170,170,170);display:inline;font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;height:auto;letter-spacing:0.2px;line-height:20px;text-size-adjust:100%;width:auto;}" +
 			".seristyle_firstpanel::after{content:'•';margin:0px 4px;}" +
+			// Hide animation or background i forgor
 			".yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start::after{display:none;}" +
+			// Reposition subscribe button(it breaks with Sponsor or Analytics)
 			SelOwner + "{justify-content:space-between;}" +
+			// Legacy style for autoplay label
 			"#seristyle_autoplay{color:rgba(255, 255, 255, 0.7);direction:ltr;font-family:\"YouTube Noto\", Roboto, Arial, Helvetica, sans-serif;font-size:14px;font-weight:500;line-height:18px;text-align:left;text-size-adjust:100%;}" +
+			// Action bar
 			"#actions button{" + (SeriStyleSettings.VideoPage.LetterSpacing.Value ? "letter-spacing:0.5px;" : "") + "color:#909090;background-color:#0000;padding-left:0px;padding-right:6px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
 			SelLikeButtons + "{margin-left:10px;}" +
 			SelLikeButtons + "[aria-pressed=false]{color:#909090;}" +
 			SelLikeButtons + "[aria-pressed=true]{color:#FFF;}" +
 			"#actions yt-icon{padding:6px 6px 6px 6px;}" +
 			"#actions .yt-spec-button-shape-next__icon{margin-left:0px;margin-right:0px;display:table;}" +
+			"#actions{margin-top:0px;}" +
 			"yt-touch-feedback-shape{display:none;}" +
 			SelContextMenuOpen + "{margin-left:5px;}" +
+			// Video title
 			"#title>h1{font-family:Roboto,Arial,sans-serif;font-size:18px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-weight:400;line-height:26px;text-shadow:none;text-size-adjust:100%;word-break:break-word;}" +
+			// Description
 			SelBottomRow + "{border-bottom-color:rgba(255,255,255,0.1);border-bottom-style:solid;border-bottom-width:1px;padding-bottom:16px;}" +
 			"#comment-teaser{display:none;}" +
 			SelDescription + "{background-color:#0000;cursor:unset;}" +
@@ -75,14 +83,16 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#description-interaction{display:none;}" +
 			"#ellipsis{display:none;}" +
 			(SeriStyleSettings.VideoPage.HideDescriptionShade.Value ? "#snippet{-webkit-mask-image:unset;}" : "") +
-			"#actions{margin-top:0px;}" +
 			"#description-inline-expander{margin-left:64px;}" +
-			"#owner #avatar{width:48px;height:48px;max-width:48px;max-height:48px;margin-right:16px;}" +
-			"#owner #avatar>#img{width:48px;height:48px;max-width:48px;max-height:48px;}" +
 			"#description-inner{margin:0px;}" +
-			".ryd-tooltip{display:none;}" +
 			"#snippet>.ytd-text-inline-expander:not([id]){display:none;}" + // Cringe selector but it works
 			"#expand-sizer{display:none;}" +
+			// Old pfp style
+			"#owner #avatar{width:48px;height:48px;max-width:48px;max-height:48px;margin-right:16px;}" +
+			"#owner #avatar>#img{width:48px;height:48px;max-width:48px;max-height:48px;}" +
+			// Hide RYD sentiment bar
+			".ryd-tooltip{display:none;}" +
+			// i forgor
 			"#below>ytd-watch-metadata>ytd-metadata-row-container-renderer{display:none;}" +
 			(SeriStyleSettings.VideoPage.HideDownloadButton.Value ? "ytd-download-button-renderer{display:none;}" : "") +
 			(SeriStyleSettings.VideoPage.NoSponsorComments.Value ? "yt-pdg-comment-chip-renderer{display:none;}#paid-comment-background{display:none;}" : "") +
@@ -109,7 +119,7 @@ var LikeDislikeArray = $$(SelLikeButtons);
 LikeDislikeArray[0].querySelector("yt-icon").innerHTML = SvgLike;
 LikeDislikeArray[1].querySelector("yt-icon").innerHTML = SvgDislike;
 
-// RYD Lazy Compatibility
+// RYD
 if (_ = $(SelTopRow).attributes.style) _.value = ""; // Remove RYD's border because it overrides SeriStyle's
 
 // Fix description hitbox

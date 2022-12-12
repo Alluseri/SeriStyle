@@ -5,7 +5,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 		(
 			/* General */
 			// Old search box styles
-			"#container.ytd-searchbox{" + (true ? "margin-left:0px;" : "margin-left:32px;") + "position:relative;align-items:center;border:1px solid var(--ytd-searchbox-legacy-border-color);border-right:none;border-radius:2px 0 0 2px;box-shadow:inset 0 1px 2px var(--ytd-searchbox-legacy-border-shadow-color);padding:2px 6px;flex:1;flex-basis:1e-9px;display:flex;flex-direction:row;}" +
+			"#container.ytd-searchbox{" + (SeriStyleSettings.General.NormalizeSearchBar.Value ? "margin-left:0px;" : "") + "position:relative;align-items:center;border:1px solid var(--ytd-searchbox-legacy-border-color);border-right:none;border-radius:2px 0 0 2px;box-shadow:inset 0 1px 2px var(--ytd-searchbox-legacy-border-shadow-color);padding:2px 6px;flex:1;flex-basis:1e-9px;display:flex;flex-direction:row;}" +
 			// Prepare voice search button
 			"#voice-search-button{border-radius:0px;background-color:#0000;}" +
 			"#voice-search-button button{background-color:#0000;margin-left:-4px;}" +
@@ -18,8 +18,12 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			SelSubPassiveBtn + "{border-radius:3px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
 			SelSubPassiveBtn + ".yt-spec-button-shape-next--tonal{background-color:#2C2C2C;color:#A8A8A8;}" +
 			SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background-color:#C00;color:#FFF;}" +
-			//
-			""
+			// Remove thumbnail roundings
+			(SeriStyleSettings.General.ThumbnailRoundings ? "#thumbnail{border-radius:0px;}" : "") +
+			// Old homepage top bar roundings
+			"yt-chip-cloud-chip-renderer{border-radius:16px;}" +
+			// Old time status roundings
+			"ytd-thumbnail-overlay-time-status-renderer{border-radius:2px;}"
 		).replaceAll(/(?<!!important);/g, "!important;"),
 	"id": "seristyle-tf-css"
 }));
