@@ -2,7 +2,8 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 	"innerText":
 		(
 			(SeriStyleSettings.VideoPlayer.DisableGradient.Value ? ".ytp-gradient-bottom{display:none;}" : "") +
-			(SeriStyleSettings.VideoPlayer.DisableHeatmap.Value ? ".ytp-heat-map-container" : "") +
+			(SeriStyleSettings.VideoPlayer.DisableHeatmap.Value ? ".ytp-heat-map-container{display:none;}" : "") +
+			(SeriStyleSettings.VideoPlayer.HideMiniPlayer.Value ? ".ytp-miniplayer-button{display:none;}" : "") +
 			""
 		).replaceAll(/(?<!!important);/g, "!important;")
 }));

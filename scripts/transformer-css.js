@@ -1,5 +1,6 @@
 var SelSubPassiveBtn = "#subscribe-button yt-button-shape>button";
 
+// TODO: Merge general button styles
 document.head.appendChild(DomUtils.BuildElement("style", {
 	"innerText":
 		(
@@ -23,7 +24,14 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Old homepage top bar roundings
 			"yt-chip-cloud-chip-renderer{border-radius:16px;}" +
 			// Old time status roundings
-			"ytd-thumbnail-overlay-time-status-renderer{border-radius:2px;}"
+			"ytd-thumbnail-overlay-time-status-renderer{border-radius:2px;}" +
+			// Restyle Join and Analytics buttons
+			(!SeriStyleSettings.VideoPage.LegacyPanels ?
+				"#sponsor-button yt-button-shape>button{" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "background-color:#0000;border:1px solid #3EA6FF;color:#3EA6FF;border-radius:3px;}" +
+				"#analytics-button yt-button-shape>button{" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "background-color:#065FD4;color:#FFF;border-radius:3px;}"
+				: "") +
+			//
+			""
 		).replaceAll(/(?<!!important);/g, "!important;"),
 	"id": "seristyle-tf-css"
 }));

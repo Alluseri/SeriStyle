@@ -104,6 +104,14 @@ this.SeriStyleSettings = {
 		}
 	},*/
 	VideoPage: {
+		LegacyPanels: {
+			Kind: 0,
+			Name: {
+				"en-US": "Legacy(v1.2.0) panel style",
+				"ru-RU": "Стиль панелей старой версии(v1.2.0)"
+			},
+			Value: false
+		},
 		Uppercase: {
 			Kind: 0,
 			Name: {
@@ -168,6 +176,14 @@ this.SeriStyleSettings = {
 				"ru-RU": "Скрыть график с самыми воспроизводимыми фрагментами видео" // TODO воспроизводимыми?
 			},
 			Value: false
+		},
+		HideMiniPlayer: { // TODO: Toolbar builder
+			Kind: 0,
+			Name: {
+				"en-US": "Hide Miniplayer button(doesn't disable the hotkey)",
+				"ru-RU": "Скрыть кнопку \"Мини-проигрыватель\"(не отключает горячую клавишу)"
+			},
+			Value: false
 		}
 		/*DisableAutoplayScroll: {
 			Kind: 0,
@@ -196,8 +212,8 @@ this.SeriStyleSettings = {
 			Kind: 2,
 			Range: [10, 1000],
 			Name: {
-				"en-US": "Delay after opening the \"More Actions\" menu for iATP",
-				"ru-RU": "Задержка после открытия меню с доп. действиями для iATP"
+				"en-US": "Delay after opening the \"More Actions\" menu for mCC",
+				"ru-RU": "Задержка после открытия меню с доп. действиями для mCC"
 			},
 			Value: 200,
 			Format: {

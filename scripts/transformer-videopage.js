@@ -22,6 +22,10 @@ var SelShareBtn = "#actions-inner #top-level-buttons-computed>ytd-button-rendere
 var SelLikeButtons = "#actions-inner ytd-segmented-like-dislike-button-renderer button";
 var SelDescription = "#description.ytd-watch-metadata";
 var SelDropdown = "tp-yt-iron-dropdown.ytd-popup-container";
+var SelSubButton = "#owner>#subscribe-button";
+var SelOwnerPartOne = "#owner>ytd-video-owner-renderer>a";
+var SelOwnerPartTwo = "#owner>ytd-video-owner-renderer>#upload-info";
+var SelOwnerUnder = "#owner > ytd-video-owner-renderer";
 
 var ExelCreateClip = "TTgsN2MwLDAuNTUtMC40NSwxLTEsMVM2LDcuNTUsNiw3YzAtMC41NSwwLjQ1LTEsMS0xUzgsNi40NSw4LDd6IE03LDE2Yy0wLjU1LDAtMSwwLjQ1LTEsMWMwLDAuNTUsMC40NSwxLDEsMXMxLTAuNDUsMS0xIEM4LDE2LjQ1LDcuNTUsMTYsNywxNnogTTEwLjc5LDguMjNMMjEsMTguNDRWMjBoLTMuMjdsLTUuNzYtNS43NmwtMS4yNywxLjI3QzEwLjg5LDE1Ljk3LDExLDE2LjQ3LDExLDE3YzAsMi4yMS0xLjc5LDQtNCw0IGMtMi4yMSwwLTQtMS43OS00LTRjMC0yLjIxLDEuNzktNCw0LTRjMC40MiwwLDAuODEsMC4wOCwxLjE5LDAuMmwxLjM3LTEuMzdsLTEuMTEtMS4xMUM4LDEwLjg5LDcuNTEsMTEsNywxMWMtMi4yMSwwLTQtMS43OS00LTQgYzAtMi4yMSwxLjc5LTQsNC00YzIuMjEsMCw0LDEuNzksNCw0QzExLDcuNDMsMTAuOTEsNy44NCwxMC43OSw4LjIzeiBNMTAuMDgsOC45NEw5LjY1LDguNWwwLjE5LTAuNThDOS45NSw3LjU4LDEwLDcuMjgsMTAsNyBjMC0xLjY1LTEuMzUtMy0zLTNTNCw1LjM1LDQsN2MwLDEuNjUsMS4zNSwzLDMsM2MwLjM2LDAsMC43My0wLjA3LDEuMDktMC4yMUw4LjcsOS41NWwwLjQ2LDAuNDZsMS4xMSwxLjExbDAuNzEsMC43MWwtMC43MSwwLjcxIEw4LjksMTMuOTFsLTAuNDMsMC40M2wtMC41OC0wLjE4QzcuNTUsMTQuMDUsNy4yNywxNCw3LDE0Yy0xLjY1LDAtMywxLjM1LTMsM2MwLDEuNjUsMS4zNSwzLDMsM3MzLTEuMzUsMy0zIGMwLTAuMzgtMC4wNy0wLjc1LTAuMjItMS4xMmwtMC4yNS0wLjYxTDEwLDE0LjhsMS4yNy0xLjI3bDAuNzEtMC43MWwwLjcxLDAuNzFMMTguMTUsMTlIMjB2LTAuMTVMMTAuMDgsOC45NHogTTE3LjczLDRIMjF2MS41NiBsLTUuNTIsNS41MmwtMi40MS0yLjQxTDE3LjczLDR6IE0xOC4xNSw1bC0zLjY3LDMuNjdsMSwxTDIwLDUuMTVWNUgxOC4xNXo=";
 var ExelAddToPlaylist = "TTIyLDEzaC00djRoLTJ2LTRoLTR2LTJoNFY3aDJ2NGg0VjEzeiBNMTQsN0gydjFoMTJWN3ogTTIsMTJoOHYtMUgyVjEyeiBNMiwxNmg4di0xSDJWMTZ6";
@@ -110,6 +114,14 @@ $(SelTopRow).prepend(DomUtils.BuildElement("div", { id: "seristyle_oldpanel" }, 
 	(x => ((x.className += " seristyle_subpanel"), x))($(SelFullDate))
 ]));
 
+if (!SeriStyleSettings.VideoPage.LegacyPanels) {
+	var Under = $(SelOwnerUnder);
+	var Owner = $(SelOwner);
+	Under.appendChild($(SelSubButton));
+	Owner.insertBefore($(SelOwnerPartTwo), Owner.children[0]);
+	Owner.insertBefore($(SelOwnerPartOne), Owner.children[0]);
+}
+
 // Apply old SVG to Share and Menu
 $(SelShareBtn).querySelector("yt-icon").innerHTML = SvgShare;
 $(SelContextMenuOpen).querySelector("yt-icon").innerHTML = SvgMenu;
@@ -128,7 +140,6 @@ $(SelBottomRow).appendChild(DomUtils.BuildElement("div", { className: Descriptio
 Description.remove();
 
 // Setup observer
-
 // TODO: This breaks if you have another video context menu opened.
 var ATPonClick = async () => {
 	var InteractBtn = FindByExel($$(SelContextMenuButtons), ExelAddToPlaylist);
