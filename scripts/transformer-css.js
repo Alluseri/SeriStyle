@@ -20,18 +20,20 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			SelSubPassiveBtn + ".yt-spec-button-shape-next--tonal{background-color:#2C2C2C;color:#A8A8A8;}" +
 			SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background-color:#C00;color:#FFF;}" +
 			// Remove thumbnail roundings
-			(SeriStyleSettings.General.ThumbnailRoundings ? "#thumbnail{border-radius:0px;}" : "") +
+			(SeriStyleSettings.General.ThumbnailRoundings.Value ? "#thumbnail{border-radius:0px;}" : "") +
 			// Old homepage top bar roundings
 			"yt-chip-cloud-chip-renderer{border-radius:16px;}" +
 			// Old time status roundings
 			"ytd-thumbnail-overlay-time-status-renderer{border-radius:2px;}" +
 			// Restyle Join and Analytics buttons
-			(!SeriStyleSettings.VideoPage.LegacyPanels ?
+			(!SeriStyleSettings.VideoPage.LegacyPanels.Value ?
 				"#sponsor-button yt-button-shape>button{" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "background-color:#0000;border:1px solid #3EA6FF;color:#3EA6FF;border-radius:3px;}" +
 				"#analytics-button yt-button-shape>button{" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "background-color:#065FD4;color:#FFF;border-radius:3px;}"
 				: "") +
-			//
-			""
+			// Hide series
+			(SeriStyleSettings.HomePage.HideSeries.Value ? "ytd-badge-supported-renderer.top-badge.ytd-rich-grid-media{display:none;}" : "") +
+			// Recolor HD
+			".ytp-swatch-color-white{color:#F00;}"
 		).replaceAll(/(?<!!important);/g, "!important;"),
 	"id": "seristyle-tf-css"
 }));

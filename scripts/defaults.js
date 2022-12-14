@@ -9,6 +9,7 @@ this.SeriStyleLocales = {
 			SeriStyle: "SeriStyle",
 			General: "General changes",
 			SidebarBuilder: "Sidebar Builder",
+			HomePage: "Homepage changes",
 			VideoPage: "Videopage changes",
 			VideoPlayer: "Videoplayer changes",
 			Advanced: "Advanced settings"
@@ -27,6 +28,7 @@ this.SeriStyleLocales = {
 			SeriStyle: "SeriStyle",
 			General: "Общие изменения",
 			SidebarBuilder: "Конструктор боковой панели",
+			HomePage: "Изменения на домашней странице",
 			VideoPage: "Изменения на видеостраницах",
 			VideoPlayer: "Изменения в проигрывателе",
 			Advanced: "Продвинутые настройки"
@@ -91,6 +93,16 @@ this.SeriStyleSettings = {
 				"ru-RU": "Убрать закругленные края у превьюшек"
 			},
 			Value: true
+		}
+	},
+	HomePage: {
+		HideSeries: {
+			Kind: 0,
+			Name: { // TODO: URL
+				"en-US": "Hide label above video title(example: https://upload.wtf/s/4WHtS)",
+				"ru-RU": "Скрыть подпись над названием видео(пример: https://upload.wtf/s/4WHtS)"
+			},
+			Value: false
 		}
 	},
 	/*SidebarBuilder: {
@@ -180,8 +192,8 @@ this.SeriStyleSettings = {
 		HideMiniPlayer: { // TODO: Toolbar builder
 			Kind: 0,
 			Name: {
-				"en-US": "Hide Miniplayer button(doesn't disable the hotkey)",
-				"ru-RU": "Скрыть кнопку \"Мини-проигрыватель\"(не отключает горячую клавишу)"
+				"en-US": "Hide the Miniplayer button (doesn't disable the hotkey)",
+				"ru-RU": "Скрыть кнопку \"Мини-проигрыватель\" (не отключает горячую клавишу)"
 			},
 			Value: false
 		}

@@ -14,11 +14,9 @@ Bring the Early-2021 UI back to YouTube!
 Unfortunately, Mozilla Firefox is not supported for the time being because they still didn't implement Manifest V3.
 
 ## Features
-TODO this based on roadmap and defaults.js
+TODO...
 
 ## Roadmap (TODO)
-- Homepage
-  - Fix background color of the categories at the top(opt. remove them)
 - Videopage
   - **Upper Layout Changes**
     - Fix RYD's awful sentiment bar
@@ -26,8 +24,7 @@ TODO this based on roadmap and defaults.js
     - Hide context menu during mCC interaction cycle
     - [Specially restyle "Try It Free" button if applicable](https://www.reddit.com/r/youtube/comments/z12tk3/subscibersonly_chat_is_enabled_subscribe_button/)
     - Localize RYDless/Hidden dislike button
-    - Remove Premiere chat on published videos
-      - Only when it's hidden
+    - Remove hidden Premiere chat on published videos
     - Fix notification bell color
       - [Bonus functionality] Autoswitch on click(hide context menu)
     - Fix Save tooltip being too high
@@ -36,7 +33,7 @@ TODO this based on roadmap and defaults.js
     - Old copyright notices in description
     - Old comment section(will be split into steps later)
   - **Videoplayer Changes**
-    - Remove precise drag if functionally possibles
+    - Remove precise drag if functionally possible
 - Playlists
   - Old UI(will be split into steps later)
 - General
