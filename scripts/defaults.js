@@ -93,6 +93,14 @@ this.SeriStyleSettings = {
 				"ru-RU": "Убрать закругленные края у превьюшек"
 			},
 			Value: true
+		},
+		LegacySubButton: {
+			Kind: 0,
+			Name: {
+				"en-US": "Legacy(v1.4.0) subscribe button",
+				"ru-RU": "Кнопка подписки старой версии(v1.4.0)"
+			},
+			Value: false
 		}
 	},
 	HomePage: {
@@ -161,6 +169,22 @@ this.SeriStyleSettings = {
 			Name: {
 				"en-US": "Hide donation flair & background from comments",
 				"ru-RU": "Скрыть плашку и цветной фон комментариев с пожертвованиями"
+			},
+			Value: false
+		},
+		HideRecFilters: {
+			Kind: 0,
+			Name: {
+				"en-US": "Hide recommendation filters",
+				"ru-RU": "Скрыть фильтры рекомендаций"
+			},
+			Value: false
+		},
+		HidePremiere: { // TODO: Split into 2 when I discover how to differentiate premiere and live chat
+			Kind: 0,
+			Name: {
+				"en-US": "Hide premiere & live chat",
+				"ru-RU": "Скрыть чат премьер и стримов"
 			},
 			Value: false
 		}

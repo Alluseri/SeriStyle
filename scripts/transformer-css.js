@@ -1,3 +1,5 @@
+/* jshint -W014 */
+
 var SelSubPassiveBtn = "#subscribe-button yt-button-shape>button";
 
 // TODO: Merge general button styles
@@ -15,10 +17,6 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#search-icon-legacy{border-radius:0 2px 2px 0;border:1px solid var(--ytd-searchbox-legacy-button-border-color);background-color:var(--ytd-searchbox-legacy-button-border-color);}" +
 			// Old search input margins
 			"input#search{padding:1px 2px;margin-left:4px;}" +
-			// Old subscribe button color & form
-			SelSubPassiveBtn + "{border-radius:3px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
-			SelSubPassiveBtn + ".yt-spec-button-shape-next--tonal{background-color:#2C2C2C;color:#A8A8A8;}" +
-			SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background-color:#C00;color:#FFF;}" +
 			// Remove thumbnail roundings
 			(SeriStyleSettings.General.ThumbnailRoundings.Value ? "#thumbnail{border-radius:0px;}" : "") +
 			// Old homepage top bar roundings
@@ -33,7 +31,30 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Hide series
 			(SeriStyleSettings.HomePage.HideSeries.Value ? "ytd-badge-supported-renderer.top-badge.ytd-rich-grid-media{display:none;}" : "") +
 			// Recolor HD
-			".ytp-swatch-color-white{color:#F00;}"
+			".ytp-swatch-color-white{color:#F00;}" +
+			// Old subscribe button color & form
+			SelSubPassiveBtn + "{border-radius:3px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
+			SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background-color:#C00;color:#FFF;}" + // "SUBSCRIBE" button, red color
+			(SeriStyleSettings.General.LegacySubButton.Value
+				? SelSubPassiveBtn + ".yt-spec-button-shape-next--tonal{background-color:#2C2C2C;color:#A8A8A8;}"
+				: "#subscribe-button>ytd-subscribe-button-renderer>yt-button-shape>button{background-color:#2C2C2C;color:#A8A8A8;}"
+			) +
+			// Fix sub button, TODO: this won't exist for long!
+			(!SeriStyleSettings.General.LegacySubButton.Value ?
+				"#subscribe-button yt-button-shape[hidden]{display:block;}" +
+				"#notification-preference-button div.cbox{display:none;}" + // widest: "#notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.cbox.yt-spec-button-shape-next--button-text-content"
+				"#notification-preference-button div.yt-spec-button-shape-next__secondary-icon{display:none;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__secondary-icon
+				"#notification-preference-button div.yt-spec-button-shape-next__icon{margin-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__icon
+				"#notification-preference-button button{background-color:#0000;padding-right:0px;}" // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button
+				: "") +
+			// Hide channel handles
+			"p.ytd-c4-tabbed-header-renderer{display:none;}" +
+			// Fix notification bell color 
+			"#notification-preference-button yt-icon{color:#909090;}" +
+			//
+			"" +
+			//
+			""
 		).replaceAll(/(?<!!important);/g, "!important;"),
 	"id": "seristyle-tf-css"
 }));

@@ -11,7 +11,7 @@ Bring the Early-2021 UI back to YouTube!
 6. Enable the extension if necessary
 7. Enjoy!
 ### Firefox
-Unfortunately, Mozilla Firefox is not supported for the time being because they still didn't implement Manifest V3.
+Unfortunately, Mozilla Firefox is not supported for the time being because they still didn't implement Manifest V3. [Use Nightly or Developer edition channels](https://extensionworkshop.com/documentation/develop/manifest-v3-migration-guide/).
 
 ## Features
 TODO...
@@ -20,20 +20,12 @@ TODO...
 - Videopage
   - **Upper Layout Changes**
     - Fix RYD's awful sentiment bar
-      - Changing the residing panel and a few styles should be enough
     - Hide context menu during mCC interaction cycle
-    - [Specially restyle "Try It Free" button if applicable](https://www.reddit.com/r/youtube/comments/z12tk3/subscibersonly_chat_is_enabled_subscribe_button/)
     - Localize RYDless/Hidden dislike button
-    - Remove hidden Premiere chat on published videos
-    - Fix notification bell color
-      - [Bonus functionality] Autoswitch on click(hide context menu)
+    - Autoswitch on notification bell click(hide context menu)
     - Fix Save tooltip being too high
   - **Lower Layout Changes**
-    - Hide recommendation filters(All videos, New content, etc.)
-    - Old copyright notices in description
     - Old comment section(will be split into steps later)
-  - **Videoplayer Changes**
-    - Remove precise drag if functionally possible
 - Playlists
   - Old UI(will be split into steps later)
 - General
@@ -42,8 +34,8 @@ TODO...
   - Old top bar style
     - Old notification bubble color
   - Disable notification count limit
+  - Old Verified & Producer icons(more in !!.txt)
 - Channel Page
-  - Hide nickname
   - Old control buttons
 - Extension & its structure
-  - Firefox(MFV2) support
+  - Test MFV2 and deploy Firefox extension
