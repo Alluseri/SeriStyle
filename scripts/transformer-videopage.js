@@ -124,7 +124,7 @@ $(SelTopRow).prepend(DomUtils.BuildElement("div", { id: "seristyle_oldpanel" }, 
 ]));
 
 // New panels
-if (!SeriStyleSettings.VideoPage.LegacyPanels.Value) {
+if (!SeriStyleSettings.Advanced.LegacyPanels.Value) {
 	var Under = $(SelOwnerUnder);
 	var Owner = $(SelOwner);
 	Under.appendChild($(SelSubButton));

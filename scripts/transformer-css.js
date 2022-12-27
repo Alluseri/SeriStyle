@@ -24,7 +24,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Old time status roundings
 			"ytd-thumbnail-overlay-time-status-renderer{border-radius:2px;}" +
 			// Restyle Join and Analytics buttons
-			(!SeriStyleSettings.VideoPage.LegacyPanels.Value ?
+			(!SeriStyleSettings.Advanced.LegacyPanels.Value ?
 				"#sponsor-button yt-button-shape>button{" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "background-color:#0000;border:1px solid #3EA6FF;color:#3EA6FF;border-radius:3px;}" +
 				"#analytics-button yt-button-shape>button{" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "background-color:#065FD4;color:#FFF;border-radius:3px;}"
 				: "") +
@@ -35,12 +35,12 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Old subscribe button color & form
 			SelSubPassiveBtn + "{border-radius:3px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
 			SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background-color:#C00;color:#FFF;}" + // "SUBSCRIBE" button, red color
-			(SeriStyleSettings.General.LegacySubButton.Value
+			(SeriStyleSettings.Advanced.LegacySubButton.Value
 				? SelSubPassiveBtn + ".yt-spec-button-shape-next--tonal{background-color:#2C2C2C;color:#A8A8A8;}"
 				: "#subscribe-button>ytd-subscribe-button-renderer>yt-button-shape>button{background-color:#2C2C2C;color:#A8A8A8;}"
 			) +
 			// Fix sub button, TODO: this won't exist for long!
-			(!SeriStyleSettings.General.LegacySubButton.Value ?
+			(!SeriStyleSettings.Advanced.LegacySubButton.Value ?
 				"#subscribe-button yt-button-shape[hidden]{display:block;}" +
 				"#notification-preference-button div.cbox{display:none;}" + // widest: "#notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.cbox.yt-spec-button-shape-next--button-text-content"
 				"#notification-preference-button div.yt-spec-button-shape-next__secondary-icon{display:none;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__secondary-icon
@@ -51,9 +51,11 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"p.ytd-c4-tabbed-header-renderer{display:none;}" +
 			// Fix notification bell color 
 			"#notification-preference-button yt-icon{color:#909090;}" +
-			//
-			"" +
-			//
+			// Hide shorts shelf
+			(SeriStyleSettings.HomePage.HideShorts.Value ? "#contents>ytd-rich-section-renderer{display:none;}" : "") +
+			// Hide thumbnail background aka the ugly shadow
+			"ytd-thumbnail.ytd-rich-grid-media:before{background-color:#0000;}" +
+			// 
 			""
 		).replaceAll(/(?<!!important);/g, "!important;"),
 	"id": "seristyle-tf-css"

@@ -93,14 +93,6 @@ this.SeriStyleSettings = {
 				"ru-RU": "Убрать закругленные края у превьюшек"
 			},
 			Value: true
-		},
-		LegacySubButton: {
-			Kind: 0,
-			Name: {
-				"en-US": "Legacy(v1.4.0) subscribe button",
-				"ru-RU": "Кнопка подписки старой версии(v1.4.0)"
-			},
-			Value: false
 		}
 	},
 	HomePage: {
@@ -111,6 +103,14 @@ this.SeriStyleSettings = {
 				"ru-RU": "Скрыть подпись над названием видео(пример: https://upload.wtf/s/4WHtS)"
 			},
 			Value: false
+		},
+		HideShorts: {
+			Kind: 0,
+			Name: {
+				"en-US": "Hide the Shorts shelf",
+				"ru-RU": "Скрыть раздел Shorts"
+			},
+			Value: true
 		}
 	},
 	/*SidebarBuilder: {
@@ -124,14 +124,6 @@ this.SeriStyleSettings = {
 		}
 	},*/
 	VideoPage: {
-		LegacyPanels: {
-			Kind: 0,
-			Name: {
-				"en-US": "Legacy(v1.2.0) panel style",
-				"ru-RU": "Стиль панелей старой версии(v1.2.0)"
-			},
-			Value: false
-		},
 		Uppercase: {
 			Kind: 0,
 			Name: {
@@ -221,27 +213,6 @@ this.SeriStyleSettings = {
 			},
 			Value: false
 		}
-		/*DisableAutoplayScroll: {
-			Kind: 0,
-			Name: {
-				"en-US": "Pause autoplay when scrolling down the page",
-				"ru-RU": "Приостанавливать автовопроизведение при прокрутке страницы вниз"
-			},
-			Value: false
-		},
-		DisableAutoplayScrollThreshold: {
-			Kind: 2,
-			Range: [10, 1000],
-			Name: {
-				"en-US": "Scroll threshold to pause autoplay",
-				"ru-RU": "Порог прокрутки для приостановки автовоспроизведения"
-			},
-			Value: 400,
-			Format: {
-				"en-US": "$px",
-				"ru-RU": "$ пикселей"
-			}
-		}*/
 	},
 	Advanced: {
 		InjectedATPCallbackTime: {
@@ -269,6 +240,22 @@ this.SeriStyleSettings = {
 				"en-US": "$ ms.",
 				"ru-RU": "$ мс."
 			}
+		},
+		LegacyPanels: {
+			Kind: 0,
+			Name: {
+				"en-US": "Legacy(v1.2.0) panel style",
+				"ru-RU": "Стиль панелей старой версии(v1.2.0)"
+			},
+			Value: false
+		},
+		LegacySubButton: {
+			Kind: 0,
+			Name: {
+				"en-US": "Legacy(v1.4.0) subscribe button",
+				"ru-RU": "Кнопка подписки старой версии(v1.4.0)"
+			},
+			Value: true
 		}
 	}
 };

@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 	document.getElementById("low-i-debug").onclick = async () => {
 		var DebugInfo = [
-			"- SeriStyle v1.5.0-rolling",
+			"- SeriStyle v1.6.0-rolling",
 			"- " + navigator.userAgent
 		];
 		try {
@@ -20,4 +20,5 @@ document.addEventListener('DOMContentLoaded', function () {
 			alert("Couldn't copy debug info to clipboard due to an error.");
 		}
 	};
+	document.getElementById("storage-status").innerText = StorageMode == 1 ? "Bad browser..." : StorageMode == 2 ? "Firefox Debug Mode" : "";
 });

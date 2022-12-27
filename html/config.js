@@ -100,24 +100,42 @@ function Navigate(Category) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-	Modified = (await Environment.storage.sync.get(["ss_settings"])).ss_settings;
-	if (!Modified)
-		Environment.storage.sync.set({ "ss_settings": Modified = {} });
-	for (var Category in Modified)
-		for (var Setting in Modified[Category])
-			SeriStyleSettings[Category][Setting].Value = Modified[Category][Setting];
+	var Fail = false;
+
+	try {
+		Modified = (await Environment.storage.sync.get(["ss_settings"])).ss_settings;
+		if (!Modified)
+			Environment.storage.sync.set({ "ss_settings": Modified = {} });
+		for (var Category in Modified)
+			for (var Setting in Modified[Category]) {
+				try {
+					SeriStyleSettings[Category][Setting].Value = Modified[Category][Setting];
+				} catch {
+					Modified[Category][Setting] = undefined;
+					console.log("Removed " + Category + "." + Setting + " due to absence in defaults.");
+				}
+			}
+	} catch (ex) {
+		Modified = {};
+		Fail = true;
+		alert("You're running in storageless mode and will be using default settings.\nAre you using Firefox?");
+		console.log(ex);
+	}
 
 	Language = SeriStyleSettings.SeriStyle.Language.Value;
 	Array.from(document.getElementsByClassName("localize")).forEach(Element => Element.innerText = window.SeriStyleLocales[Language].HTML[Element.id]);
 
-	document.getElementById("btn-reset").onclick = () => {
-		Environment.storage.sync.set({ ss_settings: {} });
-		document.location.reload();
-	};
-	document.getElementById("btn-save").onclick = () => {
-		Environment.storage.sync.set({ ss_settings: Modified });
-		document.location.reload();
-	};
+	if (!Fail) {
+		document.getElementById("btn-reset").onclick = () => {
+			Environment.storage.sync.set({ ss_settings: {} });
+			document.location.reload();
+		};
+
+		document.getElementById("btn-save").onclick = () => {
+			Environment.storage.sync.set({ ss_settings: Modified });
+			document.location.reload();
+		};
+	}
 
 	var Nav = document.getElementById("navigation");
 	for (var Category in SeriStyleSettings) {
