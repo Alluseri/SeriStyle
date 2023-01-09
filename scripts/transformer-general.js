@@ -25,3 +25,23 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 $(SelSearchIcon).innerHTML = SvgSearch;
 $(SelMicIcon).innerHTML = SvgMic;
 $(SelMenuIcon).innerHTML = SvgMenu;
+
+function FixContentHTML(Element, Metadata) {
+
+}
+async function FixContent(Element) {
+	var BotPanel = elem.querySelector("ytd-thumbnail-overlay-bottom-panel-renderer");
+	if (!BotPanel) return false;
+	var URL = "https://www.youtube.com/watch?v=" + Element.querySelector("a#thumbnail").href.match(/watch\?v=(.+?)(?:$|&)/)[1];
+	var NoEmbed = await (await fetch("https://noembed.com/embed?url=" + URL)).json();
+	var Metadata = {
+		"URL": URL,
+		"Title": NoEmbed.title,
+		"Author": NoEmbed.author_name,
+		"AuthorURL": NoEmbed.author_url
+	};
+	if (!Metadata.Title) return false; // Everything else can and will be abstracted
+	BotPanel.style.display = "none";
+	return FixContentHTML(Element, Metadata);
+}
+

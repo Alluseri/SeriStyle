@@ -19,7 +19,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"input#search{padding:1px 2px;margin-left:4px;}" +
 			// Remove thumbnail roundings
 			(SeriStyleSettings.General.ThumbnailRoundings.Value ? "#thumbnail{border-radius:0px;}" : "") +
-			// Old homepage top bar roundings
+			// Old homepage top bar roundings(also applies to vp filters apparently)
 			"yt-chip-cloud-chip-renderer{border-radius:16px;}" +
 			// Old time status roundings
 			"ytd-thumbnail-overlay-time-status-renderer{border-radius:2px;}" +
@@ -28,10 +28,6 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				"#sponsor-button yt-button-shape>button{" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "background-color:#0000;border:1px solid #3EA6FF;color:#3EA6FF;border-radius:3px;}" +
 				"#analytics-button yt-button-shape>button{" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "background-color:#065FD4;color:#FFF;border-radius:3px;}"
 				: "") +
-			// Hide series
-			(SeriStyleSettings.HomePage.HideSeries.Value ? "ytd-badge-supported-renderer.top-badge.ytd-rich-grid-media{display:none;}" : "") +
-			// Recolor HD
-			".ytp-swatch-color-white{color:#F00;}" +
 			// Old subscribe button color & form
 			SelSubPassiveBtn + "{border-radius:3px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
 			SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background-color:#C00;color:#FFF;}" + // "SUBSCRIBE" button, red color
@@ -39,7 +35,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				? SelSubPassiveBtn + ".yt-spec-button-shape-next--tonal{background-color:#2C2C2C;color:#A8A8A8;}"
 				: "#subscribe-button>ytd-subscribe-button-renderer>yt-button-shape>button{background-color:#2C2C2C;color:#A8A8A8;}"
 			) +
-			// Fix sub button, TODO: this won't exist for long!
+			// Fix sub button, TODO: this might not exist for long!
 			(!SeriStyleSettings.Advanced.LegacySubButton.Value ?
 				"#subscribe-button yt-button-shape[hidden]{display:block;}" +
 				"#notification-preference-button div.cbox{display:none;}" + // widest: "#notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.cbox.yt-spec-button-shape-next--button-text-content"
@@ -49,13 +45,44 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				: "") +
 			// Hide channel handles
 			"p.ytd-c4-tabbed-header-renderer{display:none;}" +
-			// Fix notification bell color 
+			// Fix notification bell color
 			"#notification-preference-button yt-icon{color:#909090;}" +
+			"" +
+
+			/* Homepage */
 			// Hide shorts shelf
 			(SeriStyleSettings.HomePage.HideShorts.Value ? "#contents>ytd-rich-section-renderer{display:none;}" : "") +
-			// Hide thumbnail background aka the ugly shadow
+			// Hide thumbnail background
 			"ytd-thumbnail.ytd-rich-grid-media:before{background-color:#0000;}" +
-			// 
+			// Hide series
+			(SeriStyleSettings.HomePage.HideSeries.Value ? "ytd-badge-supported-renderer.top-badge.ytd-rich-grid-media{display:none;}" : "") +
+
+			/* Videopage */
+			//
+			"" +
+
+			/* Videoplayer */
+			// Recolor HD
+			".ytp-swatch-color-white{color:#F00;}" +
+
+			/* Playlists */
+			/*// Restore position & dimensions
+			"ytd-browse.ytd-page-manager{padding-top:0px;}" +
+			"ytd-playlist-header-renderer{margin-left:0px;height:calc(100vh - var(--ytd-toolbar-height));}" +
+			".ytd-playlist-header-renderer.immersive-header-container{margin-bottom:0px;border-radius:0px;}" +
+			// Hide immersive background
+			"div.immersive-header-gradient{background:none;}" +
+			"yt-img-shadow.blurred-image.ytd-playlist-header-renderer{display:none;}" +
+			"div.immersive-header-background-wrapper{background-color:#0000;}" +
+			// Metadata: Proper overflow, pins, old font
+			"yt-formatted-string.byline-item{margin-right:0px;font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;letter-spacing:0.2px;line-height:20px;color:#AAA;white-space:pre-wrap;}" +
+			"yt-formatted-string.byline-item>span{display:inline-block;}" +
+			"div.metadata-stats.ytd-playlist-byline-renderer{max-height:unset;overflow:visible;display:block;}" +
+			"yt-formatted-string.byline-item:not(:nth-child(6))::after{content:'•';margin-left:4px;margin-right:2px;}" +
+			// Old title font
+			"#text.yt-sans-28{font-family:Roboto,Arial,sans-serif;font-size:24px;font-weight:400;line-height:34px;text-decoration-color:#FFF;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-size-adjust:100%;word-break:break-word;}" + // Alternative selector: .thumbnail-and-metadata-wrapper>div>yt-dynamic-sizing-formatted-string>div>yt-formatted-string
+			// Remove cover thumbnail rounding
+			(SeriStyleSettings.General.ThumbnailRoundings.Value ? ".image-wrapper{border-radius:0px;}" : "") +*/
 			""
 		).replaceAll(/(?<!!important);/g, "!important;"),
 	"id": "seristyle-tf-css"

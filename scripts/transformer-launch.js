@@ -1,4 +1,4 @@
-if (SeriStyleSettings.General.OldColors.Value) {
+if (SeriStyleSettings.General.OldColors.Value) { // TODO: Here and defaults... thing for icons, maybe not
 	var GeneralObserver = new MutationObserver(async Mutations => {
 		Mutations.forEach(Mutation => {
 			for (let i = 0; i < Mutation.addedNodes.length; i++) {

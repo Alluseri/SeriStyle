@@ -61,7 +61,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			".seristyle_firstpanel::after{content:'•';margin:0px 4px;}" +
 			// Hide animation or background i forgor
 			".yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start::after{display:none;}" +
-			// Reposition subscribe button(it breaks with Sponsor or Analytics)
+			// Reposition subscribe button(it breaks with Sponsor or Analytics, should be fixed with new panels)
 			SelOwner + "{justify-content:space-between;}" +
 			// Legacy style for autoplay label
 			"#seristyle_autoplay{color:rgba(255, 255, 255, 0.7);direction:ltr;font-family:\"YouTube Noto\", Roboto, Arial, Helvetica, sans-serif;font-size:14px;font-weight:500;line-height:18px;text-align:left;text-size-adjust:100%;}" +
@@ -73,7 +73,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#actions yt-icon{padding:6px 6px 6px 6px;}" +
 			"#actions .yt-spec-button-shape-next__icon{margin-left:0px;margin-right:0px;display:table;}" +
 			"#actions{margin-top:0px;}" +
-			"yt-touch-feedback-shape{display:none;}" +
+			"yt-touch-feedback-shape{display:none;}" + // TODO: This is... well, this is weird. Needs to be looked into.
 			SelContextMenuOpen + "{margin-left:5px;}" +
 			// Video title
 			"#title>h1{font-family:Roboto,Arial,sans-serif;font-size:18px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-weight:400;line-height:26px;text-shadow:none;text-size-adjust:100%;word-break:break-word;}" +
@@ -89,7 +89,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			(SeriStyleSettings.VideoPage.HideDescriptionShade.Value ? "#snippet{-webkit-mask-image:unset;}" : "") +
 			"#description-inline-expander{margin-left:64px;}" +
 			"#description-inner{margin:0px;}" +
-			"#snippet>.ytd-text-inline-expander:not([id]){display:none;}" + // Cringe selector but it works
+			"#snippet>.ytd-text-inline-expander:not([id]){display:none;}" + // Better than nth-child
 			"#expand-sizer{display:none;}" +
 			// Old pfp style
 			"#owner #avatar{width:48px;height:48px;max-width:48px;max-height:48px;margin-right:16px;}" +
