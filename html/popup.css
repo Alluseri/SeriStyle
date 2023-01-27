@@ -1,6 +1,6 @@
 body {
 	display: flex;
-	background-color: rgb(8, 8, 8);
+	background: rgb(8, 8, 8);
 	font-family: Roboto, Arial, Helvetica, sans-serif;
 	width: max-content;
 	flex-direction: column;
@@ -53,7 +53,7 @@ a:hover {
 }
 
 button {
-	background-color: rgb(70, 70, 70);
+	background: rgb(70, 70, 70);
 	border-style: none;
 	border-radius: 4px;
 	color: #FFF;

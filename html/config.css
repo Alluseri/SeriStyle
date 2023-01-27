@@ -1,6 +1,6 @@
 body {
 	/* I'd like to have a photo here but everything is licensed af :skull: */
-	background-color: #000;
+	background: #000;
 	font-family: Roboto, Arial, Helvetica, sans-serif;
 	width: 100%;
 	align-items: center;
@@ -14,7 +14,7 @@ span {
 #page {
 	display: flex;
 	flex-direction: row;
-	background-color: #080808CC;
+	background: #080808CC;
 	margin: 30px 40px;
 	width: auto;
 }
@@ -23,7 +23,7 @@ span {
 	display: flex;
 	flex-direction: column;
 	width: fit-content;
-	background-color: #000;
+	background: #000;
 	border: 1px solid #FFF;
 }
 
@@ -60,7 +60,7 @@ span {
 	align-items: center;
 	width: auto;
 	height: 38px;
-	background-color: #DC0808;
+	background: #DC0808;
 }
 
 .modern-tab {
@@ -69,15 +69,15 @@ span {
 	height: 32px;
 	font-size: 22px;
 	color: #FFF;
-	background-color: #000;
+	background: #000;
 	border-style: none;
-	transition: background-color 200ms;
+	transition: background 200ms;
 	cursor: pointer;
 }
 
 .modern-tab:hover {
-	background-color: #F00;
-	transition: background-color 0ms;
+	background: #F00;
+	transition: background 0ms;
 }
 
 #content {
@@ -132,15 +132,15 @@ select {
 #actions>button {
 	border: 2px solid #FFF;
 	border-radius: 4px;
-	background-color: #0000;
+	background: #0000;
 	height: 32px;
 	color: #FFF;
 	font-size: 18px;
-	transition: background-color 200ms;
+	transition: background 200ms;
 	cursor: pointer;
 }
 
 #actions>button:hover {
-	background-color: #F00;
-	transition: background-color 0ms;
+	background: #F00;
+	transition: background 0ms;
 }

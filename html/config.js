@@ -43,18 +43,10 @@ function Navigate(Category) {
 					}
 				}));
 				var Span = DomUtils.BuildElement("span", { innerText: SettingMeta.Name[Language] });
-				if (SettingMeta.SlowFeature) {
-					Span.style.color = "#FFCCCC";
-					Span.title = SeriStyleLocales[Language].Other.SlowFeatureTooltip;
-				}
 				SettingDiv.appendChild(Span);
 				break;
 			case 1:
 				var Span = DomUtils.BuildElement("span", { innerText: SettingMeta.Name[Language] });
-				if (SettingMeta.SlowFeature) {
-					Span.style.color = "#FFCCCC";
-					Span.title = SeriStyleLocales[Language].Other.SlowFeatureTooltip;
-				}
 				SettingDiv.appendChild(Span);
 				var ComboElm = DomUtils.BuildElement("select", {
 					ss_meta: SettingMeta,
@@ -75,10 +67,6 @@ function Navigate(Category) {
 				break;
 			case 2:
 				var Span = DomUtils.BuildElement("span", { innerText: SettingMeta.Name[Language] });
-				if (SettingMeta.SlowFeature) {
-					Span.style.color = "#FFCCCC";
-					Span.title = SeriStyleLocales[Language].Other.SlowFeatureTooltip;
-				}
 				SettingDiv.appendChild(Span);
 				SettingDiv.appendChild(X = DomUtils.BuildElement("input", {
 					type: "range",
