@@ -8,13 +8,20 @@ Bring the early-2021 UI back to YouTube!
 3. Enable Developer mode
 4. Click "Load unpacked"
 5. Select the folder you unpacked this repo to
-6. Enable the extension if necessary
-7. Enjoy!
+6. Enjoy!
 ### Firefox
-2. Navigate to `about:debugging`
-3. i forgor 💀
+2. Get **Developer Edition** or **Nightly**
+2. Navigate to `about:config`
+3. Click "Accept the Risk and Continue"
+4. Set `xpinstall.signatures.required` to false
+5. Navigate to `about:addons`
+6. Find the "Install Add-on from File..." button
+7. Pick & install the unsigned xpi file
+8. Enjoy!
 
 ## FAQ <!-- Nobody ever asked one. Oh well. -->
+#### When signed exception for Firefox?
+Never lmao have you seen the [requirements](https://extensionworkshop.com/documentation/publish/add-on-policies/)?
 #### Does it support white theme?
 No. Most transformers will have their colors broken under white theme.
 #### How is this different from YouTube Redux?
