@@ -26,7 +26,8 @@
 	],
 	"browser_specific_settings": {
 		"gecko": {
-			"id": "totally@real-email.com"
+			"id": "totally@real-email.com",
+			"update_url": "https://raw.githubusercontent.com/Alluseri/SeriStyle/main/update.firefox.json"
 		}
 	},
 	"background": {

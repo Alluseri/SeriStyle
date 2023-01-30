@@ -1,0 +1,17 @@
+{
+	"addons": {
+		"totally@real-email.com": {
+			"updates": [
+				{
+					"version": "1.8.1",
+					"update_link": "https://github.com/Alluseri/SeriStyle/releases/download/1.8.1/SeriStyle-1.8.1.xpi",
+					"applications": {
+						"gecko": {
+							"strict_min_version": "109"
+						}
+					}
+				}
+			]
+		}
+	}
+}
