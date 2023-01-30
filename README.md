@@ -2,8 +2,8 @@
 Bring the early-2021 UI back to YouTube!
 
 ## How to install? <!-- This could use a better English -->
-### Chrome and Chromium-based browsers
 1. Download this repository(Code -> Download ZIP) and unpack it into any folder
+### Chrome and Chromium-based browsers
 2. Navigate to `chrome://extensions`
 3. Enable Developer mode
 4. Click "Load unpacked"
@@ -11,7 +11,8 @@ Bring the early-2021 UI back to YouTube!
 6. Enable the extension if necessary
 7. Enjoy!
 ### Firefox
-Very soon!
+2. Navigate to `about:debugging`
+3. i forgor 💀
 
 ## FAQ <!-- Nobody ever asked one. Oh well. -->
 #### Does it support white theme?

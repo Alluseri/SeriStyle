@@ -28,19 +28,16 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#seristyle_oldpanel{display:block;font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;letter-spacing:0.2px;line-height:20px;max-height:20px;overflow:hidden;margin-top:-3px;}" +
 			".seristyle_subpanel{color:rgb(170,170,170);display:inline;font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;height:auto;letter-spacing:0.2px;line-height:20px;text-size-adjust:100%;width:auto;}" +
 			".seristyle_firstpanel::after{content:'•';margin:0px 4px;}" +
-			// Hide animation or background i forgor
-			".yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start::after{display:none;}" +
-			// Reposition subscribe button(it breaks with Sponsor or Analytics, should be fixed with new panels)
+			// Reposition subscribe button
 			SelOwner + "{justify-content:space-between;}" +
-			// Legacy style for autoplay label
-			"#seristyle_autoplay{color:rgba(255, 255, 255, 0.7);direction:ltr;font-family:\"YouTube Noto\", Roboto, Arial, Helvetica, sans-serif;font-size:14px;font-weight:500;line-height:18px;text-align:left;text-size-adjust:100%;}" +
 			// Action bar
-			"#actions button{" + (SeriStyleSettings.VideoPage.LetterSpacing.Value ? "letter-spacing:0.5px;" : "") + "color:#909090;background:none;padding-left:0px;padding-right:6px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
+			"#actions button{" + (SeriStyleSettings.VideoPage.LetterSpacing.Value ? "letter-spacing:0.5px;" : "") + "color:#909090;background:none;padding-left:0px;padding-right:6px;text-transform:uppercase;}" +
 			SelLikeButtons + "{margin-left:10px;}" +
 			SelLikeButtons + "[aria-pressed=false]{color:#909090;}" +
 			SelLikeButtons + "[aria-pressed=true]{color:#FFF;}" +
 			"#actions yt-icon{padding:6px 6px 6px 6px;}" +
 			"#actions .yt-spec-button-shape-next__icon{margin-left:0px;margin-right:0px;display:table;}" +
+			".yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start::after{display:none;}" +
 			"#actions{margin-top:0px;}" +
 			SelContextMenuOpen + "{margin-left:5px;}" +
 			// Video title
@@ -50,11 +47,11 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#comment-teaser{display:none;}" +
 			SelDescription + "{background:none;cursor:unset;}" +
 			"#info-container{display:none;}" +
-			"tp-yt-paper-button.ytd-text-inline-expander{position:relative;left:unset;justify-content:flex-start;color:#AAA;font-family:Roboto,Arial,sans-serif;margin-top:8px;font-size:1.3rem;font-weight:500;letter-spacing:0.007px;" + (SeriStyleSettings.VideoPage.Uppercase.Value ? "text-transform:uppercase;" : "") + "}" +
+			"tp-yt-paper-button.ytd-text-inline-expander{position:relative;left:unset;justify-content:flex-start;color:#AAA;font-family:Roboto,Arial,sans-serif;margin-top:8px;font-size:1.3rem;font-weight:500;letter-spacing:0.007px;text-transform:uppercase;}" +
 			"tp-yt-paper-button.ytd-text-inline-expander>paper-ripple{display:none;}" +
 			"#description-interaction{display:none;}" +
 			"#ellipsis{display:none;}" +
-			(SeriStyleSettings.VideoPage.HideDescriptionShade.Value ? "#snippet{-webkit-mask-image:unset;}" : "") +
+			"#snippet{-webkit-mask-image:unset;}" +
 			"#description-inline-expander{margin-left:64px;}" +
 			"#description-inner{margin:0px;}" +
 			"#snippet>.ytd-text-inline-expander:not([id]){display:none;}" + // Better than nth-child
@@ -73,7 +70,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Realign recommendation filters
 			"yt-related-chip-cloud-renderer yt-chip-cloud-chip-renderer{margin:0px 8px 8px 8px;}" +
 			// Realign videos
-			"ytd-item-section-renderer.ytd-watch-next-secondary-results-renderer{margin-top:calc(0px - var(--ytd-item-section-item-margin));}" + // yeah... youtube decided to use margin-top instead of margin-bottom... how cringe
+			"ytd-item-section-renderer.ytd-watch-next-secondary-results-renderer{margin-top:calc(0px - var(--ytd-item-section-item-margin));}" + // TODO: Force usage of margin-bottom instead of margin-top
 			// Chat things
 			(SeriStyleSettings.VideoPage.HidePremiere.Value ? "#chat.ytd-watch-flexy{display:none;}" : "#show-hide-button.ytd-live-chat-frame{margin-bottom:2px;}") +
 			//

@@ -15,23 +15,6 @@ this.SeriStyleLocales = {
 			Playlist: "Playlist changes",
 			Advanced: "Advanced settings"
 		}
-	},
-	"ru-RU": {
-		HTML: {
-			"btn-reset": "Сбросить до исходных",
-			"btn-load": "Загрузить",
-			"btn-save": "Сохранить"
-		},
-		Categories: {
-			SeriStyle: "SeriStyle",
-			General: "Общие изменения",
-			SidebarBuilder: "Конструктор боковой панели",
-			HomePage: "Изменения на домашней странице",
-			VideoPage: "Изменения на видеостраницах",
-			VideoPlayer: "Изменения в проигрывателе",
-			Playlist: "Изменения в плейлистах",
-			Advanced: "Продвинутые настройки"
-		}
 	}
 };
 
@@ -40,17 +23,11 @@ this.SeriStyleSettings = {
 		Language: {
 			Kind: 1,
 			Name: {
-				"en-US": "Language",
-				"ru-RU": "Язык"
+				"en-US": "Language"
 			},
 			Picks: {
 				"en-US": {
-					"en-US": "English",
-					"ru-RU": "Russian (Русский)"
-				},
-				"ru-RU": {
-					"en-US": "Английский (English)",
-					"ru-RU": "Русский"
+					"en-US": "English"
 				}
 			},
 			Value: "en-US"
@@ -60,40 +37,35 @@ this.SeriStyleSettings = {
 		OldColors: {
 			Kind: 0,
 			Name: {
-				"en-US": "Old dark theme colors",
-				"ru-RU": "Старые цвета тёмной темы"
+				"en-US": "Old dark theme colors"
 			},
 			Value: false
 		},
 		ResizeSearchBar: {
 			Kind: 0,
 			Name: {
-				"en-US": "Old search bar size",
-				"ru-RU": "Старый размер строки поиска"
+				"en-US": "Old search bar size"
 			},
 			Value: true
 		},
 		NormalizeSearchBar: {
 			Kind: 0,
 			Name: {
-				"en-US": "Normalize search bar size",
-				"ru-RU": "Нормализировать размер строки поиска"
+				"en-US": "Normalize search bar size"
 			},
 			Value: false
 		},
 		ThumbnailRoundings: {
 			Kind: 0,
 			Name: {
-				"en-US": "Remove thumbnails' rounded corners",
-				"ru-RU": "Убрать закругленные края у превьюшек"
+				"en-US": "Remove all thumbnails' rounded corners"
 			},
 			Value: true
 		},
 		HideFeedback: {
 			Kind: 0,
 			Name: {
-				"en-US": "Hide button highlight on click",
-				"ru-RU": "Убрать подсветку кнопок при нажатии"
+				"en-US": "Don't highlight some buttons on click"
 			},
 			Value: true
 		}
@@ -101,85 +73,52 @@ this.SeriStyleSettings = {
 	HomePage: {
 		HideSeries: {
 			Kind: 0,
-			Name: { // TODO: URL
-				"en-US": "Hide label above video title(example: https://upload.wtf/s/4WHtS)",
-				"ru-RU": "Скрыть подпись над названием видео(пример: https://upload.wtf/s/4WHtS)"
+			Name: {
+				"en-US": "Hide label above video title(example: https://upload.wtf/s/4WHtS)"
 			},
 			Value: false
 		},
 		HideShorts: {
 			Kind: 0,
 			Name: {
-				"en-US": "Hide the Shorts shelf",
-				"ru-RU": "Скрыть раздел Shorts"
+				"en-US": "Hide the Shorts shelf"
 			},
 			Value: true
 		}
 	},
-	/*SidebarBuilder: {
-		OldHomeButton: {
-			Kind: 0,
-			Name: {
-				"en-US": "Old Home button icon",
-				"ru-RU": "Старая кнопка Домой"
-			},
-			Value: true
-		}
-	},*/
 	VideoPage: {
-		Uppercase: {
-			Kind: 0,
-			Name: {
-				"en-US": "Bring back some elements' uppercase label spelling",
-				"ru-RU": "Вернуть написание подписей некоторых элементов заглавными буквами"
-			},
-			Value: true
-		},
-		HideDescriptionShade: {
-			Kind: 0,
-			Name: {
-				"en-US": "Remove collapsed description content fade-out",
-				"ru-RU": "Убрать затухание текста в свёрнутом описании"
-			},
-			Value: true
-		},
 		HideDownloadButton: {
 			Kind: 0,
 			Name: {
-				"en-US": "Hide the native Download button",
-				"ru-RU": "Скрыть встроенную кнопку \"Скачать\""
+				"en-US": "Hide the built-in Download button"
 			},
 			Value: true
 		},
 		LetterSpacing: {
 			Kind: 0,
 			Name: {
-				"en-US": "Old action bar letter spacing",
-				"ru-RU": "Старые промежутки между буквами на панели действий"
+				"en-US": "Old action bar letter spacing"
 			},
 			Value: false
 		},
 		NoSponsorComments: {
 			Kind: 0,
 			Name: {
-				"en-US": "Hide donation flair & background from comments",
-				"ru-RU": "Скрыть плашку и цветной фон у комментариев с пожертвованиями"
+				"en-US": "Don't highlight comments with donations"
 			},
 			Value: false
 		},
 		HideRecFilters: {
 			Kind: 0,
 			Name: {
-				"en-US": "Hide recommendation filters",
-				"ru-RU": "Скрыть фильтры рекомендаций"
+				"en-US": "Hide recommendation filters"
 			},
 			Value: false
 		},
 		HidePremiere: { // TODO: Split into 2 when I discover how to differentiate premiere and live chat
 			Kind: 0,
 			Name: {
-				"en-US": "Hide premiere & live chat",
-				"ru-RU": "Скрыть чат премьер и стримов"
+				"en-US": "Hide premiere & live chat"
 			},
 			Value: false
 		}
@@ -188,24 +127,21 @@ this.SeriStyleSettings = {
 		DisableGradient: {
 			Kind: 0,
 			Name: {
-				"en-US": "Hide the transparent top & bottom gradients",
-				"ru-RU": "Скрыть полупрозрачные градиенты сверху и снизу"
+				"en-US": "Hide top & bottom shadings"
 			},
 			Value: false
 		},
 		DisableHeatmap: {
 			Kind: 0,
 			Name: {
-				"en-US": "Hide \"Most replayed\" heat-map",
-				"ru-RU": "Скрыть график с самыми проигрываемыми фрагментами видео"
+				"en-US": "Hide the \"Most replayed\" heat-map"
 			},
 			Value: false
 		},
-		HideMiniPlayer: { // TODO: Toolbar builder
+		HideMiniPlayer: {
 			Kind: 0,
 			Name: {
-				"en-US": "Hide the Miniplayer button (doesn't disable the hotkey)",
-				"ru-RU": "Скрыть кнопку \"Мини-проигрыватель\" (не отключает горячую клавишу)"
+				"en-US": "Hide the Miniplayer button (doesn't disable the hotkey)"
 			},
 			Value: false
 		}
@@ -214,32 +150,28 @@ this.SeriStyleSettings = {
 		TrueOld: {
 			Kind: 0,
 			Name: {
-				"en-US": "True old UI (prototype)",
-				"ru-RU": "Настоящий старый пользовательский интерфейс (прототип)"
+				"en-US": "True old UI (experimental)"
 			},
 			Value: false
 		},
-		OldInteract: {
+		HideInteract: {
 			Kind: 0,
 			Name: {
-				"en-US": "Old interaction buttons(hide Play, put Shuffle into the toolbar)",
-				"ru-RU": "Старые кнопки управления(скрыть кнопку \"Воспроизвести всё\", переместить кнопку \"Перемешать\" в тулбар)"
+				"en-US": "Hide the interaction buttons"
 			},
 			Value: true
 		},
 		HideBackground: {
 			Kind: 0,
 			Name: {
-				"en-US": "Hide some buttons' backgrounds",
-				"ru-RU": "Убрать задний фон некоторых кнопок"
+				"en-US": "Hide the toolbar buttons' backgrounds"
 			},
-			Value: true
+			Value: false
 		},
 		HideDownload: {
 			Kind: 0,
 			Name: {
-				"en-US": "Hide the native Download Playlist button",
-				"ru-RU": "Скрыть встроенную кнопку \"Скачать плейлист\""
+				"en-US": "Hide the built-in Download Playlist button"
 			},
 			Value: true
 		}
@@ -249,56 +181,48 @@ this.SeriStyleSettings = {
 			Kind: 2,
 			Range: [10, 1000],
 			Name: {
-				"en-US": "Delay after opening the \"More Actions\" menu for mCC",
-				"ru-RU": "Задержка после открытия меню с доп. действиями для mCC"
+				"en-US": "Delay after opening the \"More Actions\" menu for mCC"
 			},
 			Value: 200,
 			Format: {
-				"en-US": "$ ms.",
-				"ru-RU": "$ мс."
+				"en-US": "$ms"
 			}
 		},
 		InjectedSettleTime: {
 			Kind: 2,
 			Range: [0, 1000],
 			Name: {
-				"en-US": "Delay after detecting a DOM mutation",
-				"ru-RU": "Задержка после обнаружения изменения в DOM"
+				"en-US": "Delay after detecting a DOM mutation"
 			},
 			Value: 50,
 			Format: {
-				"en-US": "$ ms.",
-				"ru-RU": "$ мс."
+				"en-US": "$ms"
 			}
 		},
 		ObserverUpdateTime: {
 			Kind: 2,
 			Range: [0, 5000],
 			Name: {
-				"en-US": "Observer update interval",
-				"ru-RU": "Интервал обновления наблюдателя"
+				"en-US": "Observer update interval"
 			},
 			Value: 500,
 			Format: {
-				"en-US": "$ ms.",
-				"ru-RU": "$ мс."
+				"en-US": "$ms"
 			}
 		},
 		LegacyPanels: {
 			Kind: 0,
 			Name: {
-				"en-US": "Legacy(v1.2.0) panel style",
-				"ru-RU": "Стиль панелей старой версии(v1.2.0)"
+				"en-US": "Legacy(v1.2.0) panel style"
 			},
 			Value: false
 		},
 		LegacySubButton: {
 			Kind: 0,
 			Name: {
-				"en-US": "Legacy(v1.4.0) subscribe button",
-				"ru-RU": "Кнопка подписки старой версии(v1.4.0)"
+				"en-US": "Legacy(v1.4.0) subscribe button"
 			},
-			Value: true
+			Value: false
 		}
 	}
 };

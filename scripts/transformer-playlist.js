@@ -11,7 +11,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Self explanatory
 			(SeriStyleSettings.Playlist.HideDownload.Value ? "ytd-download-playlist-button-renderer{display:none;}" : "") +
 			(SeriStyleSettings.Playlist.HideBackground.Value ? SelAllButtons + " button{background:none;}" : "") +
-			(SeriStyleSettings.Playlist.OldInteract.Value ?
+			(SeriStyleSettings.Playlist.HideInteract.Value ?
 				// Hide Play & Shuffle
 				"div.wide-screen-form.play-menu.ytd-playlist-header-renderer>ytd-button-renderer{display:none;}"
 				: "") +
