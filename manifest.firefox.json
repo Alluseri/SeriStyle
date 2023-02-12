@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "SeriStyle",
 	"author": "Nekoseri",
-	"version": "1.8.1",
+	"version": "1.8.3",
 	"description": "Bring the early-2021 UI back to YouTube!",
 	"icons": {
 		"16": "icons/default16.png",
@@ -18,7 +18,6 @@
 	"permissions": [
 		"tabs",
 		"storage",
-		"activeTab",
 		"scripting"
 	],
 	"host_permissions": [
