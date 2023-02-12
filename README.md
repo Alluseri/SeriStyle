@@ -2,26 +2,21 @@
 Bring the early-2021 UI back to YouTube!
 
 ## How to install? <!-- This could use a better English -->
-1. Download this repository(Code -> Download ZIP) and unpack it into any folder
 ### Chrome and Chromium-based browsers
+1. Download this repository(Code -> Download ZIP) and unpack it into any folder
 2. Navigate to `chrome://extensions`
 3. Enable Developer mode
 4. Click "Load unpacked"
-5. Select the folder you unpacked this repo to
+5. Select the folder you unpacked this repo to or the manifest.json file inside
 6. Enjoy!
 ### Firefox
-2. Get **Developer Edition** or **Nightly**
-2. Navigate to `about:config`
-3. Click "Accept the Risk and Continue"
-4. Set `xpinstall.signatures.required` to false
-5. Navigate to `about:addons`
-6. Find the "Install Add-on from File..." button
-7. Pick & install the unsigned xpi file
-8. Enjoy!
+1. Download [the latest release](https://github.com/Alluseri/SeriStyle/releases)
+2. Navigate to `about:addons`
+3. Find the "Install Add-on from File..." button
+4. Pick & install the xpi file you just downloaded
+5. Enjoy!
 
 ## FAQ <!-- Nobody ever asked one. Oh well. -->
-#### When signed exception for Firefox?
-Never lmao have you seen the [requirements](https://extensionworkshop.com/documentation/publish/add-on-policies/)?
 #### Does it support white theme?
 No. Most transformers will have their colors broken under white theme.
 #### How is this different from YouTube Redux?
