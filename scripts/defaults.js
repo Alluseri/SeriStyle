@@ -8,10 +8,10 @@ this.SeriStyleLocales = {
 		Categories: {
 			SeriStyle: "SeriStyle",
 			General: "General changes",
-			SidebarBuilder: "Sidebar Builder",
 			HomePage: "Homepage changes",
 			VideoPage: "Videopage changes",
 			VideoPlayer: "Videoplayer changes",
+			ChannelPage: "Channel page changes",
 			Playlist: "Playlist changes",
 			Advanced: "Advanced settings"
 		}
@@ -37,7 +37,7 @@ this.SeriStyleSettings = {
 		OldColors: {
 			Kind: 0,
 			Name: {
-				"en-US": "Old dark theme colors"
+				"en-US": "Old Dark theme colors"
 			},
 			Value: false
 		},
@@ -121,6 +121,13 @@ this.SeriStyleSettings = {
 				"en-US": "Hide premiere & live chat"
 			},
 			Value: false
+		},
+		FixPlaylistColor: {
+			Kind: 0,
+			Name: {
+				"en-US": "Fix playlist/queue panel colors on Old Dark theme"
+			},
+			Value: false
 		}
 	},
 	VideoPlayer: {
@@ -144,6 +151,15 @@ this.SeriStyleSettings = {
 				"en-US": "Hide the Miniplayer button (doesn't disable the hotkey)"
 			},
 			Value: false
+		}
+	},
+	ChannelPage: {
+		Half: {
+			Kind: 0,
+			Name: {
+				"en-US": "Half the spaces around sorting buttons"
+			},
+			Value: true
 		}
 	},
 	Playlist: {
@@ -199,11 +215,44 @@ this.SeriStyleSettings = {
 				"en-US": "$ms"
 			}
 		},
-		ObserverUpdateTime: {
+		VideoPageInterval: {
 			Kind: 2,
 			Range: [0, 5000],
 			Name: {
-				"en-US": "Observer update interval"
+				"en-US": "'Video page' observer update interval"
+			},
+			Value: 300,
+			Format: {
+				"en-US": "$ms"
+			}
+		},
+		PlaylistInterval: {
+			Kind: 2,
+			Range: [0, 5000],
+			Name: {
+				"en-US": "'Playlist' observer update interval"
+			},
+			Value: 500,
+			Format: {
+				"en-US": "$ms"
+			}
+		},
+		VideoPlayerInterval: {
+			Kind: 2,
+			Range: [0, 5000],
+			Name: {
+				"en-US": "'Videoplayer' observer update interval"
+			},
+			Value: 500,
+			Format: {
+				"en-US": "$ms"
+			}
+		},
+		ChannelPageInterval: {
+			Kind: 2,
+			Range: [0, 5000],
+			Name: {
+				"en-US": "'Channel page' observer update interval"
 			},
 			Value: 500,
 			Format: {

@@ -1,4 +1,4 @@
-/* jshint -W014 */
+// jshint -W014
 
 var SelSubPassiveBtn = "#subscribe-button yt-button-shape>button";
 
@@ -70,18 +70,23 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			(SeriStyleSettings.HomePage.HideSeries.Value ? "ytd-badge-supported-renderer.top-badge.ytd-rich-grid-media{display:none;}" : "") +
 
 			/* Videopage */
-			// Self explanatory
-			(SeriStyleSettings.VideoPlayer.DisableGradient.Value ? ".ytp-gradient-bottom,.ytp-gradient-top{display:none;}" : "") +
-			(SeriStyleSettings.VideoPlayer.DisableHeatmap.Value ? ".ytp-heat-map-container{display:none;}" : "") +
-			(SeriStyleSettings.VideoPlayer.HideMiniPlayer.Value ? ".ytp-miniplayer-button{display:none;}" : "") +
 			// Force hide immersive
 			"#cinematics{display:none;}" +
 			// Old settings panel color
 			".ytp-popup.ytp-settings-menu{background:#111C;}" +
+			// Fix playlist panel colors
+			(SeriStyleSettings.VideoPage.FixPlaylistColor.Value && SeriStyleSettings.General.OldColors ?
+				"#items.playlist-items{background:#181818;}" +
+				".header.ytd-playlist-panel-renderer{background:#212121FA;}"
+				: "") +
 
 			/* Videoplayer */
 			// Recolor HD
 			".ytp-swatch-color-white{color:#F00;font-weight:900;}" +
+			// Self explanatory
+			(SeriStyleSettings.VideoPlayer.DisableGradient.Value ? ".ytp-gradient-bottom,.ytp-gradient-top{display:none;}" : "") +
+			(SeriStyleSettings.VideoPlayer.DisableHeatmap.Value ? ".ytp-heat-map-container{display:none;}" : "") +
+			(SeriStyleSettings.VideoPlayer.HideMiniPlayer.Value ? ".ytp-miniplayer-button{display:none;}" : "") +
 
 			/* Playlists */
 			(SeriStyleSettings.Playlist.TrueOld.Value ?

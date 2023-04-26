@@ -78,14 +78,13 @@ This is a **general non-exhaustive** list of SeriStyle's features. Preview & com
     - Transparency(IF EXISTED)
 - Bring back slider bar on left side menu(works in playlist view)
 - Add a conditional MutationObserver to invoke Reinject() in videopage transformer
-- Convert recommended playlists into videos using https://noembed.com/embed?url=https://www.youtube.com/watch?v=eGfzWqbwtAA or hide them
+- Convert recommended playlists into videos using noembed or hide them(snip in -general)
 - Old playlist & queue panels
 - Old control buttons on your channel page
-- Cancel miniplayer keybinding
-- Give background to "Play All" on channel page
-- Match playlist metadata panel color with old colors enabled
 - Extend alerts to end of screen
-- Replace Share with Add to Playlist
+- Extend debug info
+- Step in settings sliderbars
+- Old channel page top
 
 ## Credits & Gratitude
 ### Services

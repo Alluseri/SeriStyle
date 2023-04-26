@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 	document.getElementById("low-i-debug").onclick = async () => {
 		var DebugInfo = [
-			"- SeriStyle v1.8.3-rolling",
+			"- SeriStyle v1.9.0",
 			"- " + navigator.userAgent
 		];
 		try {

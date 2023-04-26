@@ -125,7 +125,7 @@ var ActionBarEventListeners = [
 const Reinject = () => {
 	try {
 		// Apply old SVG to Share and Menu
-		$(SelShareBtn).querySelector("yt-icon").innerHTML = SvgShare;
+		if (_=$(SelShareBtn)) _.querySelector("yt-icon").innerHTML = SvgShare;
 		$(SelContextMenuOpen).querySelector("yt-icon").innerHTML = SvgActionMenu;
 
 		// Apply old SVG to Like/Dislike buttons

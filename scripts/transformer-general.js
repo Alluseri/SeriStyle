@@ -23,10 +23,15 @@ $(SelMicIcon).innerHTML = SvgMic;
 $(SelMenuIcon).innerHTML = SvgMenu;
 
 function FixContentHTML(Element, Metadata) {
+	console.log(Element);
+	console.log(Metadata);
 
+	var Title = Element.querySelector("h3>a");
+	Title.innerText = Metadata.Title;
+	Title.href = Metadata.URL;
 }
 async function FixContent(Element) {
-	var BotPanel = elem.querySelector("ytd-thumbnail-overlay-bottom-panel-renderer");
+	var BotPanel = Element.querySelector("ytd-thumbnail-overlay-bottom-panel-renderer");
 	if (!BotPanel) return false;
 	var URL = "https://www.youtube.com/watch?v=" + Element.querySelector("a#thumbnail").href.match(/watch\?v=(.+?)(?:$|&)/)[1];
 	var NoEmbed = await (await fetch("https://noembed.com/embed?url=" + URL)).json();
