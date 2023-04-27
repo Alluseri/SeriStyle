@@ -43,7 +43,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Video title
 			"#title>h1{font-family:Roboto,Arial,sans-serif;font-size:18px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-weight:400;line-height:26px;text-shadow:none;text-size-adjust:100%;word-break:break-word;}" +
 			// Description
-			SelBottomRow + "{border-bottom-color:rgba(255,255,255,0.1);border-bottom-style:solid;border-bottom-width:1px;padding-bottom:16px;}" +
+			SelBottomRow + "{flex-direction:column;border-bottom-color:rgba(255,255,255,0.1);border-bottom-style:solid;border-bottom-width:1px;padding-bottom:16px;}" +
 			"#comment-teaser{display:none;}" +
 			SelDescription + "{background:none;cursor:unset;}" +
 			"#info-container{display:none;}" +
@@ -125,7 +125,7 @@ var ActionBarEventListeners = [
 const Reinject = () => {
 	try {
 		// Apply old SVG to Share and Menu
-		if (_=$(SelShareBtn)) _.querySelector("yt-icon").innerHTML = SvgShare;
+		if (_ = $(SelShareBtn)) _.querySelector("yt-icon").innerHTML = SvgShare;
 		$(SelContextMenuOpen).querySelector("yt-icon").innerHTML = SvgActionMenu;
 
 		// Apply old SVG to Like/Dislike buttons
