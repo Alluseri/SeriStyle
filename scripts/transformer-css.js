@@ -1,6 +1,7 @@
-// jshint -W014
+// jshint -W014, -W086
 
 var SelSubPassiveBtn = "#subscribe-button yt-button-shape>button";
+var SelSubContainer = "yt-smartimation.ytd-subscribe-button-renderer"; // Alt: #subscribe-button yt-smartimation
 
 // TODO: Merge general button styles
 document.head.appendChild(DomUtils.BuildElement("style", {
@@ -25,7 +26,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"ytd-thumbnail-overlay-time-status-renderer{border-radius:2px;}" +
 			// Restyle Join and Analytics buttons
 			(!SeriStyleSettings.Advanced.LegacyPanels.Value ?
-				"#sponsor-button yt-button-shape>button{text-transform:uppercase;background:none;border:1px solid #3EA6FF;color:#3EA6FF;border-radius:3px;}" +
+				"#sponsor-button yt-button-shape>button{" + (SeriStyleSettings.VideoPage.HideJoinButton.Value ? "display:none;" : "text-transform:uppercase;background:none;border:1px solid #3EA6FF;color:#3EA6FF;border-radius:3px;") + "}" +
 				"#analytics-button yt-button-shape>button{text-transform:uppercase;background:#065FD4;color:#FFF;border-radius:3px;}"
 				: "") +
 			// Old subscribe button color & form
@@ -33,7 +34,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background:#C00;color:#FFF;}" + // "SUBSCRIBE" button, red color
 			(SeriStyleSettings.Advanced.LegacySubButton.Value
 				? SelSubPassiveBtn + ".yt-spec-button-shape-next--tonal{background:#2C2C2C;color:#A8A8A8;}"
-				: "#subscribe-button>ytd-subscribe-button-renderer>yt-button-shape>button{background:#2C2C2C;color:#A8A8A8;}"
+				: "#subscribe-button>ytd-subscribe-button-renderer>yt-smartimation>yt-button-shape>button{background:#2C2C2C;color:#A8A8A8;}"
 			) +
 			// Fix sub button
 			(!SeriStyleSettings.Advanced.LegacySubButton.Value ?
@@ -43,6 +44,10 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				"#notification-preference-button div.yt-spec-button-shape-next__icon{margin-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__icon
 				"#notification-preference-button button{background:none;padding-right:0px;}" // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button
 				: "") +
+			// Fix notification bell
+			(!SeriStyleSettings.Advanced.LegacyImation.Value ?
+				SelSubContainer + "{display:flex;flex-direction:row;}"
+				: "") +
 			// Hide channel handles
 			"p.ytd-c4-tabbed-header-renderer{display:none;}" +
 			// Hide feedback shapes
@@ -51,16 +56,21 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			(SeriStyleSettings.General.OldColors.Value ?
 				// Old background color(no longer available through launch transformer)
 				"ytd-app,ytd-browse,ytd-two-column-browse-results-renderer[page-subtype='playlist'].ytd-browse,ytd-page-manager{background:#181818;}" +
-				// Fix border of chip renderer
-				"#chips-wrapper.ytd-feed-filter-chip-bar-renderer{border-bottom:none;}"
-				: "") +
+				// Old top and left bar colors
+				"#background.ytd-masthead{background:rgba(33,33,33,0.98);}" +
+				"#guide-content.ytd-app{background:#212121;}" +
+				// Fix chip renderer colors
+				"ytd-browse[page-subtype='home'] #chips-wrapper.ytd-feed-filter-chip-bar-renderer{border-top:solid 1px #4D4D4D;border-bottom:none;background:#212121;}" +
+				"#left-arrow.ytd-feed-filter-chip-bar-renderer:after{background:linear-gradient(to right,rgba(33,33,33,0.98)20%,rgba(33,33,33,0)80%);}" +
+				"#right-arrow.ytd-feed-filter-chip-bar-renderer:before{background:linear-gradient(to left,rgba(33,33,33,0.98)20%,rgba(33,33,33,0)80%);}" +
+				"#left-arrow-button.ytd-feed-filter-chip-bar-renderer,#right-arrow-button.ytd-feed-filter-chip-bar-renderer{background:#212121;}"
+				: "") + // rgba(33,33,33,0.98);
 			// Remove roundings on left side menu hover selections
 			"ytd-guide-entry-renderer>#endpoint{border-radius:0px;}" +
 			// Remove rounded corners everywhere known
 			"[rounded-corners],.ytp-rounded-menu,ytd-menu-popup-renderer{border-radius:0px;}" +
 			// Force keyboard color
 			"#container.ytd-searchbox span{filter:invert(100%);}" +
-
 			/* Homepage */
 			// Hide shorts shelf
 			(SeriStyleSettings.HomePage.HideShorts.Value ? "#contents>ytd-rich-section-renderer{display:none;}" : "") +
@@ -68,17 +78,8 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"ytd-thumbnail.ytd-rich-grid-media:before{background:none;}" +
 			// Hide series
 			(SeriStyleSettings.HomePage.HideSeries.Value ? "ytd-badge-supported-renderer.top-badge.ytd-rich-grid-media{display:none;}" : "") +
-
-			/* Videopage */
-			// Force hide immersive
-			"#cinematics{display:none;}" +
-			// Old settings panel color
-			".ytp-popup.ytp-settings-menu{background:#111C;}" +
-			// Fix playlist panel colors
-			(SeriStyleSettings.VideoPage.FixPlaylistColor.Value && SeriStyleSettings.General.OldColors ?
-				"#items.playlist-items{background:#181818;}" +
-				".header.ytd-playlist-panel-renderer{background:#212121FA;}"
-				: "") +
+			// Fix alerts
+			(SeriStyleSettings.Playlist.TrueOld.Value ? "#alerts.ytd-browse{padding-right:0px;}" : "") +
 
 			/* Videoplayer */
 			// Recolor HD
@@ -87,6 +88,16 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			(SeriStyleSettings.VideoPlayer.DisableGradient.Value ? ".ytp-gradient-bottom,.ytp-gradient-top{display:none;}" : "") +
 			(SeriStyleSettings.VideoPlayer.DisableHeatmap.Value ? ".ytp-heat-map-container{display:none;}" : "") +
 			(SeriStyleSettings.VideoPlayer.HideMiniPlayer.Value ? ".ytp-miniplayer-button{display:none;}" : "") +
+			// Old settings panel style
+			".ytp-popup.ytp-settings-menu{background:#111C;" +
+			(SeriStyleSettings.VideoPlayer.SettingsMenuMode.Value == 0 || SeriStyleSettings.VideoPlayer.SettingsMenuMode.Value == 1
+				? "border-radius:2px;"
+				: SeriStyleSettings.VideoPlayer.SettingsMenuMode.Value == 2
+					? "border-radius:4px;"
+					: SeriStyleSettings.VideoPlayer.SettingsMenuMode.Value == 3
+						? "border-radius:0px;"
+						: "") +
+			"}" +
 
 			/* Playlists */
 			(SeriStyleSettings.Playlist.TrueOld.Value ?

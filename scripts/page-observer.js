@@ -1,5 +1,16 @@
 var Environment = this.browser || this.chrome;
 
+(async () => {
+	if (StorageMode == 0 && this.confirm) {
+		var MetaVersion = (await Environment.storage.sync.get(["ss_metaver"])).ss_metaver;
+		if (!MetaVersion || MetaVersion < SeriStyleMetaVersion) {
+			Environment.storage.sync.set({ ss_metaver: SeriStyleMetaVersion });
+			if (SeriStyleSettings.SeriStyle.RemindUpdates.Value && confirm(SeriStyleLocales["en-US"].Messages.UpdateSettings))
+				Environment.runtime.sendMessage({ Operation: "SeriStyle_OpenURL", Args: ["html/config.html"] });
+		}
+	}
+})();
+
 var GeneralTransformerBurned = false;
 
 var GT_Burn1 = false;
@@ -62,8 +73,6 @@ var ChannelPageInterval = setInterval(() => {
 	}
 }, SeriStyleSettings.Advanced.ChannelPageInterval.Value);
 
-
-
 Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-css.js"] });
 console.log("[SeriStyle|Observer] Burned transformer: CSS.");
 Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-launch.js"] });
@@ -74,7 +83,5 @@ PageObserver.observe(document.querySelector("ytd-app"), {
 	subtree: true
 });
 
-VPT_Burn1 = !!document.querySelector("div#owner");
-VPT_Burn2 = !!document.querySelector(".view-count");
 GT_Burn1 = !!document.querySelector("#search-icon-legacy>yt-icon.ytd-searchbox");
 GT_Burn2 = !!document.querySelector("#voice-search-button yt-icon");

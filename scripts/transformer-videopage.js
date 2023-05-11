@@ -73,54 +73,39 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"ytd-item-section-renderer.ytd-watch-next-secondary-results-renderer{margin-top:calc(0px - var(--ytd-item-section-item-margin));}" + // TODO: Force usage of margin-bottom instead of margin-top
 			// Chat things
 			(SeriStyleSettings.VideoPage.HidePremiere.Value ? "#chat.ytd-watch-flexy{display:none;}" : "#show-hide-button.ytd-live-chat-frame{margin-bottom:2px;}") +
+			// Force hide immersive
+			"#cinematics{display:none;}" +
+			// Fix playlist panel colors
+			(SeriStyleSettings.VideoPage.FixPlaylistColor.Value && SeriStyleSettings.General.OldColors.Value ?
+				"#items.playlist-items{background:#181818;}" +
+				".header.ytd-playlist-panel-renderer{background:#212121FA;}"
+				: "") +
+			(SeriStyleSettings.VideoPage.HideJoinButton.Value ? "#sponsor-button{display:none;}" : "") +
 			//
 			""
 		).replaceAll(/(?<!!important);/g, "!important;"), // <3 yt
 	"id": "seristyle-tf-videopage"
 }));
 
-var ActionBarEventListeners = [
-	async (Inserted, Removed, Remained) => {
-		if (Inserted.length > 0 && Inserted.some(Element => !IsVisible(Element))) return;
-		var AddToPlaylist = FindByExel(Remained, ExelAddToPlaylist) || FindByExel(Inserted, ExelAddToPlaylist);
-		var CreateClip = FindByExel(Remained, ExelCreateClip) || FindByExel(Inserted, ExelCreateClip);
-		var Modded = FindByExel(Remained, ExelInjectedAddToPlaylist) || FindByExel(Inserted, ExelInjectedAddToPlaylist);
-		if (AddToPlaylist) {
-			CreateClip?.remove();
-			if (Modded) {
-				Modded.querySelector("yt-icon").innerHTML = SvgCreateClip;
-				Modded.classList.remove("seristyle-ax-mcc");
-				Modded.remove();
-			}
-			AddToPlaylist.classList.add("seristyle-ax-iatp");
-		} else if (!Modded && CreateClip) {
-			return console.log("[SeriStyle|Videopage] CreateClip modder is temporarily disabled...");
-			AddToPlaylist = CreateClip;
+const ActionBarFn = function (Inserted) {
+	// They usually don't come in amounts greater than 2, but we'll do it nevertheless:
+	var Icons = Inserted.filter(Element => Element.tagName == "DIV" && Element.children[0]?.tagName == "svg");
 
-			var InteractBtn = await FindATPInteract();
-			if (!InteractBtn)
-				return;
+	var AddToPlaylist = FindByExel(Icons, ExelAddToPlaylist);
 
-			AddToPlaylist.onclick = ATPonClick;
-			AddToPlaylist.querySelector("span").innerText = InteractBtn.innerText;
-			AddToPlaylist.lastElementChild.firstElementChild.innerText = `\n  ${InteractBtn.innerText}\n`;
-			AddToPlaylist.classList.add("seristyle-ax-mcc");
-		} else if (Modded && Modded.className.includes("seristyle-ax-mcc")) {
-			return console.log("[SeriStyle|Videopage] CreateClip modder is temporarily disabled...");
-			var InteractBtn = await FindATPInteract(); // jshint ignore: line
-			if (!InteractBtn) {
-				Modded.querySelector("yt-icon").innerHTML = SvgCreateClip;
-				Modded.classList.remove("seristyle-ax-mcc");
-			}
-
-			Modded.onclick = ATPonClick;
-			Modded.querySelector("span").innerText = InteractBtn.innerText;
-			Modded.lastElementChild.firstElementChild.innerText = `\n  ${InteractBtn.innerText}\n`;
-			return;
-		} else return;
-		AddToPlaylist.querySelector("yt-icon").innerHTML = SvgAddToPlaylist;
+	if (AddToPlaylist) {
+		AddToPlaylist.innerHTML = SvgAddToPlaylist;
 	}
-];
+
+	if (SeriStyleSettings.VideoPage.HideCreateClipButton.Value) {
+		var CreateClip = FindByExel(Icons, ExelCreateClip);
+		CreateClip?.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+	}
+	if (SeriStyleSettings.VideoPage.HideDonateButton.Value) {
+		var Thanks = FindByExel(Icons, ExelDonate);
+		Thanks?.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+	}
+};
 
 const Reinject = () => {
 	try {
@@ -137,27 +122,18 @@ const Reinject = () => {
 		if (_ = $(SelTopRow).attributes.style) _.value = "";
 
 		(new MutationObserver(async Mutations => {
-			// Wait for changes to settle, unfortunately needed and I can't come up with a fix even after an attempted full rewrite
-			await WaitTime(SeriStyleSettings.Advanced.InjectedSettleTime.Value);
-
 			var Inserted = [];
-			var Removed = [];
-			var Remained = [];
 			Mutations.forEach(Mutation => {
 				for (let i = 0; i < Mutation.addedNodes.length; i++) {
 					Inserted.push(Mutation.addedNodes[i]);
 				}
-				for (let i = 0; i < Mutation.removedNodes.length; i++) {
-					Removed.push(Mutation.removedNodes[i]);
-				}
 			});
-			Remained = $$(SelFlexibleButtons).filter(Element => !(Inserted.some(IElement => Element.isEqualNode(IElement)) || Inserted.some(RElement => Element.isEqualNode(RElement))));
-			ActionBarEventListeners.forEach(async Listener => await Listener(Inserted, Removed, Remained));
-		})).observe($(SelFlexibleButtonsBar), { // Should be GC'd because the bar should be completely regenerated on reinject cond
-			childList: true
-		});
 
-		ActionBarEventListeners.forEach(async Listener => await Listener([], [], $$(SelFlexibleButtons)));
+			ActionBarFn(Inserted);
+		})).observe($(SelFlexibleButtonsBar), { // Should be GC'd because the bar should be completely regenerated on reinject cond
+			childList: true,
+			subtree: true
+		});
 	} catch (Exception) {
 		console.log("[SeriStyle|Videopage] There was an error during the injection process:");
 		console.log(Exception);

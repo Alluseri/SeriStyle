@@ -1,17 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
 	Array.from(document.querySelectorAll('[inject-href]')).forEach(Element => {
-		var OPath = Element.attributes["inject-href"].value;
+		/*var OPath = Element.attributes["inject-href"].value;
 		if (OPath[0] == ':') {
 			var CPath = document.location.href;
 			CPath = CPath.substring(0, CPath.lastIndexOf('/'));
 			OPath = OPath.replace(':', CPath);
 		}
-		Element.onclick = () => window.open(OPath);
+		Element.onclick = () => window.open(OPath);*/
+		Element.onclick = () => window.open(Element.attributes["inject-href"].value);
 	});
 	document.getElementById("low-i-debug").onclick = async () => {
 		var DebugInfo = [
-			"- SeriStyle v1.9.1",
-			"- " + navigator.userAgent
+			"- SeriStyle v1.10.0",
+			"- " + navigator.userAgent,
+			"- " + StorageMode
 		];
 		try {
 			await navigator.clipboard.writeText(DebugInfo.join("\r\n"));

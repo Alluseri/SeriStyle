@@ -27,7 +27,7 @@
 	}
 
 	this.$ = document.querySelector.bind(document);
-	this.$$ = (Query) => Array.from(document.querySelectorAll(Query));
+	this.$$ = Query => Array.from(document.querySelectorAll(Query));
 
 	if (!document.location.href.includes("youtube")) return;
 

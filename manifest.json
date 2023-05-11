@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "SeriStyle",
 	"author": "Nekoseri",
-	"version": "1.9.1",
+	"version": "1.10.0",
 	"description": "Bring the early-2021 UI back to YouTube!",
 	"icons": {
 		"16": "icons/default16.png",
@@ -21,7 +21,7 @@
 		"scripting"
 	],
 	"host_permissions": [
-		"*://*.youtube.com/*"
+		"*://www.youtube.com/*"
 	],
 	"background": {
 		"service_worker": "bgworker.js"
@@ -29,7 +29,7 @@
 	"content_scripts": [
 		{
 			"matches": [
-				"*://*.youtube.com/*"
+				"*://www.youtube.com/*"
 			],
 			"js": [
 				"/scripts/defaults.js",

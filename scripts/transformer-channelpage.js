@@ -18,7 +18,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			SelContents + ">.style-scope{flex-direction:column;align-items:center;}" +
 			SelHeader + ">.style-scope>.style-scope{background:none;}"
 		).replaceAll(/(?<!!important);/g, "!important;"),
-	"id": "seristyle-tf-playlist"
+	"id": "seristyle-tf-channelpage"
 }));
 
 $(SelContents).firstElementChild.firstElementChild.firstElementChild.prepend($(SelHeader));

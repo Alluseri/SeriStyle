@@ -40,6 +40,7 @@ function Navigate(Category) {
 					onclick: function () {
 						console.log(this.checked);
 						(Modified[this.ss_category] = Modified[this.ss_category] || {})[this.ss_key] = this.ss_meta.Value = this.checked;
+						Environment.storage.sync.set({ "ss_metaver": SeriStyleMetaVersion });
 					}
 				}));
 				var Span = DomUtils.BuildElement("span", { innerText: SettingMeta.Name[Language] });
@@ -55,6 +56,7 @@ function Navigate(Category) {
 					onchange: function () {
 						console.log(this.value);
 						(Modified[this.ss_category] = Modified[this.ss_category] || {})[this.ss_key] = this.ss_meta.Value = this.value;
+						Environment.storage.sync.set({ "ss_metaver": SeriStyleMetaVersion });
 					}
 				});
 				for (var Value in SettingMeta.Picks[Language])
@@ -79,6 +81,7 @@ function Navigate(Category) {
 					oninput: function () {
 						console.log(this.value);
 						this.nextElementSibling.innerText = this.ss_meta.Format[Language].replace("$", (Modified[this.ss_category] = Modified[this.ss_category] || {})[this.ss_key] = this.ss_meta.Value = this.value);
+						Environment.storage.sync.set({ "ss_metaver": SeriStyleMetaVersion });
 					}
 				}));
 				SettingDiv.appendChild(DomUtils.BuildElement("span", { innerText: SettingMeta.Format[Language].replace("$", SettingMeta.Value) }));
@@ -106,7 +109,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 	} catch (ex) {
 		Modified = {};
 		Fail = true;
-		alert("You're running in storageless mode and will be using default settings.\nAre you using Firefox?");
+		alert("You're running in storageless mode and will be using default settings.\nAre you using a Firefox fork?");
 		console.log(ex);
 	}
 
@@ -123,6 +126,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 			Environment.storage.sync.set({ ss_settings: Modified });
 			document.location.reload();
 		};
+
+		/*document.getElementById("btn-resetmeta").onclick = () => {
+			Environment.storage.sync.set({ ss_metaver: -1 });
+			document.location.reload();
+		};*/
 	}
 
 	var Nav = document.getElementById("navigation");

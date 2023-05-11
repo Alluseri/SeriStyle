@@ -1,6 +1,5 @@
 var SelMenuPanel = ".ytp-settings-menu>.ytp-panel>.ytp-panel-menu";
 
-// Hopefully the panel persists and so does the observer. TODO Needs testing.
 new MutationObserver(Mutations => {
 	var Inserted = [];
 	Mutations.forEach(Mutation => {
@@ -10,6 +9,13 @@ new MutationObserver(Mutations => {
 	});
 
 	FindByExel(Inserted, ExelImmersive)?.remove();
+
+	if (SeriStyleSettings.VideoPlayer.SettingsMenuMode.Value == 1) {
+		FindByExel(Inserted, ExelAnnotations)?.firstElementChild?.firstElementChild?.remove();
+		FindByExel(Inserted, ExelPlaybackSpeed)?.firstElementChild?.firstElementChild?.remove();
+		FindByExel(Inserted, ExelSubtitles)?.firstElementChild?.firstElementChild?.remove();
+		FindByExel(Inserted, ExelQuality)?.firstElementChild?.firstElementChild?.remove();
+	}
 }).observe($(SelMenuPanel), {
 	childList: true
 });
