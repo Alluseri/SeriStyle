@@ -1,4 +1,4 @@
-this.SeriStyleMetaVersion = 1;
+this.SeriStyleMetaVersion = 2;
 
 this.SeriStyleLocales = {
 	"en-US": {
@@ -18,12 +18,10 @@ this.SeriStyleLocales = {
 			Advanced: "Advanced settings"
 		},
 		Messages: {
-			UpdateSettings: "SeriStyle was updated to version 1.10.0, which introduced new settings!\n\nDo you want to visit the settings page(opens in a new tab)?"
+			UpdateSettings: "SeriStyle was updated to version 1.11.0, which introduced new settings!\n\nDo you want to visit the settings page(opens in a new tab)?"
 		}
 	}
 };
-
-
 
 this.SeriStyleSettings = {
 	SeriStyle: {
@@ -101,6 +99,12 @@ this.SeriStyleSettings = {
 		}
 	},
 	VideoPage: {
+		BlueAccent: {
+			Kind: 0,
+			Name: {
+				"en-US": "Old accent color on action bar"
+			}
+		},
 		HideDownloadButton: {
 			Kind: 0,
 			Name: {
@@ -211,6 +215,20 @@ this.SeriStyleSettings = {
 				"en-US": "Half the spaces around sorting buttons"
 			},
 			Value: true
+		},
+		NoSponsors: {
+			Kind: 0,
+			Name: {
+				"en-US": "Hide the \"Channel sponsors\" section"
+			},
+			Value: true
+		},
+		TrueOld: {
+			Kind: 0,
+			Name: {
+				"en-US": "True Old UI"
+			},
+			Value: true
 		}
 	},
 	Playlist: {
@@ -249,6 +267,17 @@ this.SeriStyleSettings = {
 			Range: [10, 1000],
 			Name: {
 				"en-US": "Delay after opening the \"More Actions\" menu for mCC"
+			},
+			Value: 200,
+			Format: {
+				"en-US": "$ms"
+			}
+		},
+		OldIconInterval: {
+			Kind: 2,
+			Range: [0, 5000],
+			Name: {
+				"en-US": "Old icon observer update interval"
 			},
 			Value: 200,
 			Format: {
@@ -337,6 +366,7 @@ this.DomUtils = {
 	}
 };
 
+this.GetExel = (Element) => btoa(Element?.querySelector("path")?.attributes.d?.value);
 this.MatchesExel = (Element, ExelArg) => btoa(Element?.querySelector("path")?.attributes.d?.value) == ExelArg;
 this.FindByExel = (Elements, ExelArg) => Elements.find(x => btoa(x?.querySelector("path")?.attributes.d?.value) == ExelArg);
 this.FindAllByExel = (Elements, ExelArg) => Elements.filter(x => btoa(x?.querySelector("path")?.attributes.d?.value) == ExelArg);
@@ -352,8 +382,11 @@ this.ExelImmersive = "TTIxIDd2MTBIM1Y3aDE4bTEtMUgydjEyaDIwVjZ6TTExLjUgMnYzaDFWMm
 this.ExelDonate = "TTExIDE3aDJ2LTFoMWMuNTUgMCAxLS40NSAxLTF2LTNjMC0uNTUtLjQ1LTEtMS0xaC0zdi0xaDRWOGgtMlY3aC0ydjFoLTFjLS41NSAwLTEgLjQ1LTEgMXYzYzAgLjU1LjQ1IDEgMSAxaDN2MUg5djJoMnYxem01LjUtMTVjLTEuNzQgMC0zLjQxLjg4LTQuNSAyLjI4QzEwLjkxIDIuODggOS4yNCAyIDcuNSAyIDQuNDIgMiAyIDQuNjQgMiA3Ljk5YzAgNC4xMiAzLjQgNy40OCA4LjU1IDEyLjU4TDEyIDIybDEuNDUtMS40NEMxOC42IDE1LjQ3IDIyIDEyLjExIDIyIDcuOTkgMjIgNC42NCAxOS41OCAyIDE2LjUgMnptLTMuNzUgMTcuODUtLjc1Ljc0LS43NC0uNzMtLjA0LS4wNEM2LjI3IDE0LjkyIDMgMTEuNjkgMyA3Ljk5IDMgNS4xOSA0Ljk4IDMgNy41IDNjMS40IDAgMi43OS43MSAzLjcxIDEuODlMMTIgNS45bC43OS0xLjAxQzEzLjcxIDMuNzEgMTUuMSAzIDE2LjUgMyAxOS4wMiAzIDIxIDUuMTkgMjEgNy45OWMwIDMuNy0zLjI4IDYuOTQtOC4yNSAxMS44Nno=";
 this.ExelAnnotations = "TTE3LjUsN2MxLjkzLDAsMy41LDEuNTcsMy41LDMuNWMwLDEtMC41Myw0LjUtMC44NSw2LjVoLTIuMDJsMC4yNC0xLjg5bDAuMTQtMS4wOWwtMS4xLTAuMDNDMTUuNSwxMy45NCwxNCwxMi40LDE0LDEwLjUgQzE0LDguNTcsMTUuNTcsNywxNy41LDcgICAgICAgICAgICAgTTYuNSw3QzguNDMsNywxMCw4LjU3LDEwLDEwLjVjMCwxLTAuNTMsNC41LTAuODUsNi41SDcuMTNsMC4yNC0xLjg5bDAuMTQtMS4wOWwtMS4xLTAuMDMgQzQuNSwxMy45NCwzLDEyLjQsMywxMC41QzMsOC41Nyw0LjU3LDcsNi41LDcgICAgICAgICAgICAgTTE3LjUsNkMxNS4wMSw2LDEzLDguMDEsMTMsMTAuNWMwLDIuNDQsMS45NSw0LjQyLDQuMzgsNC40OUwxNywxOGg0YzAsMCwxLTYsMS03LjUgQzIyLDguMDEsMTkuOTksNiwxNy41LDZMMTcuNSw2eiAgICAgICAgICAgICBNNi41LDZDNC4wMSw2LDIsOC4wMSwyLDEwLjVjMCwyLjQ0LDEuOTUsNC40Miw0LjM4LDQuNDlMNiwxOGg0YzAsMCwxLTYsMS03LjUgQzExLDguMDEsOC45OSw2LDYuNSw2TDYuNSw2eg==";
 this.ExelPlaybackSpeed = "TTEwLDh2OGw2LTRMMTAsOEwxMCw4eiBNNi4zLDVMNS43LDQuMkM3LjIsMyw5LDIuMiwxMSwybDAuMSwxQzkuMywzLjIsNy43LDMuOSw2LjMsNXogICAgICAgICAgICBNNSw2LjNMNC4yLDUuN0MzLDcuMiwyLjIsOSwyLDExIGwxLC4xQzMuMiw5LjMsMy45LDcuNyw1LDYuM3ogICAgICAgICAgICBNNSwxNy43Yy0xLjEtMS40LTEuOC0zLjEtMi00LjhMMiwxM2MwLjIsMiwxLDMuOCwyLjIsNS40TDUsMTcuN3ogICAgICAgICAgICBNMTEuMSwyMWMtMS44LTAuMi0zLjQtMC45LTQuOC0yIGwtMC42LC44QzcuMiwyMSw5LDIxLjgsMTEsMjJMMTEuMSwyMXogICAgICAgICAgICBNMjIsMTJjMC01LjItMy45LTkuNC05LTEwbC0wLjEsMWM0LjYsLjUsOC4xLDQuMyw4LjEsOXMtMy41LDguNS04LjEsOWwwLjEsMSBDMTguMiwyMS41LDIyLDE3LjIsMjIsMTJ6";
-this.ExelSubtitles = "TTYsMTR2LTRjMC0wLjU1LC40NS0xLDEtMWgzYzAuNTUsMCwxLC40NSwxLDF2MUg5LjV2LTAuNWgtMnYzaDJWMTNIMTF2MWMwLC41NS0wLjQ1LDEtMSwxSDdDNi40NSwxNSw2LDE0LjU1LDYsMTR6ICAgICAgICAgICAgTTE0LDE1aDNjMC41NSwwLDEtMC40NSwxLTF2LTFoLTEuNXYwLjVoLTJ2LTNoMlYxMUgxOHYtMWMwLTAuNTUtMC40NS0xLTEtMWgtM2MtMC41NSwwLTEsLjQ1LTEsMXY0QzEzLDE0LjU1LDEzLjQ1LDE1LDE0LDE1eiAgICAgICAgICAgIE0yMCw0SDR2MTZoMTZWNCBNMjEsM3YxOEgzVjMuMDFDMywzLDMsMywzLjAxLDNIMjFMMjEsM3o=";
+this.ExelOldSubtitles = "TTYsMTR2LTRjMC0wLjU1LC40NS0xLDEtMWgzYzAuNTUsMCwxLC40NSwxLDF2MUg5LjV2LTAuNWgtMnYzaDJWMTNIMTF2MWMwLC41NS0wLjQ1LDEtMSwxSDdDNi40NSwxNSw2LDE0LjU1LDYsMTR6ICAgICAgICAgICAgTTE0LDE1aDNjMC41NSwwLDEtMC40NSwxLTF2LTFoLTEuNXYwLjVoLTJ2LTNoMlYxMUgxOHYtMWMwLTAuNTUtMC40NS0xLTEtMWgtM2MtMC41NSwwLTEsLjQ1LTEsMXY0QzEzLDE0LjU1LDEzLjQ1LDE1LDE0LDE1eiAgICAgICAgICAgIE0yMCw0SDR2MTZoMTZWNCBNMjEsM3YxOEgzVjMuMDFDMywzLDMsMywzLjAxLDNIMjFMMjEsM3o=";
+this.ExelSubtitles = "TTUsMTFoMnYySDVWMTF6IE0xNSwxNUg1djJoMTBWMTV6IE0xOSwxNWgtMnYyaDJWMTV6IE0xOSwxMUg5djJoMTBWMTF6IE0yMiw2SDJ2MTRoMjBWNnogTTMsN2gxOHYxMkgzVjd6";
 this.ExelQuality = "TTE1LDE3aDZ2MWgtNlYxN3ogTTExLDE3SDN2MWg4djJoMXYtMnYtMXYtMmgtMVYxN3ogTTE0LDhoMVY2VjVWM2gtMXYySDN2MWgxMVY4eiAgICAgICAgICAgIE0xOCw1djFoM1Y1SDE4eiBNNiwxNGgxdi0ydi0xVjlINnYySDN2MSBoM1YxNHogTTEwLDEyaDExdi0xSDEwVjEyeg==";
+this.ExelVerified = "TTEyIDJDNi41IDIgMiA2LjUgMiAxMnM0LjUgMTAgMTAgMTAgMTAtNC41IDEwLTEwUzE3LjUgMiAxMiAyek05LjggMTcuM2wtNC4yLTQuMUw3IDExLjhsMi44IDIuN0wxNyA3LjRsMS40IDEuNC04LjYgOC41eg==";
+this.ExelProducer = "TTEyIDR2OS4zOGMtLjczLS44NC0xLjgtMS4zOC0zLTEuMzgtMi4yMSAwLTQgMS43OS00IDRzMS43OSA0IDQgNCA0LTEuNzkgNC00VjhoNlY0aC03eg==";
 
 this.SvgCreateClip = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M8,7c0,0.55-0.45,1-1,1S6,7.55,6,7c0-0.55,0.45-1,1-1S8,6.45,8,7z M7,16c-0.55,0-1,0.45-1,1c0,0.55,0.45,1,1,1s1-0.45,1-1 C8,16.45,7.55,16,7,16z M10.79,8.23L21,18.44V20h-3.27l-5.76-5.76l-1.27,1.27C10.89,15.97,11,16.47,11,17c0,2.21-1.79,4-4,4 c-2.21,0-4-1.79-4-4c0-2.21,1.79-4,4-4c0.42,0,0.81,0.08,1.19,0.2l1.37-1.37l-1.11-1.11C8,10.89,7.51,11,7,11c-2.21,0-4-1.79-4-4 c0-2.21,1.79-4,4-4c2.21,0,4,1.79,4,4C11,7.43,10.91,7.84,10.79,8.23z M10.08,8.94L9.65,8.5l0.19-0.58C9.95,7.58,10,7.28,10,7 c0-1.65-1.35-3-3-3S4,5.35,4,7c0,1.65,1.35,3,3,3c0.36,0,0.73-0.07,1.09-0.21L8.7,9.55l0.46,0.46l1.11,1.11l0.71,0.71l-0.71,0.71 L8.9,13.91l-0.43,0.43l-0.58-0.18C7.55,14.05,7.27,14,7,14c-1.65,0-3,1.35-3,3c0,1.65,1.35,3,3,3s3-1.35,3-3 c0-0.38-0.07-0.75-0.22-1.12l-0.25-0.61L10,14.8l1.27-1.27l0.71-0.71l0.71,0.71L18.15,19H20v-0.15L10.08,8.94z M17.73,4H21v1.56 l-5.52,5.52l-2.41-2.41L17.73,4z M18.15,5l-3.67,3.67l1,1L20,5.15V5H18.15z" class="style-scope yt-icon"></path></g></svg>';
 this.SvgAddToPlaylist = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z" class="style-scope yt-icon"></path></g></svg>';
@@ -364,3 +397,6 @@ this.SvgActionMenu = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid mee
 this.SvgSearch = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" class="style-scope yt-icon"></path></g></svg>';
 this.SvgMic = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z" class="style-scope yt-icon"></path></g></svg>';
 this.SvgMenu = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" class="style-scope yt-icon"></path></g></svg>';
+
+this.PathVerified = "M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10 S17.52,2,12,2z M9.92,17.93l-4.95-4.95l2.05-2.05l2.9,2.9l7.35-7.35l2.05,2.05L9.92,17.93z";
+this.PathProducer = "M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z";

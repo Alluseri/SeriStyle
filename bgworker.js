@@ -21,4 +21,13 @@
 				return;
 		}
 	});
+	env.webNavigation.onHistoryStateUpdated.addListener(function(Data) {
+		if (Data == null || !Data.url.includes("youtube")) return;
+		try {
+			console.log(Data);
+			env.tabs.sendMessage(Data.tabId, { Operation: "SeriStyle_HistoryState", Args: [Data.url] });
+		} catch {
+			console.log("Receiving end error.", JSON.stringify(Data, null, "\t"));
+		}
+	});
 })();

@@ -1,6 +1,7 @@
 var SelSearchIcon = "#search-icon-legacy>yt-icon.ytd-searchbox";
 var SelMicIcon = "#voice-search-button yt-icon";
 var SelMenuIcon = "#guide-icon.ytd-masthead";
+var _;
 
 document.head.appendChild(DomUtils.BuildElement("style", {
 	"innerText":
@@ -21,6 +22,17 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 $(SelSearchIcon).innerHTML = SvgSearch;
 $(SelMicIcon).innerHTML = SvgMic;
 $(SelMenuIcon).innerHTML = SvgMenu;
+
+setInterval(function() { // It's not my problem that everyone is stupid enough not to fix Subtree MutationObserver for the whole existence of this class
+	$$("path").forEach(Element => {
+		var Exel = btoa(Element.attributes.d?.value);
+		if (Exel == ExelVerified) {
+			Element.attributes.d.value = PathVerified;
+		} else if (Exel == ExelProducer) {
+			Element.attributes.d.value = PathProducer;
+		}
+	});
+}, SeriStyleSettings.Advanced.OldIconInterval.Value);
 
 function FixContentHTML(Element, Metadata) {
 	console.log(Element);

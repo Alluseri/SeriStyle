@@ -2,6 +2,8 @@
 
 var SelSubPassiveBtn = "#subscribe-button yt-button-shape>button";
 var SelSubContainer = "yt-smartimation.ytd-subscribe-button-renderer"; // Alt: #subscribe-button yt-smartimation
+var SelMeta = "#meta.ytd-c4-tabbed-header-renderer";
+var SelMetaSpan = SelMeta+">span.meta-item";
 
 // TODO: Merge general button styles
 document.head.appendChild(DomUtils.BuildElement("style", {
@@ -136,7 +138,24 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				"ytd-playlist-video-renderer{border-radius:0px;}" +
 				//
 				""
-			)
+			) +
+
+			/* Channel Page */
+			(SeriStyleSettings.ChannelPage.TrueOld.Value ?
+				SelMetaSpan + "{margin:0;}" +
+				SelMetaSpan + ">#channel-handle{display:none;}" +
+				SelMetaSpan + ">#videos-count{display:none;}" +
+				SelMeta+">#channel-tagline{display:none;}" +
+				"#channel-header-container.ytd-c4-tabbed-header-renderer{padding-top:0px;align-items:center;}" +
+				"#channel-header-container.ytd-c4-tabbed-header-renderer>#avatar{width:80px;height:80px;margin-bottom:0px;}" +
+				"#inner-header-container.ytd-c4-tabbed-header-renderer{margin-top:0px;}"
+			: "") +
+			(SeriStyleSettings.General.OldColors.Value ?
+				"#channel-header.ytd-c4-tabbed-header-renderer, #tabs-inner-container.ytd-c4-tabbed-header-renderer{background:#181818;}" +
+				"ytd-browse[page-subtype='channels'] {background:#0F0F0F;}"
+			: "") +
+			(SeriStyleSettings.ChannelPage.NoSponsors.Value ? "ytd-recognition-shelf-renderer{display:none;}" : "") +
+			""
 		).replaceAll(/(?<!!important);/g, "!important;"),
 	"id": "seristyle-tf-css"
 }));

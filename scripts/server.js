@@ -17,7 +17,7 @@
 						SeriStyleSettings[Category][Setting].Value = Modified[Category][Setting];
 					} catch {
 						Modified[Category][Setting] = undefined;
-						console.log("Removed " + Category + "." + Setting + " due to absence in defaults.");
+						console.log("[SeriStyle|INFO] Removed " + Category + "." + Setting + " due to absence in defaults.");
 					}
 		}
 	} catch (ex) {

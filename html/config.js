@@ -113,8 +113,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 		console.log(ex);
 	}
 
-	Language = SeriStyleSettings.SeriStyle.Language.Value;
-	Array.from(document.getElementsByClassName("localize")).forEach(Element => Element.innerText = window.SeriStyleLocales[Language].HTML[Element.id]);
+	var KLanguage = window.SeriStyleLocales[Language = SeriStyleSettings.SeriStyle.Language.Value] || window.SeriStyleLocales[Language = SeriStyleSettings.SeriStyle.Language.Value = "en-US"];
+	Array.from(document.getElementsByClassName("localize")).forEach(Element => Element.innerText = KLanguage.HTML[Element.id]);
 
 	if (!Fail) {
 		document.getElementById("btn-reset").onclick = () => {
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 		Nav.appendChild(DomUtils.BuildElement("button", {
 			className: "modern-tab",
 			value: "",
-			innerText: window.SeriStyleLocales[Language].Categories[Category],
+			innerText: KLanguage.Categories[Category],
 			navtab: Category,
 			onclick: function () {
 				Navigate(this.navtab);

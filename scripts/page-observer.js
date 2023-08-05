@@ -11,6 +11,12 @@ var Environment = this.browser || this.chrome;
 	}
 })();
 
+Environment.runtime.onMessage.addListener((Message) => {
+	if (Message.Operation != "SeriStyle_HistoryState") return;
+	var URL = Message.Args[0];
+	window.dispatchEvent(new CustomEvent("historychange", {detail: Message.Args[0]}));
+});
+
 var GeneralTransformerBurned = false;
 
 var GT_Burn1 = false;
@@ -45,38 +51,38 @@ var PageObserver = new MutationObserver(async Mutations => {
 });
 
 var VideoPageInterval = setInterval(() => {
-	if (document.querySelector("div#owner") && document.querySelector(".view-count")) {
+	if (document.querySelector("div#owner") && (document.querySelector(".view-count") || document.querySelector("#title > ytd-badge-supported-renderer > div > span"))) {
 		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-videopage.js"] });
 		clearInterval(VideoPageInterval);
-		console.log("[SeriStyle|Observer] Burned transformer: Videopage.");
+		console.log("[SeriStyle|Interval] Burned transformer: Videopage.");
 	}
 }, SeriStyleSettings.Advanced.VideoPageInterval.Value);
 var PlaylistInterval = setInterval(() => {
 	if (document.querySelector("ytd-menu-renderer.ytd-playlist-header-renderer")) {
 		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-playlist.js"] });
 		clearInterval(PlaylistInterval);
-		console.log("[SeriStyle|Observer] Burned transformer: Playlist.");
+		console.log("[SeriStyle|Interval] Burned transformer: Playlist.");
 	}
 }, SeriStyleSettings.Advanced.PlaylistInterval.Value);
 var VideoPlayerInterval = setInterval(() => {
 	if (document.querySelector(".ytp-settings-menu>.ytp-panel>.ytp-panel-menu")) {
 		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-videoplayer.js"] });
 		clearInterval(VideoPlayerInterval);
-		console.log("[SeriStyle|Observer] Burned transformer: VideoPlayer.");
+		console.log("[SeriStyle|Interval] Burned transformer: VideoPlayer.");
 	}
 }, SeriStyleSettings.Advanced.VideoPlayerInterval.Value);
 var ChannelPageInterval = setInterval(() => {
 	if (document.querySelector("ytd-browse[page-subtype='channels'] #contents.ytd-rich-grid-renderer") && document.querySelector("ytd-browse[page-subtype='channels'] #header.ytd-rich-grid-renderer")) {
 		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-channelpage.js"] });
 		clearInterval(ChannelPageInterval);
-		console.log("[SeriStyle|Observer] Burned transformer: ChannelPage.");
+		console.log("[SeriStyle|Interval] Burned transformer: ChannelPage.");
 	}
 }, SeriStyleSettings.Advanced.ChannelPageInterval.Value);
 
 Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-css.js"] });
-console.log("[SeriStyle|Observer] Burned transformer: CSS.");
+console.log("[SeriStyle|Direct] Burned transformer: CSS.");
 Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-launch.js"] });
-console.log("[SeriStyle|Observer] Burned transformer: Launch.");
+console.log("[SeriStyle|Direct] Burned transformer: Launch.");
 
 PageObserver.observe(document.querySelector("ytd-app"), {
 	childList: true,

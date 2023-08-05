@@ -81,6 +81,8 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				".header.ytd-playlist-panel-renderer{background:#212121FA;}"
 				: "") +
 			(SeriStyleSettings.VideoPage.HideJoinButton.Value ? "#sponsor-button{display:none;}" : "") +
+			// Hide "Shorts with this video" shelf
+			"#contents>ytd-reel-shelf-renderer{display:none;}" +
 			//
 			""
 		).replaceAll(/(?<!!important);/g, "!important;"), // <3 yt
@@ -144,10 +146,33 @@ const Reinject = () => {
 $(SelBottomRow).prepend($(SelOwner));
 
 // Create span
-$(SelTopRow).prepend(DomUtils.BuildElement("div", { id: "seristyle_oldpanel" }, [
-	(x => ((x.className = (x.className + " seristyle_subpanel seristyle_firstpanel").replace("yt-formatted-string ", "")), x))($(SelViews)),
-	(x => ((x.className += " seristyle_subpanel"), x))($(SelFullDate))
-]));
+var Views = $(SelViews);
+if (Views) {
+	$(SelTopRow).prepend(DomUtils.BuildElement("div", { id: "seristyle_oldpanel" }, [
+		(x => ((x.className = (x.className + " seristyle_subpanel seristyle_firstpanel").replace("yt-formatted-string ", "")), x))($(SelViews)),
+		(x => ((x.className += " seristyle_subpanel"), x))($(SelFullDate))
+	]));
+} else {
+	console.log("[SeriStyle|Videopage] No view count found, video must be sponsored. Locking redirects.");
+	document.head.appendChild(DomUtils.BuildElement("style", {
+		"innerText":
+			(
+				".html5-ypc-endscreen{display:flex;flex-direction:row;justify-content:center;}" +
+				".html5-ypc-thumbnail{float:none;}" +
+				".html5-ypc-module{display:flex;flex-direction:column;align-items:center;}"
+			).replaceAll(/(?<!!important);/g, "!important;"), // <3 yt
+		"id": "seristyle-tf-fucksponsorships"
+	}));
+	$("#title > ytd-badge-supported-renderer > div > span").innerText = "I AM CRINGE AND I WANT MONEY FOR MY CONTENT";
+	const FuckThisURL = document.location.href;
+	window.addEventListener("historychange", function(Deets) {
+		var URL = Deets.detail;
+		if (URL != FuckThisURL) {
+			console.log("[SeriStyle|Videopage] Hard reloading the page after sponsorship lock.");
+			window.open(URL, "_self");
+		}
+	});
+}
 
 // New panels
 if (!SeriStyleSettings.Advanced.LegacyPanels.Value) {
