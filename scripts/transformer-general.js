@@ -36,16 +36,14 @@ setInterval(function() { // It's not my problem that everyone is stupid enough n
 
 var ShareUrl;
 var OldU;
-var FixShareIntv = setInterval(function() {
-	/*var Wax = $("body > ytd-app > ytd-popup-container > tp-yt-paper-dialog");
-	if (Wax) {
-		Wax.querySelector("ytd-unified-share-panel-renderer").querySelector("#contents").firstElementChild.querySelector("#copy-link").firstElementChild.firstElementChild.firstElementChild.value = "thighs";
-	}*/
-
+var FixShareIntv = setInterval(function() { // I hate the fact that you can't use intervals for checking value change, and on god I will not use Reflection for this
 	if (!ShareUrl) if (!(ShareUrl = document.getElementById("share-url"))) return; // It's a singleton from my observations at least
 	var SuVal = ShareUrl.value;
-	if (SuVal != OldU && SuVal.includes("?si=")) {
-		ShareUrl.value = OldU = SuVal.split("?si=")[0];
+	if (SuVal != OldU && SuVal.includes("si=")) {
+		// ShareUrl.value = OldU = SuVal.split("?si=")[0];
+		OldU = SuVal.replace(/&{0,1}si=.+?(&|$)/, "");
+		if (OldU.endsWith("?")) OldU = OldU.substr(0, OldU.length - 1); // Oh no, cringe
+		ShareUrl.value = OldU;
 	}
 }, SeriStyleSettings.Advanced.ShareFixInterval.Value);
 

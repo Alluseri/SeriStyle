@@ -18,7 +18,7 @@ this.SeriStyleLocales = {
 			Advanced: "Advanced settings"
 		},
 		Messages: {
-			UpdateSettings: "SeriStyle was updated to version 1.11.1, which introduced new settings!\n\nDo you want to visit the settings page(opens in a new tab)?"
+			UpdateSettings: "SeriStyle was updated to version 1.11.2, which introduced new settings!\n\nDo you want to visit the settings page(opens in a new tab)?"
 		}
 	}
 };
