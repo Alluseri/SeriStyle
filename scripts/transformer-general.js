@@ -34,6 +34,21 @@ setInterval(function() { // It's not my problem that everyone is stupid enough n
 	});
 }, SeriStyleSettings.Advanced.OldIconInterval.Value);
 
+var ShareUrl;
+var OldU;
+var FixShareIntv = setInterval(function() {
+	/*var Wax = $("body > ytd-app > ytd-popup-container > tp-yt-paper-dialog");
+	if (Wax) {
+		Wax.querySelector("ytd-unified-share-panel-renderer").querySelector("#contents").firstElementChild.querySelector("#copy-link").firstElementChild.firstElementChild.firstElementChild.value = "thighs";
+	}*/
+
+	if (!ShareUrl) if (!(ShareUrl = document.getElementById("share-url"))) return; // It's a singleton from my observations at least
+	var SuVal = ShareUrl.value;
+	if (SuVal != OldU && SuVal.includes("?si=")) {
+		ShareUrl.value = OldU = SuVal.split("?si=")[0];
+	}
+}, SeriStyleSettings.Advanced.ShareFixInterval.Value);
+
 function FixContentHTML(Element, Metadata) {
 	console.log(Element);
 	console.log(Metadata);
@@ -57,4 +72,3 @@ async function FixContent(Element) {
 	BotPanel.style.display = "none";
 	return FixContentHTML(Element, Metadata);
 }
-

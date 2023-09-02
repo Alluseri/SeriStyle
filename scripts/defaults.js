@@ -18,7 +18,7 @@ this.SeriStyleLocales = {
 			Advanced: "Advanced settings"
 		},
 		Messages: {
-			UpdateSettings: "SeriStyle was updated to version 1.11.0, which introduced new settings!\n\nDo you want to visit the settings page(opens in a new tab)?"
+			UpdateSettings: "SeriStyle was updated to version 1.11.1, which introduced new settings!\n\nDo you want to visit the settings page(opens in a new tab)?"
 		}
 	}
 };
@@ -280,6 +280,17 @@ this.SeriStyleSettings = {
 				"en-US": "Old icon observer update interval"
 			},
 			Value: 200,
+			Format: {
+				"en-US": "$ms"
+			}
+		},
+		ShareFixInterval: {
+			Kind: 2,
+			Range: [0, 5000],
+			Name: {
+				"en-US": "Share link fixer update interval"
+			},
+			Value: 180,
 			Format: {
 				"en-US": "$ms"
 			}
