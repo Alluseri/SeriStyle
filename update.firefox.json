@@ -73,6 +73,15 @@
 							"strict_min_version": "109"
 						}
 					}
+				},
+				{
+					"version": "1.11.3",
+					"update_link": "https://github.com/Alluseri/SeriStyle/releases/download/1.11.3/SeriStyle-1.11.3.xpi",
+					"applications": {
+						"gecko": {
+							"strict_min_version": "109"
+						}
+					}
 				}
 			]
 		}

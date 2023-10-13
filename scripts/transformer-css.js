@@ -3,7 +3,7 @@
 var SelSubPassiveBtn = "#subscribe-button yt-button-shape>button";
 var SelSubContainer = "yt-smartimation.ytd-subscribe-button-renderer"; // Alt: #subscribe-button yt-smartimation
 var SelMeta = "#meta.ytd-c4-tabbed-header-renderer";
-var SelMetaSpan = SelMeta+">span.meta-item";
+var SelMetaSpan = SelMeta + ">span.meta-item";
 
 // TODO: Merge general button styles
 document.head.appendChild(DomUtils.BuildElement("style", {
@@ -44,7 +44,8 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				"#notification-preference-button div.cbox{display:none;}" + // widest: "#notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.cbox.yt-spec-button-shape-next--button-text-content"
 				"#notification-preference-button div.yt-spec-button-shape-next__secondary-icon{display:none;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__secondary-icon
 				"#notification-preference-button div.yt-spec-button-shape-next__icon{margin-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__icon
-				"#notification-preference-button button{background:none;padding-right:0px;}" // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button
+				"#notification-preference-button button{background:none;padding-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button
+				"#notification-preference-button div.yt-spec-button-shape-next__button-text-content{display:none;}"
 				: "") +
 			// Fix notification bell
 			(!SeriStyleSettings.Advanced.LegacyImation.Value ?
@@ -145,15 +146,15 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				SelMetaSpan + "{margin:0;}" +
 				SelMetaSpan + ">#channel-handle{display:none;}" +
 				SelMetaSpan + ">#videos-count{display:none;}" +
-				SelMeta+">#channel-tagline{display:none;}" +
+				SelMeta + ">#channel-tagline{display:none;}" +
 				"#channel-header-container.ytd-c4-tabbed-header-renderer{padding-top:0px;align-items:center;}" +
 				"#channel-header-container.ytd-c4-tabbed-header-renderer>#avatar{width:80px;height:80px;margin-bottom:0px;}" +
 				"#inner-header-container.ytd-c4-tabbed-header-renderer{margin-top:0px;}"
-			: "") +
+				: "") +
 			(SeriStyleSettings.General.OldColors.Value ?
 				"#channel-header.ytd-c4-tabbed-header-renderer, #tabs-inner-container.ytd-c4-tabbed-header-renderer{background:#181818;}" +
 				"ytd-browse[page-subtype='channels'] {background:#0F0F0F;}"
-			: "") +
+				: "") +
 			(SeriStyleSettings.ChannelPage.NoSponsors.Value ? "ytd-recognition-shelf-renderer{display:none;}" : "") +
 			""
 		).replaceAll(/(?<!!important);/g, "!important;"),
