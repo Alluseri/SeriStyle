@@ -1,7 +1,7 @@
 // jshint -W014, -W086
 
-var SelSubPassiveBtn = "#subscribe-button yt-button-shape>button";
-var SelSubContainer = "yt-smartimation.ytd-subscribe-button-renderer"; // Alt: #subscribe-button yt-smartimation
+var SelSubPassiveBtn = "#subscribe-button-shape>button"; // Old: #subscribe-button yt-button-shape>button
+var SelSubContainer = "yt-smartimation.ytd-subscribe-button-renderer>.smartimation__content>__slot-el"; // [OLD] Alt: #subscribe-button yt-smartimation
 var SelMeta = "#meta.ytd-c4-tabbed-header-renderer";
 var SelMetaSpan = SelMeta + ">span.meta-item";
 
@@ -10,6 +10,8 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 	"innerText":
 		(
 			/* General */
+			// Remove "You"
+			"ytd-guide-collapsible-section-entry-renderer>#header{display:none;}" +
 			// Old search box styles
 			"#container.ytd-searchbox{" + (SeriStyleSettings.General.NormalizeSearchBar.Value ? "margin-left:0px;" : "") + "position:relative;align-items:center;border:1px solid var(--ytd-searchbox-legacy-border-color);border-right:none;border-radius:2px 0 0 2px;box-shadow:inset 0 1px 2px var(--ytd-searchbox-legacy-border-shadow-color);padding:2px 6px;flex:1;flex-basis:1e-9px;display:flex;flex-direction:row;}" +
 			// Prepare voice search button
@@ -31,24 +33,19 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				"#sponsor-button yt-button-shape>button{" + (SeriStyleSettings.VideoPage.HideJoinButton.Value ? "display:none;" : "text-transform:uppercase;background:none;border:1px solid #3EA6FF;color:#3EA6FF;border-radius:3px;") + "}" +
 				"#analytics-button yt-button-shape>button{text-transform:uppercase;background:#065FD4;color:#FFF;border-radius:3px;}"
 				: "") +
-			// Old subscribe button color & form
+			// Fix the Unsubscribe button
+			"ytd-subscribe-button-renderer{transition:none;width:unset;}" +
 			SelSubPassiveBtn + "{border-radius:3px;text-transform:uppercase;}" +
 			SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background:#C00;color:#FFF;}" + // "SUBSCRIBE" button, red color
-			(SeriStyleSettings.Advanced.LegacySubButton.Value
-				? SelSubPassiveBtn + ".yt-spec-button-shape-next--tonal{background:#2C2C2C;color:#A8A8A8;}"
-				: "#subscribe-button>ytd-subscribe-button-renderer>yt-smartimation>yt-button-shape>button{background:#2C2C2C;color:#A8A8A8;}"
-			) +
-			// Fix sub button
-			(!SeriStyleSettings.Advanced.LegacySubButton.Value ?
-				"#subscribe-button yt-button-shape[hidden]{display:block;}" +
-				"#notification-preference-button div.cbox{display:none;}" + // widest: "#notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.cbox.yt-spec-button-shape-next--button-text-content"
-				"#notification-preference-button div.yt-spec-button-shape-next__secondary-icon{display:none;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__secondary-icon
-				"#notification-preference-button div.yt-spec-button-shape-next__icon{margin-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__icon
-				"#notification-preference-button button{background:none;padding-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button
-				"#notification-preference-button div.yt-spec-button-shape-next__button-text-content{display:none;}"
-				: "") +
+			SelSubPassiveBtn + "{background:#2C2C2C;color:#A8A8A8;}" +
+			"#subscribe-button yt-button-shape[invisible]{display:block;position:unset;pointer-events:unset;visibility:unset;}" +
+			"#notification-preference-button div.cbox{display:none;}" + // widest: "#notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.cbox.yt-spec-button-shape-next--button-text-content"
+			"#notification-preference-button div.yt-spec-button-shape-next__secondary-icon{display:none;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__secondary-icon
+			"#notification-preference-button div.yt-spec-button-shape-next__icon{margin-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__icon
+			"#notification-preference-button button{background:none;padding-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button
+			"#notification-preference-button div.yt-spec-button-shape-next__button-text-content{display:none;}" +
 			// Fix notification bell
-			(!SeriStyleSettings.Advanced.LegacyImation.Value ?
+			(!SeriStyleSettings.Advanced.LegacyImation.Value ? // TODO: Pending removal
 				SelSubContainer + "{display:flex;flex-direction:row;}"
 				: "") +
 			// Hide channel handles
@@ -103,7 +100,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"}" +
 
 			/* Playlists */
-			(SeriStyleSettings.Playlist.TrueOld.Value ?
+			(SeriStyleSettings.Playlist.TrueOld.Value ? // TODO: Move duplicates outside of this scope
 				// Restore position & dimensions, fix colors
 				"ytd-browse.ytd-page-manager{padding-top:0px;}" +
 				"ytd-playlist-header-renderer{background:rgba(255,255,255,0.05);margin-left:0px;height:calc(100vh - var(--ytd-toolbar-height));}" + // In the past: var(--yt-spec-general-background-a)
@@ -142,14 +139,35 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			) +
 
 			/* Channel Page */
-			(SeriStyleSettings.ChannelPage.TrueOld.Value ?
+			(SeriStyleSettings.ChannelPage.TrueOld.Value ? // TODO: Relocate this... maybe?
+				// Metadata: Only show subscriber count
 				SelMetaSpan + "{margin:0;}" +
 				SelMetaSpan + ">#channel-handle{display:none;}" +
 				SelMetaSpan + ">#videos-count{display:none;}" +
+				SelMeta + " span.delimiter{display:none;}" +
 				SelMeta + ">#channel-tagline{display:none;}" +
+				SelMeta + ">#channel-header-links{display:none;}" +
+				// Fix channel name size
+				SelMeta + " #text.ytd-channel-name{font-size:24px;font-weight:400;}" +
+				SelMeta + ">#channel-name{font-size:unset;line-height:unset;}" +
+				// Part of subscribe button fix
+				SelMeta + "{width:max-content;}" +
+				// Fix misaligned badge
+				SelMeta + ">#channel-name{display:flex;align-items:center;font-size:unset;line-height:unset;}" +
+				SelMeta + ">#channel-name>ytd-badge-supported-renderer>div>yt-icon{margin-bottom:0px;}" +
+				SelMeta + ">#channel-name>ytd-badge-supported-renderer{margin-left:8px;}" +
+				// Header realignment
 				"#channel-header-container.ytd-c4-tabbed-header-renderer{padding-top:0px;align-items:center;}" +
+				"#inner-header-container.ytd-c4-tabbed-header-renderer{flex-direction:row;margin-top:0px;}" +
+				// Avatar style fixes
 				"#channel-header-container.ytd-c4-tabbed-header-renderer>#avatar{width:80px;height:80px;margin-bottom:0px;}" +
-				"#inner-header-container.ytd-c4-tabbed-header-renderer{margin-top:0px;}"
+				// Fixing tab styles:
+				".yt-tab-shape-wiz__tab{padding:0 32px;font-family:Roboto,Noto,sans-serif;font-size:14px;font-weight:500;letter-spacing:0.007px;text-size-adjust:100%;text-transform:uppercase;white-space:nowrap;}" +
+				"yt-tab-shape.yt-tab-shape-wiz{margin-right:0px;}" +
+				".yt-tab-group-shape-wiz__slider{display:none;}" +
+				".yt-tab-shape-wiz__tab-bar--tab-bar-selected{height:2px;background:#AAA;}" +
+				//
+				""
 				: "") +
 			(SeriStyleSettings.General.OldColors.Value ?
 				"#channel-header.ytd-c4-tabbed-header-renderer, #tabs-inner-container.ytd-c4-tabbed-header-renderer{background:#181818;}" +

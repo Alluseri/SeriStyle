@@ -1,4 +1,4 @@
-this.SeriStyleMetaVersion = 2;
+this.SeriStyleMetaVersion = 3;
 
 this.SeriStyleLocales = {
 	"en-US": {
@@ -18,7 +18,7 @@ this.SeriStyleLocales = {
 			Advanced: "Advanced settings"
 		},
 		Messages: {
-			UpdateSettings: "SeriStyle was updated to version 1.11.3, which introduced new settings!\n\nDo you want to visit the settings page(opens in a new tab)?"
+			UpdateSettings: "SeriStyle was updated to version 1.12.0, which introduced new settings!\n\nDo you want to visit the settings page(opens in a new tab)?"
 		}
 	}
 };
@@ -339,17 +339,17 @@ this.SeriStyleSettings = {
 				"en-US": "$ms"
 			}
 		},
+		DisableCSS: {
+			Kind: 0,
+			Name: {
+				"en-US": "Disable all CSS transformers"
+			},
+			Value: false
+		},
 		LegacyPanels: {
 			Kind: 0,
 			Name: {
 				"en-US": "Legacy(v1.2.0) panel style"
-			},
-			Value: false
-		},
-		LegacySubButton: {
-			Kind: 0,
-			Name: {
-				"en-US": "Legacy(v1.4.0) subscribe button"
 			},
 			Value: false
 		},
@@ -366,6 +366,7 @@ this.SeriStyleSettings = {
 this.DomUtils = {
 	"GetValue": (Element) => Element.value || Element.innerText,
 	"BuildElement": function (Tag, Characteristics, Inner, Callback) {
+		if (Tag == "style" && SeriStyleSettings.Advanced.DisableCSS.Value) return document.createElement(Tag);
 		var elem = document.createElement(Tag);
 		for (let _ in (Characteristics || {})) {
 			elem[_] = Characteristics[_];

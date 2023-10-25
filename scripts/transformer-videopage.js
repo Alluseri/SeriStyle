@@ -56,6 +56,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#description-inner{margin:0px;}" +
 			"#snippet>.ytd-text-inline-expander:not([id]){display:none;}" + // Better than nth-child
 			"#expand-sizer{display:none;}" +
+			"#ytd-watch-info-text{display:none;}" +
 			// Old pfp style
 			"#owner #avatar{width:48px;height:48px;max-width:48px;max-height:48px;margin-right:16px;}" +
 			"#owner #avatar>#img{width:48px;height:48px;max-width:48px;max-height:48px;}" +
@@ -165,7 +166,7 @@ if (Views) {
 	}));
 	$("#title > ytd-badge-supported-renderer > div > span").innerText = "I AM CRINGE AND I WANT MONEY FOR MY CONTENT";
 	const FuckThisURL = document.location.href;
-	window.addEventListener("historychange", function(Deets) {
+	window.addEventListener("historychange", function (Deets) {
 		var URL = Deets.detail;
 		if (URL != FuckThisURL) {
 			console.log("[SeriStyle|Videopage] Hard reloading the page after sponsorship lock.");

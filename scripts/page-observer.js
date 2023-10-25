@@ -14,7 +14,7 @@ var Environment = this.browser || this.chrome;
 Environment.runtime.onMessage.addListener((Message) => {
 	if (Message.Operation != "SeriStyle_HistoryState") return;
 	var URL = Message.Args[0];
-	window.dispatchEvent(new CustomEvent("historychange", {detail: Message.Args[0]}));
+	window.dispatchEvent(new CustomEvent("historychange", { detail: Message.Args[0] }));
 });
 
 var GeneralTransformerBurned = false;
@@ -91,3 +91,6 @@ PageObserver.observe(document.querySelector("ytd-app"), {
 
 GT_Burn1 = !!document.querySelector("#search-icon-legacy>yt-icon.ytd-searchbox");
 GT_Burn2 = !!document.querySelector("#voice-search-button yt-icon");
+
+if (SeriStyleSettings.Advanced.DisableCSS.Value)
+	console.log("[SeriStyle|EarlyBird] Disabled all CSS transformers for this page.");
