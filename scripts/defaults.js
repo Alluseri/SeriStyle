@@ -1,4 +1,8 @@
-this.SeriStyleMetaVersion = 3;
+this.SeriStyleMetaVersion = 4;
+this.SeriStyleMetaNotice = [
+	"introduced new settings:",
+	"Videopage changes -> Fix/enforce content padding"
+].join("\n");
 
 this.SeriStyleLocales = {
 	"en-US": {
@@ -18,7 +22,7 @@ this.SeriStyleLocales = {
 			Advanced: "Advanced settings"
 		},
 		Messages: {
-			UpdateSettings: "SeriStyle was updated to version 1.12.1, which introduced new settings!\n\nDo you want to visit the settings page(opens in a new tab)?"
+			UpdateSettings: "SeriStyle was updated to version 1.12.1, which " + this.SeriStyleMetaNotice + "\n\nDo you want to visit the settings page(opens in a new tab)?"
 		}
 	}
 };
@@ -165,6 +169,13 @@ this.SeriStyleSettings = {
 			Kind: 0,
 			Name: {
 				"en-US": "Fix playlist/queue panel colors on Old Dark theme"
+			},
+			Value: false
+		},
+		ForceCentering: {
+			Kind: 0,
+			Name: {
+				"en-US": "Fix/enforce content padding"
 			},
 			Value: false
 		}

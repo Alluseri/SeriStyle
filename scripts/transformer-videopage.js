@@ -86,7 +86,9 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#contents>ytd-reel-shelf-renderer{display:none;}" +
 			// Disable rolling likes
 			"animated-rolling-character,yt-animated-rolling-number{transition:none;}" +
-			//
+			// Experimental, related to a (bug?)
+			(SeriStyleSettings.VideoPage.ForceCentering.Value ? "#columns.ytd-watch-flexy{justify-content:center;}" : "") +
+			// 
 			""
 		).replaceAll(/(?<!!important);/g, "!important;"), // <3 yt
 	"id": "seristyle-tf-videopage"

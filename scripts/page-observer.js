@@ -5,7 +5,7 @@ var Environment = this.browser || this.chrome;
 		var MetaVersion = (await Environment.storage.sync.get(["ss_metaver"])).ss_metaver;
 		if (!MetaVersion || MetaVersion < SeriStyleMetaVersion) {
 			Environment.storage.sync.set({ ss_metaver: SeriStyleMetaVersion });
-			if (SeriStyleSettings.SeriStyle.RemindUpdates.Value && confirm(SeriStyleLocales["en-US"].Messages.UpdateSettings))
+			if (MetaVersion && SeriStyleSettings.SeriStyle.RemindUpdates.Value && confirm(SeriStyleLocales["en-US"].Messages.UpdateSettings))
 				Environment.runtime.sendMessage({ Operation: "SeriStyle_OpenURL", Args: ["html/config.html"] });
 		}
 	}
