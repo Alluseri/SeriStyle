@@ -20,6 +20,7 @@ var SelOwnerUnder = "#owner>ytd-video-owner-renderer";
 var _;
 
 // Inject styles
+const FCP = SeriStyleSettings.VideoPage.ForceCoPadding.Value;
 document.head.appendChild(DomUtils.BuildElement("style", {
 	"innerText":
 		(
@@ -88,7 +89,9 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"animated-rolling-character,yt-animated-rolling-number{transition:none;}" +
 			// Experimental, related to a (bug?)
 			(SeriStyleSettings.VideoPage.ForceCentering.Value ? "#columns.ytd-watch-flexy{justify-content:center;}" : "") +
-			// 
+			// Force content padding, added as part of above, but for weirdos
+			(FCP ? "#columns.ytd-watch-flexy{padding-left:"+FCP+"px;padding-right:"+FCP+"px;}" : "") + // I don't feel comfortable just enforcing padding to 0 without a reason. Same for verticals.
+			//
 			""
 		).replaceAll(/(?<!!important);/g, "!important;"), // <3 yt
 	"id": "seristyle-tf-videopage"

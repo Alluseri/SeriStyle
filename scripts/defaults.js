@@ -1,7 +1,8 @@
 this.SeriStyleMetaVersion = 4;
 this.SeriStyleMetaNotice = [
 	"introduced new settings:",
-	"Videopage changes -> Fix/enforce content padding"
+	"Videopage changes -> Fix content padding",
+	"Videopage changes -> Force min. content padding",
 ].join("\n");
 
 this.SeriStyleLocales = {
@@ -175,9 +176,23 @@ this.SeriStyleSettings = {
 		ForceCentering: {
 			Kind: 0,
 			Name: {
-				"en-US": "Fix/enforce content padding"
+				"en-US": "Fix content padding"
 			},
 			Value: false
+		},
+		ForceCoPadding: {
+			Kind: 2,
+			Range: [0, 800],
+			Name: {
+				"en-US": "Force min. content padding"
+			},
+			LowerBound: {
+				"en-US": "Disabled (Recommended)"
+			},
+			Value: 0,
+			Format: {
+				"en-US": "$px"
+			}
 		}
 	},
 	VideoPlayer: {

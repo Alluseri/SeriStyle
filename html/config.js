@@ -40,7 +40,7 @@ function Navigate(Category) {
 					onclick: function () {
 						console.log(this.checked);
 						(Modified[this.ss_category] = Modified[this.ss_category] || {})[this.ss_key] = this.ss_meta.Value = this.checked;
-						Environment.storage.sync.set({ "ss_metaver": SeriStyleMetaVersion });
+						// Environment.storage.sync.set({ "ss_metaver": SeriStyleMetaVersion });
 					}
 				}));
 				var Span = DomUtils.BuildElement("span", { innerText: SettingMeta.Name[Language] });
@@ -56,7 +56,7 @@ function Navigate(Category) {
 					onchange: function () {
 						console.log(this.value);
 						(Modified[this.ss_category] = Modified[this.ss_category] || {})[this.ss_key] = this.ss_meta.Value = this.value;
-						Environment.storage.sync.set({ "ss_metaver": SeriStyleMetaVersion });
+						// Environment.storage.sync.set({ "ss_metaver": SeriStyleMetaVersion });
 					}
 				});
 				for (var Value in SettingMeta.Picks[Language])
@@ -79,12 +79,26 @@ function Navigate(Category) {
 					max: SettingMeta.Range[1],
 					value: SettingMeta.Value,
 					oninput: function () {
-						console.log(this.value);
-						this.nextElementSibling.innerText = this.ss_meta.Format[Language].replace("$", (Modified[this.ss_category] = Modified[this.ss_category] || {})[this.ss_key] = this.ss_meta.Value = this.value);
-						Environment.storage.sync.set({ "ss_metaver": SeriStyleMetaVersion });
+						if (this.value == this.min && this.ss_meta.LowerBound) {
+							this.nextElementSibling.innerText = this.ss_meta.LowerBound[Language];
+							(Modified[this.ss_category] = Modified[this.ss_category] || {})[this.ss_key] = this.ss_meta.Value = this.value;
+						} else if (this.value == this.max && this.ss_meta.UpperBound) {
+							this.nextElementSibling.innerText = this.ss_meta.UpperBound[Language];
+							(Modified[this.ss_category] = Modified[this.ss_category] || {})[this.ss_key] = this.ss_meta.Value = this.value;
+						} else {
+							this.nextElementSibling.innerText = this.ss_meta.Format[Language].replace("$", (Modified[this.ss_category] = Modified[this.ss_category] || {})[this.ss_key] = this.ss_meta.Value = this.value);
+						}
+						// Environment.storage.sync.set({ "ss_metaver": SeriStyleMetaVersion });
 					}
 				}));
-				SettingDiv.appendChild(DomUtils.BuildElement("span", { innerText: SettingMeta.Format[Language].replace("$", SettingMeta.Value) }));
+				SettingDiv.appendChild(DomUtils.BuildElement("span", {
+					innerText:
+						SettingMeta.Value == SettingMeta.Range[0] && SettingMeta.LowerBound
+						? SettingMeta.LowerBound[Language]
+						: SettingMeta.Value == SettingMeta.Range[1] && SettingMeta.UpperBound
+						 ? SettingMeta.UpperBound[Language]
+						 : SettingMeta.Format[Language].replace("$", SettingMeta.Value)
+				}));
 				break;
 		}
 	}

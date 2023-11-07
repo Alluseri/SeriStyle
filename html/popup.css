@@ -1,3 +1,7 @@
+html {
+	width: max-content;
+}
+
 body {
 	display: flex;
 	background: rgb(8, 8, 8);
