@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "SeriStyle",
 	"author": "Nekoseri",
-	"version": "1.12.0",
+	"version": "1.12.1",
 	"description": "Bring the early-2021 UI back to YouTube!",
 	"icons": {
 		"16": "icons/default16.png",
@@ -19,8 +19,18 @@
 		"tabs",
 		"storage",
 		"scripting",
-		"webNavigation"
+		"webNavigation",
+		"declarativeNetRequestWithHostAccess"
 	],
+	"declarative_net_request": {
+		"rule_resources": [
+			{
+				"id": "StopRealTimeLikeUpdates",
+				"enabled": true,
+				"path": "dnr_rule_srtlu.json"
+			}
+		]
+	},
 	"host_permissions": [
 		"*://www.youtube.com/*"
 	],

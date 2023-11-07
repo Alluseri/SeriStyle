@@ -1,0 +1,12 @@
+[
+	{
+		"id": 1,
+		"priority": 8,
+		"action": {
+			"type": "block"
+		},
+		"condition": {
+			"urlFilter": "youtubei/v1/updated_metadata"
+		}
+	}
+]

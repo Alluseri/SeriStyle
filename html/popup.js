@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 	document.getElementById("low-i-debug").onclick = async () => {
 		var DebugInfo = [
-			"- SeriStyle v1.12.0",
+			"- SeriStyle v1.12.1",
 			"- " + navigator.userAgent,
 			"- " + StorageMode
 		];

@@ -84,6 +84,8 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			(SeriStyleSettings.VideoPage.HideJoinButton.Value ? "#sponsor-button{display:none;}" : "") +
 			// Hide "Shorts with this video" shelf
 			"#contents>ytd-reel-shelf-renderer{display:none;}" +
+			// Disable rolling likes
+			"animated-rolling-character,yt-animated-rolling-number{transition:none;}" +
 			//
 			""
 		).replaceAll(/(?<!!important);/g, "!important;"), // <3 yt
