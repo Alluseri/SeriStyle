@@ -83,5 +83,5 @@ This is a **general non-exhaustive** list of SeriStyle's features. Preview & com
 ## Credits & Gratitude
 ### Services
 All of the following services are free-of-charge, which is already worth being credited.
-- [NoEmbed](https://noembed.com) - Required by SeriStyle to convert playlists into videos.
 - [Wayback Machine/Web Archive](https://web.archive.org) - For archiving old versions of several YouTube pages to match against.
+<!-- - [NoEmbed](https://noembed.com) - Required by SeriStyle to convert playlists into videos. -->

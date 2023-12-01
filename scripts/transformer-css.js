@@ -100,6 +100,11 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"}" +
 
 			/* Playlists */
+			// Remove roundings
+			"ytd-playlist-video-renderer{border-radius:0px;}" +
+			// Old title font
+			"#text.yt-sans-28{font-family:Roboto,Arial,sans-serif;font-size:24px;font-weight:400;line-height:34px;text-decoration-color:#FFF;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-size-adjust:100%;word-break:break-word;}" + // Alternative selector: .thumbnail-and-metadata-wrapper>div>yt-dynamic-sizing-formatted-string>div>yt-formatted-string
+			// True Old
 			(SeriStyleSettings.Playlist.TrueOld.Value ? // TODO: Move duplicates outside of this scope
 				// Restore position & dimensions, fix colors
 				"ytd-browse.ytd-page-manager{padding-top:0px;}" +
@@ -114,14 +119,10 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				"yt-formatted-string.byline-item>span{display:inline-block;}" +
 				"div.metadata-stats.ytd-playlist-byline-renderer{max-height:unset;overflow:visible;display:block;}" +
 				"yt-formatted-string.byline-item:not(:nth-child(6))::after{content:'•';margin-left:4px;margin-right:2px;}" +
-				// Old title font(might affect certain other entries)
-				"#text.yt-sans-28{font-family:Roboto,Arial,sans-serif;font-size:24px;font-weight:400;line-height:34px;text-decoration-color:#FFF;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-size-adjust:100%;word-break:break-word;}" + // Alternative selector: .thumbnail-and-metadata-wrapper>div>yt-dynamic-sizing-formatted-string>div>yt-formatted-string
 				// Remove cover thumbnail rounding
 				(SeriStyleSettings.General.ThumbnailRoundings.Value ? ".image-wrapper{border-radius:0px;}" : "") +
 				// Old video list padding
 				"ytd-two-column-browse-results-renderer[page-subtype='playlist'].ytd-browse,ytd-browse[page-subtype='playlist']>#alerts{padding-left:360px;}" +
-				// Remove roundings
-				"ytd-playlist-video-renderer{border-radius:0px;}" +
 				//
 				""
 				:
@@ -130,10 +131,6 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				"yt-formatted-string.byline-item>span{display:inline-block;}" +
 				"div.metadata-stats.ytd-playlist-byline-renderer{max-height:unset;overflow:visible;display:block;}" +
 				"yt-formatted-string.byline-item:not(:nth-child(6))::after{content:'•';margin-left:4px;margin-right:2px;}" +
-				// Old title font(might affect certain other entries)
-				"#text.yt-sans-28{font-family:Roboto,Arial,sans-serif;font-size:24px;font-weight:400;line-height:34px;text-decoration-color:#FFF;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-size-adjust:100%;word-break:break-word;}" + // Alternative selector: .thumbnail-and-metadata-wrapper>div>yt-dynamic-sizing-formatted-string>div>yt-formatted-string
-				// Remove roundings
-				"ytd-playlist-video-renderer{border-radius:0px;}" +
 				//
 				""
 			) +

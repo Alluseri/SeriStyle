@@ -1,4 +1,4 @@
-/* jshint -W084, -W027 */
+// jshint -W084, -W027
 
 var SelBottomRow = "#bottom-row";
 var SelTopRow = "#top-row.ytd-watch-metadata";
@@ -9,8 +9,9 @@ var SelFlexibleButtonsBar = "#menu.ytd-watch-metadata #flexible-item-buttons";
 var SelFlexibleButtons = SelFlexibleButtonsBar + ">.style-scope";
 var SelContextMenuButtons = "#items>ytd-menu-service-item-renderer";
 var SelContextMenuOpen = "#actions #button-shape button";
-var SelShareBtn = "#actions-inner #top-level-buttons-computed>ytd-button-renderer";
-var SelLikeButtons = "#actions-inner ytd-segmented-like-dislike-button-renderer button";
+var SelTopLevelButtons = "#actions-inner #top-level-buttons-computed";
+var SelShareBtn = SelTopLevelButtons + ">ytd-button-renderer";
+var SelLikeButtons = "#actions-inner segmented-like-dislike-button-view-model button";
 var SelDescription = "#description.ytd-watch-metadata";
 var SelDropdown = "tp-yt-iron-dropdown.ytd-popup-container";
 var SelSubButton = "#owner>#subscribe-button";
@@ -87,10 +88,20 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#contents>ytd-reel-shelf-renderer{display:none;}" +
 			// Disable rolling likes
 			"animated-rolling-character,yt-animated-rolling-number{transition:none;}" +
-			// Experimental, related to a (bug?)
+			// Force content centering
 			(SeriStyleSettings.VideoPage.ForceCentering.Value ? "#columns.ytd-watch-flexy{justify-content:center;}" : "") +
-			// Force content padding, added as part of above, but for weirdos
-			(FCP ? "#columns.ytd-watch-flexy{padding-left:"+FCP+"px;padding-right:"+FCP+"px;}" : "") + // I don't feel comfortable just enforcing padding to 0 without a reason. Same for verticals.
+			// Force content padding, usually not needed
+			(FCP ? "#columns.ytd-watch-flexy{padding-left:" + FCP + "px;padding-right:" + FCP + "px;}" : "") + // I don't feel comfortable just enforcing padding to 0 without a reason. Same for verticals.
+			// Hide donation shelves
+			(SeriStyleSettings.VideoPage.HideDonationShelves.Value ? "#donation-shelf{display:none;}" : "") +
+			(!SeriStyleSettings.Advanced.DisableHotfixes.Value ?
+				// HF #1: Disable small double-icons on action bar since I replace all of them
+				"#top-level-buttons-computed yt-icon>yt-icon-shape{display:none;}" +
+				//
+				""
+				: "") +
+			//
+			"" +
 			//
 			""
 		).replaceAll(/(?<!!important);/g, "!important;"), // <3 yt
@@ -98,7 +109,6 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 }));
 
 const ActionBarFn = function (Inserted) {
-	// They usually don't come in amounts greater than 2, but we'll do it nevertheless:
 	var Icons = Inserted.filter(Element => Element.tagName == "DIV" && Element.children[0]?.tagName == "svg");
 
 	var AddToPlaylist = FindByExel(Icons, ExelAddToPlaylist);
@@ -109,16 +119,54 @@ const ActionBarFn = function (Inserted) {
 
 	if (SeriStyleSettings.VideoPage.HideCreateClipButton.Value) {
 		var CreateClip = FindByExel(Icons, ExelCreateClip);
-		CreateClip?.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+		CreateClip?.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove(); // yt-button-view-model
 	}
 	if (SeriStyleSettings.VideoPage.HideDonateButton.Value) {
 		var Thanks = FindByExel(Icons, ExelDonate);
-		Thanks?.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+		Thanks?.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove(); // yt-button-view-model
 	}
 };
 
-const Reinject = () => {
+var ActionBarObserver = new MutationObserver(async Mutations => {
+	var Inserted = [];
+	Mutations.forEach(Mutation => {
+		for (let i = 0; i < Mutation.addedNodes.length; i++) {
+			Inserted.push(Mutation.addedNodes[i]);
+		}
+	});
+
+	ActionBarFn(Inserted);
+});
+var TopLevelButtonsObserver = new MutationObserver(async Mutations => {
+	var Inserted = [];
+	Mutations.forEach(Mutation => {
+		for (let i = 0; i < Mutation.addedNodes.length; i++) {
+			Inserted.push(Mutation.addedNodes[i]);
+		}
+	});
+
+	if (Inserted.length == 0) return;
+
+	var Viewmodel = Inserted.find(Element => Element.tagName == "SEGMENTED-LIKE-DISLIKE-BUTTON-VIEW-MODEL");
+	if (Viewmodel) {
+		console.log("[SeriStyle|Videopage] Installed reinjection binding.");
+		var Mb = new MutationObserver(async Mutations => {
+			// TODO: Might need added elements here? Ehh, it works for now right
+			console.log("[SeriStyle|Videopage] Proc'd the reinjection binding, uninstalling soon.");
+			Reinject(Mb);
+		});
+		Mb.observe(Viewmodel, {
+			childList: true
+		});
+	} else console.log("[SeriStyle|Videopage] Warning: Failed to find l/d viewmodel, reinjection not possible: ", Inserted);
+});
+
+const Reinject = (Cleanup) => { // TODO: Call on no internet
 	try {
+		Cleanup?.disconnect();
+		ActionBarObserver.disconnect();
+		TopLevelButtonsObserver.disconnect();
+
 		// Apply old SVG to Share and Menu
 		if (_ = $(SelShareBtn)) _.querySelector("yt-icon").innerHTML = SvgShare;
 		$(SelContextMenuOpen).querySelector("yt-icon").innerHTML = SvgActionMenu;
@@ -131,19 +179,16 @@ const Reinject = () => {
 		// Remove RYD's border because it overrides SeriStyle's
 		if (_ = $(SelTopRow).attributes.style) _.value = "";
 
-		(new MutationObserver(async Mutations => {
-			var Inserted = [];
-			Mutations.forEach(Mutation => {
-				for (let i = 0; i < Mutation.addedNodes.length; i++) {
-					Inserted.push(Mutation.addedNodes[i]);
-				}
-			});
-
-			ActionBarFn(Inserted);
-		})).observe($(SelFlexibleButtonsBar), { // Should be GC'd because the bar should be completely regenerated on reinject cond
+		ActionBarObserver.observe($(SelFlexibleButtonsBar), {
 			childList: true,
 			subtree: true
 		});
+		TopLevelButtonsObserver.observe($(SelTopLevelButtons), {
+			childList: true
+		});
+
+		if (SeriStyleSettings.Advanced.ActionBarPlus.Value)
+			ActionBarFn(Array.from($(SelFlexibleButtonsBar).children));
 	} catch (Exception) {
 		console.log("[SeriStyle|Videopage] There was an error during the injection process:");
 		console.log(Exception);

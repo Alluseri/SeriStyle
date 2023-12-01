@@ -22,7 +22,7 @@ var GeneralTransformerBurned = false;
 var GT_Burn1 = false;
 var GT_Burn2 = false;
 
-var PageObserver = new MutationObserver(async Mutations => { // TODO: I have no idea why this is async. I'm keeping it because I'm scared.
+var PageObserver = new MutationObserver(async Mutations => {
 	var Inserted = [];
 	Mutations.forEach(Mutation => {
 		for (let i = 0; i < Mutation.addedNodes.length; i++) {

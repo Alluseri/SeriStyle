@@ -4,7 +4,7 @@
 
 	if (env.runtime.getBrowserInfo) {
 		let BrowserInfo = await env.runtime.getBrowserInfo();
-		IsFirefox = BrowserInfo.name == "Firefox" || BrowserInfo.vendor == "Mozilla";
+		IsFirefox = BrowserInfo.name == "Firefox" || BrowserInfo.vendor == "Mozilla"; // yeah dawg, if you're using smth that doesn't follow this rule, GFY LMFAOOOOOOO FORK USER (user issue frfr)
 	}
 	env.runtime.onMessage.addListener((Message, Sender, Respond) => {
 		switch (Message.Operation) {
@@ -21,13 +21,8 @@
 				return;
 		}
 	});
-	env.webNavigation.onHistoryStateUpdated.addListener(function(Data) {
-		if (Data == null || !Data.url.includes("youtube")) return;
-		try {
-			console.log(Data);
-			env.tabs.sendMessage(Data.tabId, { Operation: "SeriStyle_HistoryState", Args: [Data.url] });
-		} catch {
-			console.log("Receiving end error.", JSON.stringify(Data, null, "\t"));
-		}
+	env.webNavigation.onHistoryStateUpdated.addListener(function (Data) {
+		if (Data == null || !new URL(Data.url).hostname.includes("youtube")) return;
+		env.tabs.sendMessage(Data.tabId, { Operation: "SeriStyle_HistoryState", Args: [Data.url] }).catch(() => console.log("Receiving end error.", JSON.stringify(Data, null, "\t")));
 	});
 })();

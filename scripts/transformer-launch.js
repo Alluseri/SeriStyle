@@ -1,4 +1,4 @@
-if (SeriStyleSettings.General.OldColors.Value) { // TODO: Here and defaults... thing for icons, maybe not
+if (SeriStyleSettings.General.OldColors.Value) {
 	var GeneralObserver = new MutationObserver(async Mutations => {
 		Mutations.forEach(Mutation => {
 			for (let i = 0; i < Mutation.addedNodes.length; i++) {
@@ -15,3 +15,5 @@ if (SeriStyleSettings.General.OldColors.Value) { // TODO: Here and defaults... t
 
 	$$("[darker-dark-theme]").forEach(Element => Element.removeAttribute("darker-dark-theme"));
 }
+
+// TODO: Icon(prod, verif) transformer goes here?

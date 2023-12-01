@@ -23,7 +23,7 @@ $(SelSearchIcon).innerHTML = SvgSearch;
 $(SelMicIcon).innerHTML = SvgMic;
 $(SelMenuIcon).innerHTML = SvgMenu;
 
-setInterval(function() { // It's not my problem that everyone is stupid enough not to fix Subtree MutationObserver for the whole existence of this class
+setInterval(function () { // It's not my problem that everyone is stupid enough not to fix Subtree MutationObserver for the whole existence of this class
 	$$("path").forEach(Element => {
 		var Exel = btoa(Element.attributes.d?.value);
 		if (Exel == ExelVerified) {
@@ -36,14 +36,14 @@ setInterval(function() { // It's not my problem that everyone is stupid enough n
 
 var ShareUrl;
 var OldU;
-var FixShareIntv = setInterval(function() { // I hate the fact that you can't use intervals for checking value change, and on god I will not use Reflection for this
-	if (!ShareUrl) if (!(ShareUrl = document.getElementById("share-url"))) return; // It's a singleton from my observations at least
+var FixShareIntv = setInterval(function () { // See above comment
+	if (!ShareUrl) if (!(ShareUrl = document.getElementById("share-url"))) return;
 	var SuVal = ShareUrl.value;
 	if (SuVal != OldU && SuVal.includes("si=")) {
-		// ShareUrl.value = OldU = SuVal.split("?si=")[0];
-		OldU = SuVal.replace(/&{0,1}si=.+?(&|$)/, "");
-		if (OldU.endsWith("?")) OldU = OldU.substr(0, OldU.length - 1); // Oh no, cringe
-		ShareUrl.value = OldU;
+		var Uv = new URL(SuVal);
+		var Sep = Uv.searchParams;
+		Sep.delete("si");
+		ShareUrl.value = OldU = Uv.toString();
 	}
 }, SeriStyleSettings.Advanced.ShareFixInterval.Value);
 

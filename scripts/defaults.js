@@ -1,8 +1,9 @@
-this.SeriStyleMetaVersion = 4;
+this.SeriStyleMetaVersion = 5;
 this.SeriStyleMetaNotice = [
 	"introduced new settings:",
-	"Videopage changes -> Fix content padding",
-	"Videopage changes -> Force min. content padding",
+	"Videopage changes -> Hide donation shelves",
+	"Advanced -> Improve action bar mutation success rate (BETA)",
+	"Advanced -> Disable all hotfixes",
 ].join("\n");
 
 this.SeriStyleLocales = {
@@ -23,7 +24,7 @@ this.SeriStyleLocales = {
 			Advanced: "Advanced settings"
 		},
 		Messages: {
-			UpdateSettings: "SeriStyle was updated to version 1.12.1, which " + this.SeriStyleMetaNotice + "\n\nDo you want to visit the settings page(opens in a new tab)?"
+			UpdateSettings: "SeriStyle was updated to version 1.12.2, which " + this.SeriStyleMetaNotice + "\n\nDo you want to visit the settings page(opens in a new tab)?"
 		}
 	}
 };
@@ -149,6 +150,13 @@ this.SeriStyleSettings = {
 			Kind: 0,
 			Name: {
 				"en-US": "Don't highlight comments with donations"
+			},
+			Value: false
+		},
+		HideDonationShelves: {
+			Kind: 0,
+			Name: {
+				"en-US": "Hide donation shelves"
 			},
 			Value: false
 		},
@@ -364,6 +372,20 @@ this.SeriStyleSettings = {
 			Format: {
 				"en-US": "$ms"
 			}
+		},
+		ActionBarPlus: {
+			Kind: 0,
+			Name: {
+				"en-US": "Improve action bar mutation success rate (BETA)"
+			},
+			Value: false
+		},
+		DisableHotfixes: {
+			Kind: 0,
+			Name: {
+				"en-US": "Disable all hotfixes"
+			},
+			Value: false
 		},
 		DisableCSS: {
 			Kind: 0,
