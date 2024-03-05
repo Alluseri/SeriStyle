@@ -20,8 +20,5 @@ Steps to reproduce the behavior:
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Debug Info**
-Click "Copy debug" in SeriStyle's popup menu and paste the info here. Please remove this placeholder text too. Replace this placeholder with "N/A" if you're unable to copy the debug info.
-
 **Additional context**
 Remove this section if there is nothing to add in order to avoid littering the issue up.

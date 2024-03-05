@@ -1,3 +1,4 @@
 *.xpi
 _metadata
 _metadata/*
+pack-xpi.sh

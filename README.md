@@ -66,7 +66,6 @@ This is a **general non-exhaustive** list of SeriStyle's features. Preview & com
     3. Fill, wider cross line
     4. Hide using Exel
 - Expand button in left side menu will now function as both, collapse button will be hidden
-- Fix Add to Playlist tooltip being too high
 - Old context menus
   - Global
     - Remove roundings everywhere
@@ -76,7 +75,6 @@ This is a **general non-exhaustive** list of SeriStyle's features. Preview & com
 - Convert recommended playlists into videos using noembed or hide them(snip in -general)
 - Old playlist & queue panels
 - Old control buttons on your channel page
-- Extend debug info
 - Step in settings sliderbars
 - Old channel page top
 

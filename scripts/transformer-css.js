@@ -45,17 +45,15 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#notification-preference-button button{background:none;padding-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button
 			"#notification-preference-button div.yt-spec-button-shape-next__button-text-content{display:none;}" +
 			// Fix notification bell
-			(!SeriStyleSettings.Advanced.LegacyImation.Value ? // TODO: Pending removal
-				SelSubContainer + "{display:flex;flex-direction:row;}"
-				: "") +
+			SelSubContainer + "{display:flex;flex-direction:row;}" +
 			// Hide channel handles
 			"p.ytd-c4-tabbed-header-renderer{display:none;}" +
 			// Hide feedback shapes
 			(SeriStyleSettings.General.HideFeedback.Value ? "yt-touch-feedback-shape{display:none;}" : "") +
 			// Old colors fixes
 			(SeriStyleSettings.General.OldColors.Value ?
-				// Old background color(no longer available through launch transformer)
-				"ytd-app,ytd-browse,ytd-two-column-browse-results-renderer[page-subtype='playlist'].ytd-browse,ytd-page-manager{background:#181818;}" +
+				// Old background color
+				"ytd-app,ytd-browse,ytd-two-column-browse-results-renderer[page-subtype='playlist'].ytd-browse,ytd-page-manager,#show-hide-button>ytd-button-renderer{background:#181818;}" +
 				// Old top and left bar colors
 				"#background.ytd-masthead{background:rgba(33,33,33,0.98);}" +
 				"#guide-content.ytd-app{background:#212121;}" +
@@ -80,6 +78,9 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			(SeriStyleSettings.HomePage.HideSeries.Value ? "ytd-badge-supported-renderer.top-badge.ytd-rich-grid-media{display:none;}" : "") +
 			// Fix alerts
 			(SeriStyleSettings.Playlist.TrueOld.Value ? "#alerts.ytd-browse{padding-right:0px;}" : "") +
+			// Remove jam paddings
+			"yt-collections-stack{display:none;}" +
+			"ytd-compact-radio-renderer{margin-top:0px;}" + // Hints for selection: .use-ellipsis; has attr "collections" w/o value; TODO HIGH: Add jam remover
 
 			/* Videoplayer */
 			// Recolor HD

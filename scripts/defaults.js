@@ -24,7 +24,7 @@ this.SeriStyleLocales = {
 			Advanced: "Advanced settings"
 		},
 		Messages: {
-			UpdateSettings: "SeriStyle was updated to version 1.12.2, which " + this.SeriStyleMetaNotice + "\n\nDo you want to visit the settings page(opens in a new tab)?"
+			UpdateSettings: "SeriStyle was updated to version 1.12.3, which " + this.SeriStyleMetaNotice + "\n\nDo you want to visit the settings page(opens in a new tab)?"
 		}
 	}
 };
@@ -195,7 +195,7 @@ this.SeriStyleSettings = {
 				"en-US": "Force min. content padding"
 			},
 			LowerBound: {
-				"en-US": "Disabled (Recommended)"
+				"en-US": "Disabled"
 			},
 			Value: 0,
 			Format: {
@@ -398,13 +398,6 @@ this.SeriStyleSettings = {
 			Kind: 0,
 			Name: {
 				"en-US": "Legacy(v1.2.0) panel style"
-			},
-			Value: false
-		},
-		LegacyImation: {
-			Kind: 0,
-			Name: {
-				"en-US": "Legacy(v1.9.1) notification bell"
 			},
 			Value: false
 		}

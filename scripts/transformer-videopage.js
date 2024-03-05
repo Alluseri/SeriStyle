@@ -10,7 +10,7 @@ var SelFlexibleButtons = SelFlexibleButtonsBar + ">.style-scope";
 var SelContextMenuButtons = "#items>ytd-menu-service-item-renderer";
 var SelContextMenuOpen = "#actions #button-shape button";
 var SelTopLevelButtons = "#actions-inner #top-level-buttons-computed";
-var SelShareBtn = SelTopLevelButtons + ">ytd-button-renderer";
+var SelShareBtn = SelTopLevelButtons + ">yt-button-view-model";
 var SelLikeButtons = "#actions-inner segmented-like-dislike-button-view-model button";
 var SelDescription = "#description.ytd-watch-metadata";
 var SelDropdown = "tp-yt-iron-dropdown.ytd-popup-container";
@@ -89,14 +89,14 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Disable rolling likes
 			"animated-rolling-character,yt-animated-rolling-number{transition:none;}" +
 			// Force content centering
-			(SeriStyleSettings.VideoPage.ForceCentering.Value ? "#columns.ytd-watch-flexy{justify-content:center;}" : "") +
+			(SeriStyleSettings.VideoPage.ForceCentering.Value ? "#columns.ytd-watch-flexy{justify-content:center;}ytd-watch-flexy[flexy]:not([full-bleed-player][full-bleed-no-max-width-columns]) #columns.ytd-watch-flexy{max-width:unset;}" : "") +
 			// Force content padding, usually not needed
 			(FCP ? "#columns.ytd-watch-flexy{padding-left:" + FCP + "px;padding-right:" + FCP + "px;}" : "") + // I don't feel comfortable just enforcing padding to 0 without a reason. Same for verticals.
 			// Hide donation shelves
 			(SeriStyleSettings.VideoPage.HideDonationShelves.Value ? "#donation-shelf{display:none;}" : "") +
 			(!SeriStyleSettings.Advanced.DisableHotfixes.Value ?
 				// HF #1: Disable small double-icons on action bar since I replace all of them
-				"#top-level-buttons-computed yt-icon>yt-icon-shape{display:none;}" +
+				"segmented-like-dislike-button-view-model yt-icon>yt-icon-shape{display:none;}" +
 				//
 				""
 				: "") +
