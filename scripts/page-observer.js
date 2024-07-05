@@ -51,7 +51,7 @@ var PageObserver = new MutationObserver(async Mutations => {
 });
 
 var VideoPageInterval = setInterval(() => {
-	if (document.querySelector("div#owner") && (document.querySelector(".view-count") || document.querySelector("#title > ytd-badge-supported-renderer > div > span"))) {
+	if (document.querySelector("div#owner") && (document.querySelector(".view-count") || document.querySelector("#title > ytd-badge-supported-renderer > div > p"))) {
 		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-videopage.js"] });
 		clearInterval(VideoPageInterval);
 		console.log("[SeriStyle|Interval] Burned transformer: Videopage.");

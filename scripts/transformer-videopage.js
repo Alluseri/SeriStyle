@@ -47,7 +47,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Description
 			SelBottomRow + "{flex-direction:column;border-bottom-color:rgba(255,255,255,0.1);border-bottom-style:solid;border-bottom-width:1px;padding-bottom:16px;}" +
 			"#comment-teaser{display:none;}" +
-			SelDescription + "{background:none;cursor:unset;}" +
+			SelDescription + "{background:none;cursor:unset;width:0;}" +
 			"#info-container{display:none;}" +
 			"tp-yt-paper-button.ytd-text-inline-expander{position:relative;left:unset;justify-content:flex-start;color:#AAA;font-family:Roboto,Arial,sans-serif;margin-top:8px;font-size:1.3rem;font-weight:500;letter-spacing:0.007px;text-transform:uppercase;}" +
 			"tp-yt-paper-button.ytd-text-inline-expander>paper-ripple{display:none;}" +
@@ -59,6 +59,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#snippet>.ytd-text-inline-expander:not([id]){display:none;}" + // Better than nth-child
 			"#expand-sizer{display:none;}" +
 			"#ytd-watch-info-text{display:none;}" +
+			"#description-inner ytd-video-description-infocards-section-renderer,#description-inner ytd-reel-shelf-renderer{display:none;}" +
 			// Old pfp style
 			"#owner #avatar{width:48px;height:48px;max-width:48px;max-height:48px;margin-right:16px;}" +
 			"#owner #avatar>#img{width:48px;height:48px;max-width:48px;max-height:48px;}" +
@@ -75,7 +76,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Realign videos
 			"ytd-item-section-renderer.ytd-watch-next-secondary-results-renderer{margin-top:calc(0px - var(--ytd-item-section-item-margin));}" + // TODO: Force usage of margin-bottom instead of margin-top
 			// Chat things
-			(SeriStyleSettings.VideoPage.HidePremiere.Value ? "#chat.ytd-watch-flexy{display:none;}" : "#show-hide-button.ytd-live-chat-frame{margin-bottom:2px;}") +
+			(SeriStyleSettings.VideoPage.HidePremiere.Value ? "" : "#show-hide-button.ytd-live-chat-frame{margin-bottom:2px;}") +
 			// Force hide immersive
 			"#cinematics{display:none;}" +
 			// Fix playlist panel colors
@@ -92,6 +93,8 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			(SeriStyleSettings.VideoPage.ForceCentering.Value ? "#columns.ytd-watch-flexy{justify-content:center;}ytd-watch-flexy[flexy]:not([full-bleed-player][full-bleed-no-max-width-columns]) #columns.ytd-watch-flexy{max-width:unset;}" : "") +
 			// Force content padding, usually not needed
 			(FCP ? "#columns.ytd-watch-flexy{padding-left:" + FCP + "px;padding-right:" + FCP + "px;}" : "") + // I don't feel comfortable just enforcing padding to 0 without a reason. Same for verticals.
+			// Break lines for author
+			"#channel-name a.yt-simple-endpoint{white-space:break-spaces;}" +
 			// Hide donation shelves
 			(SeriStyleSettings.VideoPage.HideDonationShelves.Value ? "#donation-shelf{display:none;}" : "") +
 			(!SeriStyleSettings.Advanced.DisableHotfixes.Value ?
@@ -100,11 +103,11 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				//
 				""
 				: "") +
-			//
-			"" +
+			// Fix comment hover action menu
+			"ytd-comment-view-model#comment:not(:hover)>#body>#action-menu{visibility:hidden;}" +
 			//
 			""
-		).replaceAll(/(?<!!important);/g, "!important;"), // <3 yt
+		).replaceAll(/(?<!!important);/g, "!important;"),
 	"id": "seristyle-tf-videopage"
 }));
 
@@ -202,21 +205,23 @@ $(SelBottomRow).prepend($(SelOwner));
 var Views = $(SelViews);
 if (Views) {
 	$(SelTopRow).prepend(DomUtils.BuildElement("div", { id: "seristyle_oldpanel" }, [
-		(x => ((x.className = (x.className + " seristyle_subpanel seristyle_firstpanel").replace("yt-formatted-string ", "")), x))($(SelViews)),
+		(x => ((x.className = (x.className + " seristyle_subpanel seristyle_firstpanel").replace("yt-formatted-string ", "")), x))(Views),
 		(x => ((x.className += " seristyle_subpanel"), x))($(SelFullDate))
 	]));
 } else {
-	console.log("[SeriStyle|Videopage] No view count found, video must be sponsored. Locking redirects.");
+	console.log("[SeriStyle|Videopage] No view count found, video is broken or otherwise limited. Locking redirects.");
 	document.head.appendChild(DomUtils.BuildElement("style", {
 		"innerText":
 			(
 				".html5-ypc-endscreen{display:flex;flex-direction:row;justify-content:center;}" +
 				".html5-ypc-thumbnail{float:none;}" +
 				".html5-ypc-module{display:flex;flex-direction:column;align-items:center;}"
-			).replaceAll(/(?<!!important);/g, "!important;"), // <3 yt
+			).replaceAll(/(?<!!important);/g, "!important;"),
 		"id": "seristyle-tf-fucksponsorships"
 	}));
-	$("#title > ytd-badge-supported-renderer > div > span").innerText = "I AM CRINGE AND I WANT MONEY FOR MY CONTENT";
+	// Test here: https://www.youtube.com/watch?v=WLoDdPLiArA
+	// Test for false positives here: https://www.youtube.com/watch?v=aQvGIIdgFDM
+	if (_ = $("#title > ytd-badge-supported-renderer > div.badge-style-type-members-only > p")) _.innerText = "I AM CRINGE AND I WANT MONEY FOR MY CONTENT";
 	const FuckThisURL = document.location.href;
 	window.addEventListener("historychange", function (Deets) {
 		var URL = Deets.detail;

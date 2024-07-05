@@ -1,7 +1,7 @@
 // jshint -W014, -W086
 
-var SelSubPassiveBtn = "#subscribe-button-shape>button"; // Old: #subscribe-button yt-button-shape>button
-var SelSubContainer = "yt-smartimation.ytd-subscribe-button-renderer>.smartimation__content>__slot-el"; // [OLD] Alt: #subscribe-button yt-smartimation
+var SelSubPassiveBtn = "#subscribe-button-shape>button";
+var SelSubContainer = "#subscribe-button>ytd-subscribe-button-renderer>yt-smartimation>div>__slot-el";
 var SelMeta = "#meta.ytd-c4-tabbed-header-renderer";
 var SelMetaSpan = SelMeta + ">span.meta-item";
 
@@ -10,6 +10,8 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 	"innerText":
 		(
 			/* General */
+			// Wtfard
+			"ytd-ad-slot-renderer{display:none;}" +
 			// Remove "You"
 			"ytd-guide-collapsible-section-entry-renderer>#header{display:none;}" +
 			// Old search box styles
@@ -24,16 +26,19 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"input#search{padding:1px 2px;margin-left:4px;}" +
 			// Remove thumbnail roundings
 			(SeriStyleSettings.General.ThumbnailRoundings.Value ? "#thumbnail{border-radius:0px;}" : "") +
+			// Fix video listing hover action menu
+			"#dismissible.ytd-compact-video-renderer:not(:hover)>div.details>#menu{visibility:hidden;}" +
 			// Old homepage top bar roundings(also applies to vp filters apparently)
 			"yt-chip-cloud-chip-renderer{border-radius:16px;}" +
-			// Old time status roundings
-			"ytd-thumbnail-overlay-time-status-renderer{border-radius:2px;}" +
+			// Old video duration roundings
+			"ytd-thumbnail-overlay-time-status-renderer{margin:4px;}" +
+			"div.ytd-thumbnail-overlay-time-status-renderer>badge-shape{border-radius:2px;height:12px;padding:3px 4px;background:rgba(0,0,0,0.8);font-size:1.2rem;font-weight:500;letter-spacing:0.5px;font-family:Roboto,Arial,sans-serif;}" + // line-height:1.2rem;
 			// Restyle Join and Analytics buttons
 			(!SeriStyleSettings.Advanced.LegacyPanels.Value ?
 				"#sponsor-button yt-button-shape>button{" + (SeriStyleSettings.VideoPage.HideJoinButton.Value ? "display:none;" : "text-transform:uppercase;background:none;border:1px solid #3EA6FF;color:#3EA6FF;border-radius:3px;") + "}" +
 				"#analytics-button yt-button-shape>button{text-transform:uppercase;background:#065FD4;color:#FFF;border-radius:3px;}"
 				: "") +
-			// Fix the Unsubscribe button
+			// Fix the Subscribe button
 			"ytd-subscribe-button-renderer{transition:none;width:unset;}" +
 			SelSubPassiveBtn + "{border-radius:3px;text-transform:uppercase;}" +
 			SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background:#C00;color:#FFF;}" + // "SUBSCRIBE" button, red color
@@ -69,13 +74,15 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"[rounded-corners],.ytp-rounded-menu,ytd-menu-popup-renderer{border-radius:0px;}" +
 			// Force keyboard color
 			"#container.ytd-searchbox span{filter:invert(100%);}" +
+			// Remove logo selection outline
+			"a#logo.ytd-topbar-logo-renderer::before{display:none;}" +
 			/* Homepage */
 			// Hide shorts shelf
 			(SeriStyleSettings.HomePage.HideShorts.Value ? "#contents>ytd-rich-section-renderer{display:none;}" : "") +
 			// Hide thumbnail background
 			"ytd-thumbnail.ytd-rich-grid-media:before{background:none;}" +
 			// Hide series
-			(SeriStyleSettings.HomePage.HideSeries.Value ? "ytd-badge-supported-renderer.top-badge.ytd-rich-grid-media{display:none;}" : "") +
+			(SeriStyleSettings.HomePage.HideSeries.Value ? "ytd-badge-supported-renderer.top-badge{display:none;}" : "") +
 			// Fix alerts
 			(SeriStyleSettings.Playlist.TrueOld.Value ? "#alerts.ytd-browse{padding-right:0px;}" : "") +
 			// Remove jam paddings
