@@ -84,6 +84,9 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				"#items.playlist-items{background:#181818;}" +
 				".header.ytd-playlist-panel-renderer{background:#212121FA;}"
 				: "") +
+			// Fix playlist & queue panel title font
+			"#playlist #header-description>h3>yt-formatted-string{font-family:Roboto,Arial,sans-serif;}" +
+			// Hide sponsor button
 			(SeriStyleSettings.VideoPage.HideJoinButton.Value ? "#sponsor-button{display:none;}" : "") +
 			// Hide "Shorts with this video" shelf
 			"#contents>ytd-reel-shelf-renderer{display:none;}" +
@@ -104,7 +107,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				""
 				: "") +
 			// Fix comment hover action menu
-			"ytd-comment-view-model#comment:not(:hover)>#body>#action-menu{visibility:hidden;}" +
+			"ytd-comment-view-model:not(:hover)>#body>#action-menu{visibility:hidden;}" +
 			//
 			""
 		).replaceAll(/(?<!!important);/g, "!important;"),

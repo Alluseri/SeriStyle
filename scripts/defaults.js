@@ -1,9 +1,6 @@
-this.SeriStyleMetaVersion = 5;
+this.SeriStyleMetaVersion = 6;
 this.SeriStyleMetaNotice = [
-	"introduced new settings:",
-	"Videopage changes -> Hide donation shelves",
-	"Advanced -> Improve action bar mutation success rate (BETA)",
-	"Advanced -> Disable all hotfixes",
+	"introduced many new settings, focused on True Old UI!",
 ].join("\n");
 
 this.SeriStyleLocales = {
@@ -24,7 +21,7 @@ this.SeriStyleLocales = {
 			Advanced: "Advanced settings"
 		},
 		Messages: {
-			UpdateSettings: "SeriStyle was updated to version 1.12.3, which " + this.SeriStyleMetaNotice + "\n\nDo you want to visit the settings page(opens in a new tab)?"
+			UpdateSettings: "SeriStyle was updated to version 1.13.0, which " + this.SeriStyleMetaNotice + "\n\nDo you want to visit the settings page(opens in a new tab)?"
 		}
 	}
 };
@@ -58,6 +55,20 @@ this.SeriStyleSettings = {
 				"en-US": "Old dark theme colors"
 			},
 			Value: false
+		},
+		OldNotificationBell: {
+			Kind: 0,
+			Name: {
+				"en-US": "Old notification bell"
+			},
+			Value: true
+		},
+		FixNotificationBadge: {
+			Kind: 0,
+			Name: {
+				"en-US": "Modify notification badge sizing (better suits old bell)"
+			},
+			Value: true
 		},
 		ResizeSearchBar: {
 			Kind: 0,
@@ -105,12 +116,6 @@ this.SeriStyleSettings = {
 		}
 	},
 	VideoPage: {
-		BlueAccent: {
-			Kind: 0,
-			Name: {
-				"en-US": "Old accent color on action bar"
-			}
-		},
 		HideDownloadButton: {
 			Kind: 0,
 			Name: {
@@ -243,6 +248,13 @@ this.SeriStyleSettings = {
 		}
 	},
 	ChannelPage: {
+		TrueOld: {
+			Kind: 0,
+			Name: {
+				"en-US": "True Old UI (currently inactive)"
+			},
+			Value: true
+		},
 		Half: {
 			Kind: 0,
 			Name: {
@@ -256,34 +268,27 @@ this.SeriStyleSettings = {
 				"en-US": "Hide the \"Channel sponsors\" section"
 			},
 			Value: true
-		},
-		TrueOld: {
-			Kind: 0,
-			Name: {
-				"en-US": "True Old UI"
-			},
-			Value: true
 		}
 	},
 	Playlist: {
 		TrueOld: {
 			Kind: 0,
 			Name: {
-				"en-US": "True Old UI (experimental)"
+				"en-US": "True Old UI"
 			},
 			Value: false
 		},
-		HideInteract: {
+		LegacyTones: {
 			Kind: 0,
 			Name: {
-				"en-US": "Hide the interaction buttons"
+				"en-US": "Legacy tones for True Old UI (from legacy SeriStyle versions)"
 			},
-			Value: true
+			Value: false
 		},
-		HideBackground: {
+		LegacyToolbar: {
 			Kind: 0,
 			Name: {
-				"en-US": "Hide the toolbar buttons' backgrounds"
+				"en-US": "Legacy toolbar buttons (from legacy SeriStyle versions)"
 			},
 			Value: false
 		},
@@ -450,6 +455,7 @@ this.SvgActionMenu = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid mee
 this.SvgSearch = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" class="style-scope yt-icon"></path></g></svg>';
 this.SvgMic = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z" class="style-scope yt-icon"></path></g></svg>';
 this.SvgMenu = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" class="style-scope yt-icon"></path></g></svg>';
+this.SvgNotifications = '<svg class="style-scope yt-icon" display="block" pointer-events="none" style="height:100%;width:100%" focusable="false" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g class="style-scope yt-icon"><path class="style-scope yt-icon" d="m12 22c1.1 0 2-0.9 2-2h-4c0 1.1 0.9 2 2 2zm8-4.65v1.65h-16v-1.65l2-1.88v-5.15c0-2.92 1.56-5.22 4-5.98v-0.38001c0-1.42 1.49-2.5 2.99-1.76 0.65 0.32 1.01 1.03 1.01 1.76v0.39c2.44 0.75 4 3.06 4 5.98v5.15z"/></g></svg>';
 
 this.PathVerified = "M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10 S17.52,2,12,2z M9.92,17.93l-4.95-4.95l2.05-2.05l2.9,2.9l7.35-7.35l2.05,2.05L9.92,17.93z";
 this.PathProducer = "M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z";

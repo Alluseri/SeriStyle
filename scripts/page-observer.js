@@ -21,6 +21,7 @@ var GeneralTransformerBurned = false;
 
 var GT_Burn1 = false;
 var GT_Burn2 = false;
+var GT_Burn3 = false;
 
 var PageObserver = new MutationObserver(async Mutations => {
 	var Inserted = [];
@@ -58,7 +59,8 @@ var VideoPageInterval = setInterval(() => {
 	}
 }, SeriStyleSettings.Advanced.VideoPageInterval.Value);
 var PlaylistInterval = setInterval(() => {
-	if (document.querySelector("ytd-menu-renderer.ytd-playlist-header-renderer")) {
+	if (document.querySelector("ytd-menu-renderer.ytd-playlist-header-renderer")
+		&& document.querySelector("div.metadata-action-bar.style-scope.ytd-playlist-header-renderer>div.metadata-buttons-wrapper.style-scope.ytd-playlist-header-renderer>ytd-button-renderer button>div>yt-icon path")) {
 		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-playlist.js"] });
 		clearInterval(PlaylistInterval);
 		console.log("[SeriStyle|Interval] Burned transformer: Playlist.");

@@ -42,9 +42,7 @@ This is a **general non-exhaustive** list of SeriStyle's features. Preview & com
 
 ## Roadmap (TODOs)
 - Old icons
-  - Verified & Producer channel icons
-  - Like, dislike icons: left side menu, comment section
-  - Better/old downarrow icon: left side menu (can be drawn manually, adapted from wa or rotated from video player)
+  - Comment section (paired with better text colors, perhaps play around with font and alignment)
   - Left side menu
     - Menu
     - Home
@@ -52,31 +50,30 @@ This is a **general non-exhaustive** list of SeriStyle's features. Preview & com
     - Library
     - History
     - Watch Later
+    - Liked
     - Settings
     - Report History
     - Send Feedback
     - Help
-    - Your videos(can be modded from Library)
-  - Shuffle
-  - Sign in
-  - Notification bell icon & color
+    - Your videos (can be modded from Library)
+  - Shuffle & Repeat in playlists
   - Subscription notification bell icon
     1. Keep as-is
-    2. Fill(match notification bell icon)
+    2. Fill (match notification bell icon)
     3. Fill, wider cross line
     4. Hide using Exel
-- Expand button in left side menu will now function as both, collapse button will be hidden
-- Old context menus
-  - Global
-    - Remove roundings everywhere
-    - Transparency(IF EXISTED)
-- Bring back slider bar on left side menu(works in playlist view)
-- Add a conditional MutationObserver to invoke Reinject() in videopage transformer
+  - "Add To Playlist" and X button in the Queue panel
+  - Old X, Shuffle and Loop buttons in the Playlist panel
+  - Deuglify 3 dots in Playlist panel(on video sel & top bar) and Queue panel(on video sel)
+  - Old Edit icon in Playlist view
 - Convert recommended playlists into videos using noembed or hide them(snip in -general)
-- Old playlist & queue panels
+- Old fonts in playlist & queue panels
 - Old control buttons on your channel page
-- Step in settings sliderbars
-- Old channel page top
+- Old Playlist & Queue panel styles(revamp entirely w/ colors and borders)
+- Expand & Collapse arrows
+  - Left side menu
+  - Playlist view
+  - Other places (maybe?)
 
 ## Credits & Gratitude
 ### Services

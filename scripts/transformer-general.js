@@ -1,7 +1,10 @@
 var SelSearchIcon = "#search-icon-legacy>yt-icon.ytd-searchbox";
 var SelMicIcon = "#voice-search-button yt-icon";
 var SelMenuIcon = "#guide-icon.ytd-masthead";
+var SelNotificationsIcon = "yt-icon-button.ytd-notification-topbar-button-renderer yt-icon";
 var _;
+
+var DidUpdateNotifications = false;
 
 document.head.appendChild(DomUtils.BuildElement("style", {
 	"innerText":
@@ -32,6 +35,11 @@ setInterval(function () { // It's not my problem that everyone is stupid enough 
 			Element.attributes.d.value = PathProducer;
 		}
 	});
+	if (!DidUpdateNotifications && SeriStyleSettings.General.OldNotificationBell.Value)
+		if (_ = $(SelNotificationsIcon)) {
+			_.innerHTML = SvgNotifications;
+			DidUpdateNotifications = true;
+		}
 }, SeriStyleSettings.Advanced.OldIconInterval.Value);
 
 var ShareUrl;

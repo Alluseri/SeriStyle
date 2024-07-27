@@ -46,7 +46,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#subscribe-button yt-button-shape[invisible]{display:block;position:unset;pointer-events:unset;visibility:unset;}" +
 			"#notification-preference-button div.cbox{display:none;}" + // widest: "#notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.cbox.yt-spec-button-shape-next--button-text-content"
 			"#notification-preference-button div.yt-spec-button-shape-next__secondary-icon{display:none;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__secondary-icon
-			"#notification-preference-button div.yt-spec-button-shape-next__icon{margin-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__icon
+			"#notification-preference-button div.yt-spec-button-shape-next__icon{pointer-events:none;margin-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__icon
 			"#notification-preference-button button{background:none;padding-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button
 			"#notification-preference-button div.yt-spec-button-shape-next__button-text-content{display:none;}" +
 			// Fix notification bell
@@ -54,14 +54,14 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Hide channel handles
 			"p.ytd-c4-tabbed-header-renderer{display:none;}" +
 			// Hide feedback shapes
-			(SeriStyleSettings.General.HideFeedback.Value ? "yt-touch-feedback-shape{display:none;}" : "") +
+			(SeriStyleSettings.General.HideFeedback.Value ? "yt-touch-feedback-shape,yt-interaction{display:none;}" : "") +
 			// Old colors fixes
 			(SeriStyleSettings.General.OldColors.Value ?
 				// Old background color
 				"ytd-app,ytd-browse,ytd-two-column-browse-results-renderer[page-subtype='playlist'].ytd-browse,ytd-page-manager,#show-hide-button>ytd-button-renderer{background:#181818;}" +
 				// Old top and left bar colors
 				"#background.ytd-masthead{background:rgba(33,33,33,0.98);}" +
-				"#guide-content.ytd-app{background:#212121;}" +
+				"#guide-content.ytd-app,ytd-mini-guide-renderer.ytd-app{background:#212121;}" +
 				// Fix chip renderer colors
 				"ytd-browse[page-subtype='home'] #chips-wrapper.ytd-feed-filter-chip-bar-renderer{border-top:solid 1px #4D4D4D;border-bottom:none;background:#212121;}" +
 				"#left-arrow.ytd-feed-filter-chip-bar-renderer:after{background:linear-gradient(to right,rgba(33,33,33,0.98)20%,rgba(33,33,33,0)80%);}" +
@@ -76,6 +76,12 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#container.ytd-searchbox span{filter:invert(100%);}" +
 			// Remove logo selection outline
 			"a#logo.ytd-topbar-logo-renderer::before{display:none;}" +
+			// Fix notification badge visuals
+			(SeriStyleSettings.General.FixNotificationBadge.Value ? "div.yt-spec-icon-badge-shape--type-notification>div.yt-spec-icon-badge-shape__badge{border:none;padding-left:3px;background:#c11;}" : "") +
+			// Left mini sidebar (available on low dimensions like my offscreen) fixes
+			"ytd-mini-guide-renderer.ytd-app{padding:0px;}" +
+			"ytd-mini-guide-renderer.ytd-app>#items>ytd-mini-guide-entry-renderer{border-radius:0px;background:none;}" +
+
 			/* Homepage */
 			// Hide shorts shelf
 			(SeriStyleSettings.HomePage.HideShorts.Value ? "#contents>ytd-rich-section-renderer{display:none;}" : "") +
@@ -112,11 +118,20 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"ytd-playlist-video-renderer{border-radius:0px;}" +
 			// Old title font
 			"#text.yt-sans-28{font-family:Roboto,Arial,sans-serif;font-size:24px;font-weight:400;line-height:34px;text-decoration-color:#FFF;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-size-adjust:100%;word-break:break-word;}" + // Alternative selector: .thumbnail-and-metadata-wrapper>div>yt-dynamic-sizing-formatted-string>div>yt-formatted-string
+			// Fix playlist entry hover action menu
+			"ytd-playlist-video-renderer:not(:hover)>#menu{visibility:hidden;}" +
 			// True Old
-			(SeriStyleSettings.Playlist.TrueOld.Value ? // TODO: Move duplicates outside of this scope
+			(SeriStyleSettings.Playlist.TrueOld.Value ? // TODO: Move duplicates outside of this scope - it's not as easy because some properties are different. Are they even relevant anymore?
 				// Restore position & dimensions, fix colors
 				"ytd-browse.ytd-page-manager{padding-top:0px;}" +
-				"ytd-playlist-header-renderer{background:rgba(255,255,255,0.05);margin-left:0px;height:calc(100vh - var(--ytd-toolbar-height));}" + // In the past: var(--yt-spec-general-background-a)
+				"ytd-playlist-header-renderer{margin-left:0px;height:calc(100vh - var(--ytd-toolbar-height));}" +
+				(SeriStyleSettings.Playlist.LegacyTones.Value ?
+					"ytd-playlist-header-renderer{background:rgba(255,255,255,0.05);}" // In the past: var(--yt-spec-general-background-a)
+					:
+					"ytd-playlist-header-renderer{background:#181818;}" +
+					"ytd-browse[page-subtype='playlist'],ytd-item-section-renderer[page-subtype='playlist'] #contents.ytd-item-section-renderer{background:#0F0F0F;}" +
+					""
+				) +
 				".ytd-playlist-header-renderer.immersive-header-container{margin-bottom:0px;border-radius:0px;}" +
 				// Hide immersive background
 				"div.immersive-header-gradient{background:none;}" +
@@ -126,11 +141,15 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				"yt-formatted-string.byline-item{margin-right:0px;font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;letter-spacing:0.2px;line-height:20px;color:#AAA;white-space:pre-wrap;}" +
 				"yt-formatted-string.byline-item>span{display:inline-block;}" +
 				"div.metadata-stats.ytd-playlist-byline-renderer{max-height:unset;overflow:visible;display:block;}" +
-				"yt-formatted-string.byline-item:not(:nth-child(6))::after{content:'•';margin-left:4px;margin-right:2px;}" +
+				"yt-formatted-string.byline-item:not(:nth-child(6))::after{content:'•';margin-left:4px;margin-right:1px;}" +
 				// Remove cover thumbnail rounding
 				(SeriStyleSettings.General.ThumbnailRoundings.Value ? ".image-wrapper{border-radius:0px;}" : "") +
 				// Old video list padding
 				"ytd-two-column-browse-results-renderer[page-subtype='playlist'].ytd-browse,ytd-browse[page-subtype='playlist']>#alerts{padding-left:360px;}" +
+				// Old description text color
+				".description #plain-snippet-text{color:#AAA;}" +
+				// Fix one of the paddings (lol)
+				"div.metadata-action-bar.style-scope.ytd-playlist-header-renderer{margin-top:4px;}" +
 				//
 				""
 				:
@@ -138,7 +157,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				"yt-formatted-string.byline-item{margin-right:0px;font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;letter-spacing:0.2px;line-height:20px;color:#FFF;white-space:pre-wrap;}" +
 				"yt-formatted-string.byline-item>span{display:inline-block;}" +
 				"div.metadata-stats.ytd-playlist-byline-renderer{max-height:unset;overflow:visible;display:block;}" +
-				"yt-formatted-string.byline-item:not(:nth-child(6))::after{content:'•';margin-left:4px;margin-right:2px;}" +
+				"yt-formatted-string.byline-item:not(:nth-child(6))::after{content:'•';margin-left:4px;margin-right:1px;}" +
 				//
 				""
 			) +
@@ -166,7 +185,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				"#inner-header-container.ytd-c4-tabbed-header-renderer{flex-direction:row;margin-top:0px;}" +
 				// Avatar style fixes
 				"#channel-header-container.ytd-c4-tabbed-header-renderer>#avatar{width:80px;height:80px;margin-bottom:0px;}" +
-				// Fixing tab styles:
+				// Fixing tab styles
 				".yt-tab-shape-wiz__tab{padding:0 32px;font-family:Roboto,Noto,sans-serif;font-size:14px;font-weight:500;letter-spacing:0.007px;text-size-adjust:100%;text-transform:uppercase;white-space:nowrap;}" +
 				"yt-tab-shape.yt-tab-shape-wiz{margin-right:0px;}" +
 				".yt-tab-group-shape-wiz__slider{display:none;}" +
