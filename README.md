@@ -25,7 +25,7 @@ It's in the description of the extension: **early-2021** UI.
 SeriStyle hides it because it's implemented in such a disgusting way that it cannot even work standalone without breaking on video switch. Digging around other people's code to fix it isn't something I do.
 
 ## Features
-This is a **general non-exhaustive** list of SeriStyle's features. Preview & comparison images coming soon.
+This is a **general, non-exhaustive** list of SeriStyle's features.
 - General changes
   - Old dark theme colors
   - Old subscribe button
@@ -36,9 +36,41 @@ This is a **general non-exhaustive** list of SeriStyle's features. Preview & com
   - Old metadata view
   - Old description panel
   - Configurable changes
-- True old UI and general changes for playlists (Similarity with True old UI: 80%)
+- True Old UI and general changes for playlists (Similarity with True Old UI enabled: 90%)
 - Minor homepage changes (All configurable)
 - Minor videoplayer changes (All configurable)
+
+## Compare & see for yourself
+The screenshots were made with old dark theme colors and all **True Old UI** features enabled.
+<details>
+  <summary>Video page</summary>
+
+  #### SeriStyle v1.13.0
+  <img src="https://cdn.nest.rip/uploads/0fb3306d-0ed3-4eee-9477-580e5c0eb1ae.png">
+
+  #### Normal YouTube UI
+  <img src="https://cdn.nest.rip/uploads/5a597b98-7643-443a-9613-5bc38364d73e.png">
+</details>
+
+<details>
+  <summary>Homepage</summary>
+
+  #### SeriStyle v1.13.0
+  <img src="https://cdn.nest.rip/uploads/da3d2ec7-d010-4251-b54d-d797499a0129.jpg">
+
+  #### Normal YouTube UI
+  <img src="https://cdn.nest.rip/uploads/f533ddb3-275b-4431-8dac-437c1429e52b.png">
+</details>
+
+<details>
+  <summary>Playlist view</summary>
+
+  #### SeriStyle v1.13.0
+  <img src="https://cdn.nest.rip/uploads/894dace0-73f6-4358-a7d0-ad44a3944780.png">
+
+  #### Normal YouTube UI
+  <img src="https://cdn.nest.rip/uploads/b80f5493-14af-47db-8bd4-bb44d4882e23.png">
+</details>
 
 ## Roadmap (TODOs)
 - Old icons

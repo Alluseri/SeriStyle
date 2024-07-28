@@ -5,13 +5,14 @@ var SelSubContainer = "#subscribe-button>ytd-subscribe-button-renderer>yt-smarti
 var SelMeta = "#meta.ytd-c4-tabbed-header-renderer";
 var SelMetaSpan = SelMeta + ">span.meta-item";
 
-// TODO: Merge general button styles
 document.head.appendChild(DomUtils.BuildElement("style", {
 	"innerText":
 		(
 			/* General */
 			// Wtfard
 			"ytd-ad-slot-renderer{display:none;}" +
+			// Remove roundings for notification box
+			"#contentWrapper>ytd-multi-page-menu-renderer{border-radius:0px;}" +
 			// Remove "You"
 			"ytd-guide-collapsible-section-entry-renderer>#header{display:none;}" +
 			// Old search box styles
@@ -25,7 +26,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Old search input margins
 			"input#search{padding:1px 2px;margin-left:4px;}" +
 			// Remove thumbnail roundings
-			(SeriStyleSettings.General.ThumbnailRoundings.Value ? "#thumbnail{border-radius:0px;}" : "") +
+			"#thumbnail{border-radius:0px;}" +
 			// Fix video listing hover action menu
 			"#dismissible.ytd-compact-video-renderer:not(:hover)>div.details>#menu{visibility:hidden;}" +
 			// Old homepage top bar roundings(also applies to vp filters apparently)
@@ -143,7 +144,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				"div.metadata-stats.ytd-playlist-byline-renderer{max-height:unset;overflow:visible;display:block;}" +
 				"yt-formatted-string.byline-item:not(:nth-child(6))::after{content:'•';margin-left:4px;margin-right:1px;}" +
 				// Remove cover thumbnail rounding
-				(SeriStyleSettings.General.ThumbnailRoundings.Value ? ".image-wrapper{border-radius:0px;}" : "") +
+				".image-wrapper{border-radius:0px;}" +
 				// Old video list padding
 				"ytd-two-column-browse-results-renderer[page-subtype='playlist'].ytd-browse,ytd-browse[page-subtype='playlist']>#alerts{padding-left:360px;}" +
 				// Old description text color

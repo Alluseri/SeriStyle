@@ -15,6 +15,7 @@ new MutationObserver(Mutations => {
 		FindByExel(Inserted, ExelPlaybackSpeed)?.firstElementChild?.firstElementChild?.remove();
 		FindByExel(Inserted, ExelSubtitles)?.firstElementChild?.firstElementChild?.remove();
 		FindByExel(Inserted, ExelQuality)?.firstElementChild?.firstElementChild?.remove();
+		FindByExel(Inserted, ExelNormalizeSound)?.firstElementChild?.firstElementChild?.remove();
 	}
 }).observe($(SelMenuPanel), {
 	childList: true
