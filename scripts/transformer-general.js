@@ -55,6 +55,14 @@ var FixShareIntv = setInterval(function () { // See above comment
 	}
 }, SeriStyleSettings.Advanced.ShareFixInterval.Value);
 
+// TODO
+/*new MutationObserver(function (Mutations) {
+	console.log(Mutations[0].target.nodeValue);
+}).observe(
+	document.querySelector('title'),
+	{ subtree: true, characterData: true, childList: true }
+);*/
+
 function FixContentHTML(Element, Metadata) {
 	console.log(Element);
 	console.log(Metadata);
