@@ -21,7 +21,7 @@ this.SeriStyleLocales = {
 			Advanced: "Advanced settings"
 		},
 		Messages: {
-			UpdateSettings: "SeriStyle was updated to version 1.13.0, which " + this.SeriStyleMetaNotice + "\n\nDo you want to visit the settings page(opens in a new tab)?"
+			UpdateSettings: "SeriStyle was updated to version 1.13.1, which " + this.SeriStyleMetaNotice + "\n\nDo you want to visit the settings page(opens in a new tab)?"
 		}
 	}
 };
@@ -426,7 +426,7 @@ this.IsVisible = (Element) => !!(Element && (Element.offsetWidth || Element.offs
 this.WaitTime = async (Millis) => await new Promise(Response => setTimeout(Response, Millis));
 
 this.ExelCreateClip = "TTggN2MwIC41NS0uNDUgMS0xIDFzLTEtLjQ1LTEtMSAuNDUtMSAxLTEgMSAuNDUgMSAxem0tMSA5Yy0uNTUgMC0xIC40NS0xIDFzLjQ1IDEgMSAxIDEtLjQ1IDEtMS0uNDUtMS0xLTF6bTMuNzktNy43N0wyMSAxOC40NFYyMGgtMy4yN2wtNS43Ni01Ljc2LTEuMjcgMS4yN2MuMTkuNDYuMy45Ni4zIDEuNDkgMCAyLjIxLTEuNzkgNC00IDRzLTQtMS43OS00LTQgMS43OS00IDQtNGMuNDIgMCAuODEuMDggMS4xOS4ybDEuMzctMS4zNy0xLjExLTEuMTFDOCAxMC44OSA3LjUxIDExIDcgMTFjLTIuMjEgMC00LTEuNzktNC00czEuNzktNCA0LTQgNCAxLjc5IDQgNGMwIC40My0uMDkuODQtLjIxIDEuMjN6bS0uNzEuNzEtLjQzLS40NC4xOS0uNThjLjExLS4zNC4xNi0uNjQuMTYtLjkyIDAtMS42NS0xLjM1LTMtMy0zUzQgNS4zNSA0IDdzMS4zNSAzIDMgM2MuMzYgMCAuNzMtLjA3IDEuMDktLjIxbC42MS0uMjQuNDYuNDYgMS4xMSAxLjExLjcxLjcxLS43MS43MS0xLjM3IDEuMzctLjQzLjQzLS41OC0uMThDNy41NSAxNC4wNSA3LjI3IDE0IDcgMTRjLTEuNjUgMC0zIDEuMzUtMyAzczEuMzUgMyAzIDMgMy0xLjM1IDMtM2MwLS4zOC0uMDctLjc1LS4yMi0xLjEybC0uMjUtLjYxLjQ3LS40NyAxLjI3LTEuMjcuNzEtLjcxLjcxLjcxTDE4LjE1IDE5SDIwdi0uMTVsLTkuOTItOS45MXpNMTcuNzMgNEgyMXYxLjU2bC01LjUyIDUuNTItMi40MS0yLjQxTDE3LjczIDR6bS40MiAxLTMuNjcgMy42NyAxIDFMMjAgNS4xNVY1aC0xLjg1eg==";
-this.ExelAddToPlaylist = "TTIyIDEzaC00djRoLTJ2LTRoLTR2LTJoNFY3aDJ2NGg0djJ6bS04LTZIMnYxaDEyVjd6TTIgMTJoOHYtMUgydjF6bTAgNGg4di0xSDJ2MXo=";
+this.ExelAddToPlaylist = "TTE4IDR2MTUuMDZsLTUuNDItMy44Ny0uNTgtLjQyLS41OC40Mkw2IDE5LjA2VjRoMTJtMS0xSDV2MThsNy01IDcgNVYzeg==";
 this.ExelInjectedAddToPlaylist = "TTE0IDEwSDJ2MmgxMnYtMnptMC00SDJ2MmgxMlY2em00IDh2LTRoLTJ2NGgtNHYyaDR2NGgydi00aDR2LTJoLTR6TTIgMTZoOHYtMkgydjJ6";
 this.ExelShare = "TTE1LDUuNjNMMjAuNjYsMTJMMTUsMTguMzdWMTV2LTFoLTFjLTMuOTYsMC03LjE0LDEtOS43NSwzLjA5YzEuODQtNC4wNyw1LjExLTYuNCw5Ljg5LTcuMUwxNSw5Ljg2VjlWNS42MyBNMTQsM3Y2IEM2LjIyLDEwLjEzLDMuMTEsMTUuMzMsMiwyMWMyLjc4LTMuOTcsNi40NC02LDEyLTZ2Nmw4LTlMMTQsM0wxNCwzeg==";
 this.ExelImmersive = "TTIxIDd2MTBIM1Y3aDE4bTEtMUgydjEyaDIwVjZ6TTExLjUgMnYzaDFWMmgtMXptMSAxN2gtMXYzaDF2LTN6TTMuNzkgMyA2IDUuMjFsLjcxLS43MUw0LjUgMi4yOSAzLjc5IDN6bTIuOTIgMTYuNUw2IDE4Ljc5IDMuNzkgMjFsLjcxLjcxIDIuMjEtMi4yMXpNMTkuNSAyLjI5IDE3LjI5IDQuNWwuNzEuNzFMMjAuMjEgM2wtLjcxLS43MXptMCAxOS40Mi43MS0uNzFMMTggMTguNzlsLS43MS43MSAyLjIxIDIuMjF6";

@@ -42,12 +42,11 @@ setInterval(function () { // It's not my problem that everyone is stupid enough 
 		}
 }, SeriStyleSettings.Advanced.OldIconInterval.Value);
 
-var ShareUrl;
-var OldU;
 var FixShareIntv = setInterval(function () { // See above comment
-	if (!ShareUrl) if (!(ShareUrl = document.getElementById("share-url"))) return;
+	var ShareUrl = document.getElementById("share-url");
+	if (!ShareUrl) return;
 	var SuVal = ShareUrl.value;
-	if (SuVal != OldU && SuVal.includes("si=")) {
+	if (SuVal.includes("si=")) {
 		var Uv = new URL(SuVal);
 		var Sep = Uv.searchParams;
 		Sep.delete("si");

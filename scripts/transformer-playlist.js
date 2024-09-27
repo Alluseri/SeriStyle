@@ -23,7 +23,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 
 				SelPlaybackButtons + "{background:none;padding:0px;}" +
 				SelPlaybackButtons + ">.yt-spec-button-shape-next__icon{margin:0px;display:flex;justify-content:center;}" +
-				SelPlaybackButtons + " span{display:none;}" +
+				SelPlaybackButtons + " span.yt-core-attributed-string{display:none;}" +
 				SelPlaybackButtons + " yt-icon div{color:#909090;}" +
 
 				SelPlaybackToolbar + "{margin:0px;gap:8px;}" +

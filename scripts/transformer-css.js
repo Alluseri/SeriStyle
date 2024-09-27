@@ -125,40 +125,47 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			(SeriStyleSettings.Playlist.TrueOld.Value ? // TODO: Move duplicates outside of this scope - it's not as easy because some properties are different. Are they even relevant anymore?
 				// Restore position & dimensions, fix colors
 				"ytd-browse.ytd-page-manager{padding-top:0px;}" +
-				"ytd-playlist-header-renderer{margin-left:0px;height:calc(100vh - var(--ytd-toolbar-height));}" +
+				"yt-page-header-renderer.page-header-sidebar{margin-left:0px;height:calc(100vh - var(--ytd-toolbar-height));}" +
 				(SeriStyleSettings.Playlist.LegacyTones.Value ?
-					"ytd-playlist-header-renderer{background:rgba(255,255,255,0.05);}" // In the past: var(--yt-spec-general-background-a)
+					"yt-page-header-renderer.page-header-sidebar{background:rgba(255,255,255,0.05);}" // In the past: var(--yt-spec-general-background-a)
 					:
-					"ytd-playlist-header-renderer{background:#181818;}" +
+					"yt-page-header-renderer.page-header-sidebar{background:#181818;}" +
 					"ytd-browse[page-subtype='playlist'],ytd-item-section-renderer[page-subtype='playlist'] #contents.ytd-item-section-renderer{background:#0F0F0F;}" +
 					""
 				) +
-				".ytd-playlist-header-renderer.immersive-header-container{margin-bottom:0px;border-radius:0px;}" +
+				"yt-page-header-renderer.page-header-sidebar{margin-left:0px;}" +
+				"page-header-view-model-wiz__page-header-background{margin-bottom:0px;border-radius:0px;}" +
 				// Hide immersive background
-				"div.immersive-header-gradient{background:none;}" +
-				"yt-img-shadow.blurred-image.ytd-playlist-header-renderer{display:none;}" +
+				"div.YtCinematicContainerViewModelBackgroundGradient{background:none;}" +
+				"img.YtCinematicContainerViewModelBackgroundImage{display:none;}" +
 				"div.immersive-header-background-wrapper{background:none;}" +
+				".YtCinematicContainerViewModelHost{background:none;}" +
 				// Metadata: Proper overflow, pins, old font
-				"yt-formatted-string.byline-item{margin-right:0px;font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;letter-spacing:0.2px;line-height:20px;color:#AAA;white-space:pre-wrap;}" +
+				".page-header-view-model-wiz__page-header-title span{font-family:Roboto,Arial,sans-serif;font-size:2.8rem;line-height:3.8rem;font-weight:400;}" +
+				".yt-content-metadata-view-model-wiz__metadata-row:nth-child(2){display:inline-block;}" +
+				".yt-content-metadata-view-model-wiz__metadata-row>span{font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;letter-spacing:0.2px;line-height:20px;color:#AAA;white-space:pre-wrap;}" +
 				"yt-formatted-string.byline-item>span{display:inline-block;}" +
-				"div.metadata-stats.ytd-playlist-byline-renderer{max-height:unset;overflow:visible;display:block;}" +
-				"yt-formatted-string.byline-item:not(:nth-child(6))::after{content:'•';margin-left:4px;margin-right:1px;}" +
+				".yt-content-metadata-view-model-wiz__metadata-row>.yt-content-metadata-view-model-wiz__metadata-text:first-child{display:none;}" +
+				".yt-content-metadata-view-model-wiz__metadata-row>.yt-content-metadata-view-model-wiz__delimiter:nth-child(2){display:none;}" +
 				// Remove cover thumbnail rounding
-				".image-wrapper{border-radius:0px;}" +
+				".yt-content-preview-image-view-model-wiz--large-rounded-image{border-radius:0px;}" +
 				// Old video list padding
 				"ytd-two-column-browse-results-renderer[page-subtype='playlist'].ytd-browse,ytd-browse[page-subtype='playlist']>#alerts{padding-left:360px;}" +
-				// Old description text color
-				".description #plain-snippet-text{color:#AAA;}" +
+				// Description fixes
+				"yt-description-preview-view-model{pointer-events:none;color:#AAA;}" +
+				"yt-description-preview-view-model truncated-text-content{max-height:unset;-webkit-mask-image:unset;}" +
+				"yt-description-preview-view-model truncated-text-content>span{font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;letter-spacing:0.2px;line-height:20px;color:#AAA;white-space:pre-wrap;}" +
+				"page-header-view-model-wiz__page-header-headline-info{cursor:text;}" + // should work properly after transformer-playlist fix, could be disabled for legacy toolbar purposes
 				// Fix one of the paddings (lol)
 				"div.metadata-action-bar.style-scope.ytd-playlist-header-renderer{margin-top:4px;}" +
 				//
 				""
 				:
-				// Metadata: Proper overflow, pins, old font
-				"yt-formatted-string.byline-item{margin-right:0px;font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;letter-spacing:0.2px;line-height:20px;color:#FFF;white-space:pre-wrap;}" +
+				// Metadata: Proper overflow, pins, old font (Terminated by UI revamp)
+				/*"yt-formatted-string.byline-item{margin-right:0px;font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:400;letter-spacing:0.2px;line-height:20px;color:#FFF;white-space:pre-wrap;}" +
 				"yt-formatted-string.byline-item>span{display:inline-block;}" +
 				"div.metadata-stats.ytd-playlist-byline-renderer{max-height:unset;overflow:visible;display:block;}" +
-				"yt-formatted-string.byline-item:not(:nth-child(6))::after{content:'•';margin-left:4px;margin-right:1px;}" +
+				"yt-formatted-string.byline-item:not(:nth-child(6))::after{content:'•';margin-left:4px;margin-right:1px;}" +*/
 				//
 				""
 			) +

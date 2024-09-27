@@ -11,10 +11,14 @@ Bring the early-2021 UI back to YouTube!
 6. Enjoy!
 ### Firefox
 1. Download [the latest release](https://github.com/Alluseri/SeriStyle/releases)
+2. Accept the automatic installation
+3. Enjoy!
+<!--
 2. Navigate to `about:addons`
 3. Find the "Install Add-on from File..." button
 4. Pick & install the xpi file you just downloaded
 5. Enjoy!
+-->
 
 ## FAQ <!-- Nobody ever asked one. Oh well. -->
 #### Does it support white theme?
