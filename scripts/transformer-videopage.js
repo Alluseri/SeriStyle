@@ -102,7 +102,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			(SeriStyleSettings.VideoPage.HideDonationShelves.Value ? "#donation-shelf{display:none;}" : "") +
 			(!SeriStyleSettings.Advanced.DisableHotfixes.Value ?
 				// HF #1: Disable small double-icons on action bar since I replace all of them
-				"segmented-like-dislike-button-view-model yt-icon>yt-icon-shape, segmented-like-dislike-button-view-model yt-icon>yt-animated-icon, segmented-like-dislike-button-view-model yt-icon>.yt-icon-shape{display:none;}" +
+				"segmented-like-dislike-button-view-model yt-icon>yt-icon-shape, segmented-like-dislike-button-view-model yt-icon>yt-animated-icon, segmented-like-dislike-button-view-model yt-icon>.yt-icon-shape, #top-level-buttons-computed yt-icon>.yt-icon-shape{display:none;}" +
 				//
 				""
 				: "") +
