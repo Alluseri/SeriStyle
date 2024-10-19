@@ -14,7 +14,22 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Remove roundings for notification box
 			"#contentWrapper>ytd-multi-page-menu-renderer{border-radius:0px;}" +
 			// Remove "You"
-			"ytd-guide-collapsible-section-entry-renderer>#header{display:none;}" +
+			"#header.ytd-guide-collapsible-section-entry-renderer{display:none;}" +
+			// General pink color fix (may stop working later, try removing "[refresh]" to generalize)
+			"html[refresh],[refresh]{--yt-spec-static-brand-red:#F00;}" +
+			// Fix progress bar colors (main player, watched, miniplayer)
+			"div.ytp-play-progress,.ytd-thumbnail-overlay-resume-playback-renderer,.YtProgressBarLineProgressBarPlayed{background:#F00;}" +
+			// Fix logo color
+			"#logo-icon g:not([id]):first-child>path:first-child{fill:#F00;}" +
+			// Fix LIVE chip & ring color
+			".yt-spec-avatar-shape__live-badge{background:#F00;}" +
+			".yt-spec-avatar-shape--cairo-refresh.yt-spec-avatar-shape--live-ring::after{background:#F00;}" +
+			// "HD" chip on settings button and a bunch of other color fixes (videopage)
+			".ytp-cairo-refresh .ytp-settings-button.ytp-hd-quality-badge::after, .ytp-cairo-refresh .ytp-settings-button.ytp-hdr-quality-badge::after, .ytp-cairo-refresh .ytp-settings-button.ytp-4k-quality-badge::after, .ytp-cairo-refresh .ytp-settings-button.ytp-5k-quality-badge::after, .ytp-cairo-refresh .ytp-settings-button.ytp-8k-quality-badge::after, .ytp-cairo-refresh .ytp-settings-button.ytp-3d-badge-grey::after, .ytp-cairo-refresh .ytp-settings-button.ytp-3d-badge::after{background-color:#F00;}" +
+			// Scrubber color fix
+			".ytp-cairo-refresh .ytp-swatch-background-color{background-color:#F00;}" +
+			// Modern checkbox color fix
+			".ytp-menuitem[aria-checked=true] .ytp-menuitem-toggle-checkbox{background:#F00;}" +
 			// Old search box styles
 			"#container.ytd-searchbox{" + (SeriStyleSettings.General.NormalizeSearchBar.Value ? "margin-left:0px;" : "") + "position:relative;align-items:center;border:1px solid var(--ytd-searchbox-legacy-border-color);border-right:none;border-radius:2px 0 0 2px;box-shadow:inset 0 1px 2px var(--ytd-searchbox-legacy-border-shadow-color);padding:2px 6px;flex:1;flex-basis:1e-9px;display:flex;flex-direction:row;}" +
 			// Prepare voice search button
@@ -75,10 +90,14 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"[rounded-corners],.ytp-rounded-menu,ytd-menu-popup-renderer{border-radius:0px;}" +
 			// Force keyboard color
 			"#container.ytd-searchbox span{filter:invert(100%);}" +
+			"#container.ytd-searchbox svg{filter:invert(75%);}" +
 			// Remove logo selection outline
 			"a#logo.ytd-topbar-logo-renderer::before{display:none;}" +
 			// Fix notification badge visuals
-			(SeriStyleSettings.General.FixNotificationBadge.Value ? "div.yt-spec-icon-badge-shape--type-notification>div.yt-spec-icon-badge-shape__badge{border:none;padding-left:3px;background:#c11;}" : "") +
+			(SeriStyleSettings.General.FixNotificationBadge.Value ?
+				"div.yt-spec-icon-badge-shape--type-notification>div.yt-spec-icon-badge-shape__badge{border:none;padding-left:3px;background:#c11;}" +
+				".yt-spec-icon-badge-shape--style-overlay.yt-spec-icon-badge-shape--type-cart-refresh .yt-spec-icon-badge-shape__badge{color:#fff;}"
+				: "") +
 			// Left mini sidebar (available on low dimensions like my offscreen) fixes
 			"ytd-mini-guide-renderer.ytd-app{padding:0px;}" +
 			"ytd-mini-guide-renderer.ytd-app>#items>ytd-mini-guide-entry-renderer{border-radius:0px;background:none;}" +
@@ -171,7 +190,13 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			) +
 
 			/* Channel Page */
-			(SeriStyleSettings.ChannelPage.TrueOld.Value ? // TODO: Relocate this... maybe?
+			// Hide the "Channel sponsors" section
+			(SeriStyleSettings.ChannelPage.NoSponsors.Value ? "ytd-recognition-shelf-renderer{display:none;}" : "") +
+			// Fix silly button color https://github.com/Alluseri/SeriStyle/issues/21
+			"ytd-browse[page-subtype='channels'] ytd-button-renderer .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text{background:#222;}" +
+			"ytd-browse[page-subtype='channels'] ytd-button-renderer .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text a.yt-core-attributed-string__link{color:#DDD;}" +
+			// Self-explanatory
+			(SeriStyleSettings.ChannelPage.TrueOld.Value ?
 				// Metadata: Only show subscriber count
 				SelMetaSpan + "{margin:0;}" +
 				SelMetaSpan + ">#channel-handle{display:none;}" +
@@ -205,7 +230,6 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				"#channel-header.ytd-c4-tabbed-header-renderer, #tabs-inner-container.ytd-c4-tabbed-header-renderer{background:#181818;}" +
 				"ytd-browse[page-subtype='channels'] {background:#0F0F0F;}"
 				: "") +
-			(SeriStyleSettings.ChannelPage.NoSponsors.Value ? "ytd-recognition-shelf-renderer{display:none;}" : "") +
 			""
 		).replaceAll(/(?<!!important);/g, "!important;"),
 	"id": "seristyle-tf-css"

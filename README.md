@@ -35,6 +35,7 @@ This is a **general, non-exhaustive** list of SeriStyle's features.
   - Old subscribe button
   - Old top bar: search bar, menu icon, mic search icon
   - Remove rounded corners of thumbnails and some containers
+  - Revert "pink theme" back to red
 - Videopage changes (Similarity: 99.9%)
   - Old icons: like, dislike, share, add to playlist, menu
   - Old metadata view
@@ -45,7 +46,7 @@ This is a **general, non-exhaustive** list of SeriStyle's features.
 - Minor videoplayer changes (All configurable)
 
 ## Compare & see for yourself
-The screenshots were made with old dark theme colors and all **True Old UI** features enabled.
+The screenshots were made with old dark theme colors and all **True Old UI** features enabled. May be outdated.
 <details>
   <summary>Video page</summary>
 

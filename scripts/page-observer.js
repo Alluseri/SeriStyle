@@ -17,7 +17,7 @@ Environment.runtime.onMessage.addListener((Message) => {
 	window.dispatchEvent(new CustomEvent("historychange", { detail: Message.Args[0] }));
 });
 
-var GeneralTransformerBurned = false;
+var GeneralTransformerFired = false;
 
 var GT_Burn1 = false;
 var GT_Burn2 = false;
@@ -31,7 +31,7 @@ var PageObserver = new MutationObserver(async Mutations => {
 		}
 	});
 
-	if (!GeneralTransformerBurned) {
+	if (!GeneralTransformerFired) {
 		if (!GT_Burn1)
 			GT_Burn1 = Inserted.some(Element => Element.tagName == "BUTTON" && Element.id == "search-icon-legacy");
 
@@ -40,14 +40,14 @@ var PageObserver = new MutationObserver(async Mutations => {
 
 		if (GT_Burn1 && GT_Burn2) {
 			Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-general.js"] });
-			GeneralTransformerBurned = true;
-			console.log("[SeriStyle|Observer] Burned transformer: General.");
+			GeneralTransformerFired = true;
+			console.log("[SeriStyle|Observer] Fired transformer: General.");
 		}
 	}
 
-	if (GeneralTransformerBurned) {
+	if (GeneralTransformerFired) {
 		PageObserver.disconnect();
-		console.log("[SeriStyle|Observer] All transformers have been burned, goodbye!");
+		console.log("[SeriStyle|Observer] All transformers have been Fired, goodbye!");
 	}
 });
 
@@ -55,36 +55,35 @@ var VideoPageInterval = setInterval(() => {
 	if (document.querySelector("div#owner") && (document.querySelector(".view-count") || document.querySelector("#title > ytd-badge-supported-renderer > div > p"))) {
 		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-videopage.js"] });
 		clearInterval(VideoPageInterval);
-		console.log("[SeriStyle|Interval] Burned transformer: Videopage.");
+		console.log("[SeriStyle|Interval] Fired transformer: Videopage.");
 	}
 }, SeriStyleSettings.Advanced.VideoPageInterval.Value);
 var PlaylistInterval = setInterval(() => {
-	if (document.querySelector("ytd-menu-renderer.ytd-playlist-header-renderer")
-		&& document.querySelector("div.metadata-action-bar.style-scope.ytd-playlist-header-renderer>div.metadata-buttons-wrapper.style-scope.ytd-playlist-header-renderer>ytd-button-renderer button>div>yt-icon path")) {
+	if (document.querySelector("ytd-menu-renderer.ytd-playlist-header-renderer") && document.querySelector("div.metadata-action-bar.style-scope.ytd-playlist-header-renderer>div.metadata-buttons-wrapper.style-scope.ytd-playlist-header-renderer>ytd-button-renderer button>div>yt-icon path")) {
 		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-playlist.js"] });
 		clearInterval(PlaylistInterval);
-		console.log("[SeriStyle|Interval] Burned transformer: Playlist.");
+		console.log("[SeriStyle|Interval] Fired transformer: Playlist.");
 	}
 }, SeriStyleSettings.Advanced.PlaylistInterval.Value);
 var VideoPlayerInterval = setInterval(() => {
 	if (document.querySelector(".ytp-settings-menu>.ytp-panel>.ytp-panel-menu")) {
 		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-videoplayer.js"] });
 		clearInterval(VideoPlayerInterval);
-		console.log("[SeriStyle|Interval] Burned transformer: VideoPlayer.");
+		console.log("[SeriStyle|Interval] Fired transformer: VideoPlayer.");
 	}
 }, SeriStyleSettings.Advanced.VideoPlayerInterval.Value);
 var ChannelPageInterval = setInterval(() => {
 	if (document.querySelector("ytd-browse[page-subtype='channels'] #contents.ytd-rich-grid-renderer") && document.querySelector("ytd-browse[page-subtype='channels'] #header.ytd-rich-grid-renderer")) {
 		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-channelpage.js"] });
 		clearInterval(ChannelPageInterval);
-		console.log("[SeriStyle|Interval] Burned transformer: ChannelPage.");
+		console.log("[SeriStyle|Interval] Fired transformer: ChannelPage.");
 	}
 }, SeriStyleSettings.Advanced.ChannelPageInterval.Value);
 
 Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-css.js"] });
-console.log("[SeriStyle|Direct] Burned transformer: CSS.");
+console.log("[SeriStyle|Direct] Fired transformer: CSS.");
 Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-launch.js"] });
-console.log("[SeriStyle|Direct] Burned transformer: Launch.");
+console.log("[SeriStyle|Direct] Fired transformer: Launch.");
 
 PageObserver.observe(document.querySelector("ytd-app"), {
 	childList: true,

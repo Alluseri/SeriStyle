@@ -108,8 +108,10 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				: "") +
 			// Fix comment hover action menu
 			"ytd-comment-view-model:not(:hover)>#body>#action-menu{visibility:hidden;}" +
-			//
-			""
+			// Updated live teaser breaks the viewmodel
+			"#teaser-carousel{display:none;}" +
+			// KILL LIVE CHATS WITH FIRE HAHAHAHAHAHAHAHA
+			(SeriStyleSettings.VideoPage.NoLiveChat.Value ? "#panels-full-bleed-container,#chat-container{display:none;}" : "")
 		).replaceAll(/(?<!!important);/g, "!important;"),
 	"id": "seristyle-tf-videopage"
 }));
