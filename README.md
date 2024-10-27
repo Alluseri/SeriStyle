@@ -20,6 +20,9 @@ Bring the early-2021 UI back to YouTube!
 5. Enjoy!
 -->
 
+## My YouTube page is frozen and it only happens with your extension!
+Try to disable RYD. Unironically. Lmfao. Who's even surprised at this point?
+
 ## FAQ <!-- Nobody ever asked one. Oh well. -->
 #### Does it support white theme?
 No. Most transformers will have their colors broken under white theme.

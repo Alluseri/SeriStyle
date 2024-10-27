@@ -56,14 +56,13 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				: "") +
 			// Fix the Subscribe button
 			"ytd-subscribe-button-renderer{transition:none;width:unset;}" +
-			SelSubPassiveBtn + "{border-radius:3px;text-transform:uppercase;}" +
+			SelSubPassiveBtn + "{border-radius:3px;text-transform:uppercase;background:#2C2C2C;color:#A8A8A8;}" +
 			SelSubPassiveBtn + ".yt-spec-button-shape-next--filled{background:#C00;color:#FFF;}" + // "SUBSCRIBE" button, red color
-			SelSubPassiveBtn + "{background:#2C2C2C;color:#A8A8A8;}" +
 			"#subscribe-button yt-button-shape[invisible]{display:block;position:unset;pointer-events:unset;visibility:unset;}" +
-			"#notification-preference-button div.cbox{display:none;}" + // widest: "#notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.cbox.yt-spec-button-shape-next--button-text-content"
-			"#notification-preference-button div.yt-spec-button-shape-next__secondary-icon{display:none;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__secondary-icon
-			"#notification-preference-button div.yt-spec-button-shape-next__icon{pointer-events:none;margin-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__icon
 			"#notification-preference-button button{background:none;padding-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button
+			"#notification-preference-button div.cbox{display:none;}" + // widest: "#notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.cbox.yt-spec-button-shape-next--button-text-content"
+			"#notification-preference-button div.yt-spec-button-shape-next__icon{pointer-events:none;margin-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__icon
+			"#notification-preference-button div.yt-spec-button-shape-next__secondary-icon{display:none;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__secondary-icon
 			"#notification-preference-button div.yt-spec-button-shape-next__button-text-content{display:none;}" +
 			// Fix notification bell
 			SelSubContainer + "{display:flex;flex-direction:row;}" +

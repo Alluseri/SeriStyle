@@ -21,7 +21,7 @@ this.SeriStyleLocales = {
 			Advanced: "Advanced settings"
 		},
 		Messages: {
-			UpdateSettings: "SeriStyle was updated to version 1.14.0, which " + this.SeriStyleMetaNotice + "\n\nDo you want to visit the settings page(opens in a new tab)?"
+			UpdateSettings: "SeriStyle was updated to version 1.14.1, which " + this.SeriStyleMetaNotice + "\n\nDo you want to visit the settings page(opens in a new tab)?"
 		}
 	}
 };
@@ -162,13 +162,6 @@ this.SeriStyleSettings = {
 			Kind: 0,
 			Name: {
 				"en-US": "Hide recommendation filters"
-			},
-			Value: false
-		},
-		HidePremiere: { // TODO: Split into 2 when I discover how to differentiate premiere and live chat
-			Kind: 0,
-			Name: {
-				"en-US": "Hide premiere & live chat"
 			},
 			Value: false
 		},

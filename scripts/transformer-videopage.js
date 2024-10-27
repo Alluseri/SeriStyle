@@ -22,6 +22,7 @@ var _;
 
 // Inject styles
 const FCP = SeriStyleSettings.VideoPage.ForceCoPadding.Value;
+
 document.head.appendChild(DomUtils.BuildElement("style", {
 	"innerText":
 		(
@@ -75,8 +76,6 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"yt-related-chip-cloud-renderer yt-chip-cloud-chip-renderer{margin:0px 8px 8px 8px;}" +
 			// Realign videos
 			"ytd-item-section-renderer.ytd-watch-next-secondary-results-renderer{margin-top:calc(0px - var(--ytd-item-section-item-margin));}" + // TODO: Force usage of margin-bottom instead of margin-top
-			// Chat things
-			(SeriStyleSettings.VideoPage.HidePremiere.Value ? "" : "#show-hide-button.ytd-live-chat-frame{margin-bottom:2px;}") +
 			// Force hide immersive
 			"#cinematics{display:none;}" +
 			// Fix playlist panel colors

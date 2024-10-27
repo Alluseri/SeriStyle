@@ -47,7 +47,7 @@ var PageObserver = new MutationObserver(async Mutations => {
 
 	if (GeneralTransformerFired) {
 		PageObserver.disconnect();
-		console.log("[SeriStyle|Observer] All transformers have been Fired, goodbye!");
+		console.log("[SeriStyle|Observer] All transformers have been fired, goodbye!");
 	}
 });
 
