@@ -26,13 +26,21 @@ $(SelSearchIcon).innerHTML = SvgSearch;
 $(SelMicIcon).innerHTML = SvgMic;
 $(SelMenuIcon).innerHTML = SvgMenu;
 
-setInterval(function () { // It's not my problem that everyone is stupid enough not to fix Subtree MutationObserver for the whole existence of this class
+setInterval(function () {
 	$$("path").forEach(Element => {
 		var Exel = btoa(Element.attributes.d?.value);
 		if (Exel == ExelVerified) {
 			Element.attributes.d.value = PathVerified;
+			var Svg = Element.closest("svg");
+			Svg.setAttribute("height", "24");
+			Svg.setAttribute("width", "24");
+			Svg.setAttribute("viewBox", "0 0 24 24");
 		} else if (Exel == ExelProducer) {
 			Element.attributes.d.value = PathProducer;
+			var Svg = Element.closest("svg");
+			Svg.setAttribute("height", "24");
+			Svg.setAttribute("width", "24");
+			Svg.setAttribute("viewBox", "0 0 24 24");
 		}
 	});
 	if (!DidUpdateNotifications && SeriStyleSettings.General.OldNotificationBell.Value)

@@ -2,6 +2,7 @@
 Bring the early-2021 UI back to YouTube!
 
 ## How to install? <!-- This could use a better English -->
+Warning: Firefox releases may be outdated! Current build: v1.14.1
 ### Chrome and Chromium-based browsers
 1. Download this repository(Code -> Download ZIP) and unpack it into any folder
 2. Navigate to `chrome://extensions`
@@ -50,35 +51,26 @@ This is a **general, non-exhaustive** list of SeriStyle's features.
 
 ## Compare & see for yourself
 The screenshots were made with old dark theme colors and all **True Old UI** features enabled. May be outdated.
-<details>
-  <summary>Video page</summary>
+### Video Page
+#### SeriStyle v1.13.0
+<img src="https://cdn.nest.rip/uploads/0fb3306d-0ed3-4eee-9477-580e5c0eb1ae.png">
 
-  #### SeriStyle v1.13.0
-  <img src="https://cdn.nest.rip/uploads/0fb3306d-0ed3-4eee-9477-580e5c0eb1ae.png">
+#### Normal YouTube UI
+<img src="https://cdn.nest.rip/uploads/5a597b98-7643-443a-9613-5bc38364d73e.png">
 
-  #### Normal YouTube UI
-  <img src="https://cdn.nest.rip/uploads/5a597b98-7643-443a-9613-5bc38364d73e.png">
-</details>
+### Homepage
+#### SeriStyle v1.13.0
+<img src="https://cdn.nest.rip/uploads/da3d2ec7-d010-4251-b54d-d797499a0129.jpg">
 
-<details>
-  <summary>Homepage</summary>
+#### Normal YouTube UI
+<img src="https://cdn.nest.rip/uploads/f533ddb3-275b-4431-8dac-437c1429e52b.png">
 
-  #### SeriStyle v1.13.0
-  <img src="https://cdn.nest.rip/uploads/da3d2ec7-d010-4251-b54d-d797499a0129.jpg">
+### Playlist view
+#### SeriStyle v1.13.0
+<img src="https://cdn.nest.rip/uploads/894dace0-73f6-4358-a7d0-ad44a3944780.png">
 
-  #### Normal YouTube UI
-  <img src="https://cdn.nest.rip/uploads/f533ddb3-275b-4431-8dac-437c1429e52b.png">
-</details>
-
-<details>
-  <summary>Playlist view</summary>
-
-  #### SeriStyle v1.13.0
-  <img src="https://cdn.nest.rip/uploads/894dace0-73f6-4358-a7d0-ad44a3944780.png">
-
-  #### Normal YouTube UI
-  <img src="https://cdn.nest.rip/uploads/b80f5493-14af-47db-8bd4-bb44d4882e23.png">
-</details>
+#### Normal YouTube UI
+<img src="https://cdn.nest.rip/uploads/b80f5493-14af-47db-8bd4-bb44d4882e23.png">
 
 ## Roadmap (TODOs)
 - Old icons
