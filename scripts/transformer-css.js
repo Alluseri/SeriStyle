@@ -17,6 +17,8 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#contentWrapper>ytd-multi-page-menu-renderer{border-radius:0px;}" +
 			// Remove roundings on many menus
 			"yt-sheet-view-model{border-radius:0px;}" +
+			// White letters in comment input boxes
+			"tp-yt-paper-input-container{color:#FFF;}" +
 			// Remove "You"
 			"#header.ytd-guide-collapsible-section-entry-renderer{display:none;}" +
 			// General pink color fix (may stop working later, try removing "[refresh]" to generalize)

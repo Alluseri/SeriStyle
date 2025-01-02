@@ -99,12 +99,8 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#channel-name a.yt-simple-endpoint{white-space:break-spaces;}" +
 			// Hide donation shelves
 			(SeriStyleSettings.VideoPage.HideDonationShelves.Value ? "#donation-shelf{display:none;}" : "") +
-			(!SeriStyleSettings.Advanced.DisableHotfixes.Value ?
-				// HF #1: Disable small double-icons on action bar since I replace all of them
-				"segmented-like-dislike-button-view-model yt-icon>yt-icon-shape, segmented-like-dislike-button-view-model yt-icon>yt-animated-icon, segmented-like-dislike-button-view-model yt-icon>.yt-icon-shape, #top-level-buttons-computed yt-icon>.yt-icon-shape{display:none;}" +
-				//
-				""
-				: "") +
+			// Hide small double-icons on action bar (fix)
+			"segmented-like-dislike-button-view-model yt-icon>yt-icon-shape, segmented-like-dislike-button-view-model yt-icon>yt-animated-icon, segmented-like-dislike-button-view-model yt-icon>.yt-icon-shape, #top-level-buttons-computed yt-icon>.yt-icon-shape{display:none;}" +
 			// Fix comment hover action menu
 			"ytd-comment-view-model:not(:hover)>#body>#action-menu{visibility:hidden;}" +
 			// Updated live teaser breaks the viewmodel

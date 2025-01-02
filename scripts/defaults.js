@@ -385,13 +385,6 @@ this.SeriStyleSettings = {
 			},
 			Value: true
 		},
-		DisableHotfixes: {
-			Kind: 0,
-			Name: {
-				"en-US": "Disable all hotfixes"
-			},
-			Value: false
-		},
 		DisableCSS: {
 			Kind: 0,
 			Name: {

@@ -22,6 +22,13 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 	"id": "seristyle-tf-general"
 }));
 
+// hotfix, will not be enough soon
+var oldSearchBox = $("ytd-searchbox");
+if (oldSearchBox) {
+	$("yt-searchbox").style.display = "none";
+	oldSearchBox.setAttribute("style", "display:flex!important");
+}
+
 $(SelSearchIcon).innerHTML = SvgSearch;
 $(SelMicIcon).innerHTML = SvgMic;
 $(SelMenuIcon).innerHTML = SvgMenu;
