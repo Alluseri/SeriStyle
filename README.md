@@ -2,7 +2,7 @@
 Bring the early-2021 UI back to YouTube!
 
 ## How to install? <!-- This could use a better English -->
-Warning: Firefox releases may be outdated! Current build: v1.14.1
+Warning: Firefox releases may be outdated! Current rolling release version: `v1.15.0`.
 ### Chrome and Chromium-based browsers
 1. Download this repository(Code -> Download ZIP) and unpack it into any folder
 2. Navigate to `chrome://extensions`

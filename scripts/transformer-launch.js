@@ -1,9 +1,9 @@
 if (SeriStyleSettings.General.OldColors.Value) {
-	/* var GeneralObserver = new MutationObserver(async Mutations => {
+	var GeneralObserver = new MutationObserver(async Mutations => {
 		Mutations.forEach(Mutation => {
 			for (let i = 0; i < Mutation.addedNodes.length; i++) {
 				if (Mutation.addedNodes[i] && Mutation.addedNodes[i] instanceof HTMLElement) {
-					Mutation.addedNodes[i].removeAttribute("darker-dark-theme");
+					Mutation.addedNodes[i].removeAttribute("rounded-corners-large");
 				}
 			}
 		});
@@ -12,10 +12,9 @@ if (SeriStyleSettings.General.OldColors.Value) {
 	GeneralObserver.observe(document.querySelector("body"), {
 		childList: true,
 		subtree: true
-	});*/
+	});
 
-	// $$("[darker-dark-theme]").forEach(Element => Element.removeAttribute("darker-dark-theme"));
-	// $$("[refresh]").forEach(Element => Element.removeAttribute("refresh"));
+	$$("[rounded-corners-large]").forEach(Element => Element.removeAttribute("rounded-corners-large"));
 }
 
 // TODO: Icon(prod, verif) transformer goes here?

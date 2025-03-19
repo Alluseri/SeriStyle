@@ -1,4 +1,4 @@
-var SelSearchIcon = "#search-icon-legacy>yt-icon.ytd-searchbox";
+var SelSearchIcon = "#center>yt-searchbox>button>yt-icon";
 var SelMicIcon = "#voice-search-button yt-icon";
 var SelMenuIcon = "#guide-icon.ytd-masthead";
 var SelNotificationsIcon = "yt-icon-button.ytd-notification-topbar-button-renderer yt-icon";

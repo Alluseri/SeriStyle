@@ -105,8 +105,12 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"ytd-comment-view-model:not(:hover)>#body>#action-menu{visibility:hidden;}" +
 			// Updated live teaser breaks the viewmodel
 			"#teaser-carousel{display:none;}" +
-			// KILL LIVE CHATS WITH FIRE HAHAHAHAHAHAHAHA
-			(SeriStyleSettings.VideoPage.NoLiveChat.Value ? "#panels-full-bleed-container,#chat-container{display:none;}" : "")
+			// KILL LIVE CHATS WITH FIRE HAHAHAHAHAHAHAHA <- what the fuck
+			(SeriStyleSettings.VideoPage.NoLiveChat.Value ? "#panels-full-bleed-container,#chat-container{display:none;}" : "") +
+			// Hide scrubber unless hovered
+			"div.ytp-progress-bar:not(:hover) .ytp-scrubber-button{display:none;}" +
+			//
+			""
 		).replaceAll(/(?<!!important);/g, "!important;"),
 	"id": "seristyle-tf-videopage"
 }));

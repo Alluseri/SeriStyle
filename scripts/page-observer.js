@@ -17,39 +17,7 @@ Environment.runtime.onMessage.addListener((Message) => {
 	window.dispatchEvent(new CustomEvent("historychange", { detail: Message.Args[0] }));
 });
 
-var GeneralTransformerFired = false;
-
-var GT_Burn1 = false;
-var GT_Burn2 = false;
-var GT_Burn3 = false;
-
-var PageObserver = new MutationObserver(async Mutations => {
-	var Inserted = [];
-	Mutations.forEach(Mutation => {
-		for (let i = 0; i < Mutation.addedNodes.length; i++) {
-			Inserted.push(Mutation.addedNodes[i]);
-		}
-	});
-
-	if (!GeneralTransformerFired) {
-		if (!GT_Burn1)
-			GT_Burn1 = Inserted.some(Element => Element.tagName == "BUTTON" && Element.id == "search-icon-legacy");
-
-		if (!GT_Burn2)
-			GT_Burn2 = Inserted.some(Element => Element.tagName == "YT-ICON" && Element.className == "" && Element.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.id == "voice-search-button");
-
-		if (GT_Burn1 && GT_Burn2) {
-			Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-general.js"] });
-			GeneralTransformerFired = true;
-			console.log("[SeriStyle|Observer] Fired transformer: General.");
-		}
-	}
-
-	if (GeneralTransformerFired) {
-		PageObserver.disconnect();
-		console.log("[SeriStyle|Observer] All transformers have been fired, goodbye!");
-	}
-});
+console.log("[SeriStyle] MOTD: People need to learn to appreciate music more");
 
 var VideoPageInterval = setInterval(() => {
 	if (document.querySelector("div#owner") && (document.querySelector(".view-count") || document.querySelector("#title > ytd-badge-supported-renderer > div > p"))) {
@@ -57,41 +25,40 @@ var VideoPageInterval = setInterval(() => {
 		clearInterval(VideoPageInterval);
 		console.log("[SeriStyle|Interval] Fired transformer: Videopage.");
 	}
-}, SeriStyleSettings.Advanced.VideoPageInterval.Value);
+}, SeriStyleSettings.Advanced.DispatcherInterval.Value);
 var PlaylistInterval = setInterval(() => {
 	if (document.querySelector("ytd-menu-renderer.ytd-playlist-header-renderer") && document.querySelector("div.metadata-action-bar.style-scope.ytd-playlist-header-renderer>div.metadata-buttons-wrapper.style-scope.ytd-playlist-header-renderer>ytd-button-renderer button>div>yt-icon path")) {
 		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-playlist.js"] });
 		clearInterval(PlaylistInterval);
 		console.log("[SeriStyle|Interval] Fired transformer: Playlist.");
 	}
-}, SeriStyleSettings.Advanced.PlaylistInterval.Value);
+}, SeriStyleSettings.Advanced.DispatcherInterval.Value);
 var VideoPlayerInterval = setInterval(() => {
 	if (document.querySelector(".ytp-settings-menu>.ytp-panel>.ytp-panel-menu")) {
 		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-videoplayer.js"] });
 		clearInterval(VideoPlayerInterval);
 		console.log("[SeriStyle|Interval] Fired transformer: VideoPlayer.");
 	}
-}, SeriStyleSettings.Advanced.VideoPlayerInterval.Value);
+}, SeriStyleSettings.Advanced.DispatcherInterval.Value);
 var ChannelPageInterval = setInterval(() => {
 	if (document.querySelector("ytd-browse[page-subtype='channels'] #contents.ytd-rich-grid-renderer") && document.querySelector("ytd-browse[page-subtype='channels'] #header.ytd-rich-grid-renderer")) {
 		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-channelpage.js"] });
 		clearInterval(ChannelPageInterval);
 		console.log("[SeriStyle|Interval] Fired transformer: ChannelPage.");
 	}
-}, SeriStyleSettings.Advanced.ChannelPageInterval.Value);
+}, SeriStyleSettings.Advanced.DispatcherInterval.Value);
+var GeneralInterval = setInterval(() => {
+	if (document.querySelector("button.ytSearchboxComponentSearchButton") && Array.from(document.querySelectorAll("yt-icon:not([class])")).some(k => k.closest("#voice-search-button"))) {
+		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-general.js"] });
+		clearInterval(GeneralInterval);
+		console.log("[SeriStyle|Interval] Fired transformer: General.");
+	}
+}, SeriStyleSettings.Advanced.DispatcherInterval.Value);
 
 Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-css.js"] });
 console.log("[SeriStyle|Direct] Fired transformer: CSS.");
 Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-launch.js"] });
 console.log("[SeriStyle|Direct] Fired transformer: Launch.");
-
-PageObserver.observe(document.querySelector("ytd-app"), {
-	childList: true,
-	subtree: true
-});
-
-GT_Burn1 = !!document.querySelector("#search-icon-legacy>yt-icon.ytd-searchbox");
-GT_Burn2 = !!document.querySelector("#voice-search-button yt-icon");
 
 if (SeriStyleSettings.Advanced.DisableCSS.Value)
 	console.log("[SeriStyle|EarlyBird] Disabled all CSS transformers for this page.");

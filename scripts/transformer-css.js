@@ -31,21 +31,22 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			".yt-spec-avatar-shape__live-badge{background:#F00;}" +
 			".yt-spec-avatar-shape--cairo-refresh.yt-spec-avatar-shape--live-ring::after{background:#F00;}" +
 			// "HD" chip on settings button and a bunch of other color fixes (videopage)
-			".ytp-cairo-refresh .ytp-settings-button.ytp-hd-quality-badge::after, .ytp-cairo-refresh .ytp-settings-button.ytp-hdr-quality-badge::after, .ytp-cairo-refresh .ytp-settings-button.ytp-4k-quality-badge::after, .ytp-cairo-refresh .ytp-settings-button.ytp-5k-quality-badge::after, .ytp-cairo-refresh .ytp-settings-button.ytp-8k-quality-badge::after, .ytp-cairo-refresh .ytp-settings-button.ytp-3d-badge-grey::after, .ytp-cairo-refresh .ytp-settings-button.ytp-3d-badge::after{background-color:#F00;}" +
-			// Scrubber color fix
-			".ytp-cairo-refresh .ytp-swatch-background-color{background-color:#F00;}" +
+			".ytp-settings-button.ytp-hd-quality-badge::after, .ytp-settings-button.ytp-hdr-quality-badge::after, .ytp-settings-button.ytp-4k-quality-badge::after, .ytp-settings-button.ytp-5k-quality-badge::after, .ytp-settings-button.ytp-8k-quality-badge::after, .ytp-settings-button.ytp-3d-badge-grey::after, .ytp-settings-button.ytp-3d-badge::after{background-color:#F00;}" +
 			// Modern checkbox color fix
 			".ytp-menuitem[aria-checked=true] .ytp-menuitem-toggle-checkbox{background:#F00;}" +
-			// Old search box styles
-			"#container.ytd-searchbox{" + (SeriStyleSettings.General.NormalizeSearchBar.Value ? "margin-left:0px;" : "") + "position:relative;align-items:center;border:1px solid var(--ytd-searchbox-legacy-border-color);border-right:none;border-radius:2px 0 0 2px;box-shadow:inset 0 1px 2px var(--ytd-searchbox-legacy-border-shadow-color);padding:2px 6px;flex:1;flex-basis:1e-9px;display:flex;flex-direction:row;}" +
-			// Prepare voice search button
+			// [Search box] Old search box styles
+			"div.ytSearchboxComponentInputBox{" + (SeriStyleSettings.General.NormalizeSearchBar.Value ? "margin-left:0px;" : "") + "position:relative;align-items:center;border:1px solid hsl(0,0%,18.82%);padding:2px 6px;flex:1;flex-basis:1e-9px;display:flex;flex-direction:row;border-radius:2px;}" +
+			// [Search box] Prepare voice search button
 			"#voice-search-button{border-radius:0px;background:none;}" +
 			"#voice-search-button button{background:none;margin-left:-4px;}" +
-			// Prepare search icons
-			"#search-icon{display:none;}" +
-			"#search-icon-legacy{border-radius:0 2px 2px 0;border:1px solid var(--ytd-searchbox-legacy-button-border-color);background:var(--ytd-searchbox-legacy-button-border-color);}" +
-			// Old search input margins
-			"input#search{padding:1px 2px;margin-left:4px;}" +
+			// [Search box] Prepare search icons
+			"button.ytSearchboxComponentSearchButton{border-radius:0 2px 2px 0;border:1px solid hsl(0,0%,18.82%);background:hsl(0,0%,18.82%);}" +
+			// [Search box] Old search input dimensions
+			"input.yt-searchbox-input{padding:1px 2px;margin-left:4px;line-height:24px;height:24px;}" +
+			// [Search box] Hide modern search icon
+			".ytSearchboxComponentInnerSearchIcon{display:none;}" +
+			// [Search box] Old proper height
+			"yt-searchbox{height:32px;}" +
 			// Remove thumbnail roundings
 			"#thumbnail,yt-thumbnail-view-model{border-radius:0px;}" +
 			// Fix video listing hover action menu
@@ -93,9 +94,6 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"ytd-guide-entry-renderer>#endpoint{border-radius:0px;}" +
 			// Remove rounded corners everywhere known
 			"[rounded-corners],.ytp-rounded-menu,ytd-menu-popup-renderer{border-radius:0px;}" +
-			// Force keyboard color
-			"#container.ytd-searchbox span{filter:invert(100%);}" +
-			"#container.ytd-searchbox svg{filter:invert(75%);}" +
 			// Remove logo selection outline
 			"a#logo.ytd-topbar-logo-renderer::before{display:none;}" +
 			// Fix notification badge visuals
@@ -106,6 +104,10 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Left mini sidebar (available on low dimensions like my offscreen) fixes
 			"ytd-mini-guide-renderer.ytd-app{padding:0px;}" +
 			"ytd-mini-guide-renderer.ytd-app>#items>ytd-mini-guide-entry-renderer{border-radius:0px;background:none;}" +
+			// Fix video list margins
+			"ytd-compact-video-renderer,ytd-video-renderer{margin-bottom:8px;}" +
+			"iron-selector#chips{display:block;}" +
+			"#items.ytd-watch-next-secondary-results-renderer{gap:8px;}" + // actual observed value is 11 but lol
 
 			/* Homepage */
 			// Hide shorts shelf
@@ -119,6 +121,10 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Remove jam paddings
 			"yt-collections-stack{display:none;}" +
 			"ytd-compact-radio-renderer{margin-top:0px;}" + // Hints for selection: .use-ellipsis; has attr "collections" w/o value; TODO HIGH: Add jam remover
+			// Remove highlighting
+			"ytd-rich-item-renderer{background:none;box-shadow:unset;}" +
+			// Remove preview video roundings
+			"#media-container.ytd-video-preview{border-radius:0px;}" +
 
 			/* Videoplayer */
 			// Recolor HD
