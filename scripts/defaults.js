@@ -1,6 +1,7 @@
-this.SeriStyleMetaVersion = 7;
+this.SeriStyleMetaVersion = 8;
 this.SeriStyleMetaNotice = [
-	"introduced many new settings, focused on True Old UI and customizability!",
+	"introduced new options:",
+	"- Homepage -> Force homepage columns"
 ].join("\n");
 
 this.SeriStyleLocales = {
@@ -21,7 +22,7 @@ this.SeriStyleLocales = {
 			Advanced: "Advanced settings"
 		},
 		Messages: {
-			UpdateSettings: "SeriStyle was updated to version 1.15.0, which " + this.SeriStyleMetaNotice + "\n\nDo you want to visit the settings page(opens in a new tab)?"
+			UpdateSettings: "SeriStyle was updated to version 1.15.1, which " + this.SeriStyleMetaNotice + "\n\nDo you want to visit the settings page? (opens in a new tab)"
 		}
 	}
 };
@@ -99,6 +100,20 @@ this.SeriStyleSettings = {
 				"en-US": "Hide label above video title"
 			},
 			Value: false
+		},
+		ForceHomePageColumns: {
+			Kind: 2,
+			Range: [0, 10],
+			Name: {
+				"en-US": "Force homepage columns"
+			},
+			LowerBound: {
+				"en-US": "Disabled"
+			},
+			Value: 0,
+			Format: {
+				"en-US": "$ videos per row"
+			}
 		}
 	},
 	VideoPage: {

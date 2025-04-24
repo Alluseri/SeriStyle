@@ -2,7 +2,7 @@
 Bring the early-2021 UI back to YouTube!
 
 ## How to install? <!-- This could use a better English -->
-Warning: Firefox releases may be outdated! Current rolling release version: `v1.15.0`.
+Warning: Firefox releases may be outdated! Current rolling release version: `v1.15.1`.
 ### Chrome and Chromium-based browsers
 1. Download this repository(Code -> Download ZIP) and unpack it into any folder
 2. Navigate to `chrome://extensions`
@@ -45,32 +45,32 @@ This is a **general, non-exhaustive** list of SeriStyle's features.
   - Old metadata view
   - Old description panel
   - Configurable changes
-- True Old UI and general changes for playlists (Similarity with True Old UI enabled: 90%)
-- Minor homepage changes (All configurable)
-- Minor videoplayer changes (All configurable)
+- True Old UI and general changes for playlists (Similarity with True Old UI enabled: 70%)
+- Minor homepage changes (Most configurable)
+- Minor videoplayer changes (Most configurable)
 
 ## Compare & see for yourself
 The screenshots were made with old dark theme colors and all **True Old UI** features enabled. May be outdated.
 ### Video Page
-#### SeriStyle v1.13.0
-<img src="https://cdn.nest.rip/uploads/0fb3306d-0ed3-4eee-9477-580e5c0eb1ae.png">
+#### SeriStyle v1.15.1
+<img src="https://cdn.nest.rip/uploads/fda3a7da-81d9-4c98-8a96-e438c45c0389.png">
 
 #### Normal YouTube UI
-<img src="https://cdn.nest.rip/uploads/5a597b98-7643-443a-9613-5bc38364d73e.png">
+<img src="https://cdn.nest.rip/uploads/be83e3f0-8c7b-4c70-b073-9b541d9b9639.png">
 
 ### Homepage
-#### SeriStyle v1.13.0
-<img src="https://cdn.nest.rip/uploads/da3d2ec7-d010-4251-b54d-d797499a0129.jpg">
+#### SeriStyle v1.15.1
+<img src="https://cdn.nest.rip/uploads/01d2aba5-c436-45d4-9655-97dc10326d08.png">
 
 #### Normal YouTube UI
-<img src="https://cdn.nest.rip/uploads/f533ddb3-275b-4431-8dac-437c1429e52b.png">
+<img src="https://cdn.nest.rip/uploads/a6ef2222-f0b7-438c-bdba-a774aff72bba.png">
 
 ### Playlist view
-#### SeriStyle v1.13.0
-<img src="https://cdn.nest.rip/uploads/894dace0-73f6-4358-a7d0-ad44a3944780.png">
+#### SeriStyle v1.15.1
+<img src="https://cdn.nest.rip/uploads/0dc8188d-f1f3-4f0f-8f05-891e37fe5a67.png">
 
 #### Normal YouTube UI
-<img src="https://cdn.nest.rip/uploads/b80f5493-14af-47db-8bd4-bb44d4882e23.png">
+<img src="https://cdn.nest.rip/uploads/78838e15-42db-4e66-ae31-26586aaea56f.png">
 
 ## Roadmap (TODOs)
 - Old icons

@@ -27,9 +27,6 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"div.ytp-play-progress,.ytd-thumbnail-overlay-resume-playback-renderer,.YtProgressBarLineProgressBarPlayed,.YtThumbnailOverlayProgressBarHostWatchedProgressBarSegmentModern{background:#F00;}" +
 			// Fix logo color
 			"#logo-icon g:not([id]):first-child>path:first-child{fill:#F00;}" +
-			// Fix LIVE chip & ring color
-			".yt-spec-avatar-shape__live-badge{background:#F00;}" +
-			".yt-spec-avatar-shape--cairo-refresh.yt-spec-avatar-shape--live-ring::after{background:#F00;}" +
 			// "HD" chip on settings button and a bunch of other color fixes (videopage)
 			".ytp-settings-button.ytp-hd-quality-badge::after, .ytp-settings-button.ytp-hdr-quality-badge::after, .ytp-settings-button.ytp-4k-quality-badge::after, .ytp-settings-button.ytp-5k-quality-badge::after, .ytp-settings-button.ytp-8k-quality-badge::after, .ytp-settings-button.ytp-3d-badge-grey::after, .ytp-settings-button.ytp-3d-badge::after{background-color:#F00;}" +
 			// Modern checkbox color fix
@@ -125,6 +122,11 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"ytd-rich-item-renderer{background:none;box-shadow:unset;}" +
 			// Remove preview video roundings
 			"#media-container.ytd-video-preview{border-radius:0px;}" +
+			// Force grid size
+			(SeriStyleSettings.HomePage.ForceHomePageColumns.Value > 0 ?
+				`ytd-rich-grid-renderer{--ytd-rich-grid-items-per-row:${SeriStyleSettings.HomePage.ForceHomePageColumns.Value};}` +
+				"ytd-rich-item-renderer[rendered-from-rich-grid][is-in-first-column]{margin-left:calc(var(--ytd-rich-grid-item-margin)/2);}"
+				: "") +
 
 			/* Videoplayer */
 			// Recolor HD
@@ -163,7 +165,6 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 					"ytd-browse[page-subtype='playlist'],ytd-item-section-renderer[page-subtype='playlist'] #contents.ytd-item-section-renderer{background:#0F0F0F;}" +
 					""
 				) +
-				"yt-page-header-renderer.page-header-sidebar{margin-left:0px;}" +
 				"ytd-browse[page-subtype='playlist'] page-header-view-model-wiz__page-header-background{margin-bottom:0px;border-radius:0px;}" +
 				// Hide immersive background
 				"div.ytCinematicContainerViewModelBackgroundGradient{background:none;}" +
@@ -237,9 +238,10 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				//
 				""
 				: "") +
+			// Old colors for channel
 			(SeriStyleSettings.General.OldColors.Value ?
 				"#channel-header.ytd-c4-tabbed-header-renderer, #tabs-inner-container.ytd-c4-tabbed-header-renderer{background:#181818;}" +
-				"ytd-browse[page-subtype='channels'] {background:#0F0F0F;}"
+				"ytd-browse[page-subtype='channels']{background:#0F0F0F;}"
 				: "") +
 			""
 		).replaceAll(/(?<!!important);/g, "!important;"),

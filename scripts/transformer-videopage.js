@@ -100,7 +100,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Hide donation shelves
 			(SeriStyleSettings.VideoPage.HideDonationShelves.Value ? "#donation-shelf{display:none;}" : "") +
 			// Hide small double-icons on action bar (fix)
-			"segmented-like-dislike-button-view-model yt-icon>yt-icon-shape, segmented-like-dislike-button-view-model yt-icon>yt-animated-icon, segmented-like-dislike-button-view-model yt-icon>.yt-icon-shape, #top-level-buttons-computed yt-icon>.yt-icon-shape{display:none;}" +
+			"segmented-like-dislike-button-view-model yt-icon>yt-icon-shape, segmented-like-dislike-button-view-model yt-icon>yt-animated-icon, segmented-like-dislike-button-view-model yt-icon>.yt-icon-shape, #above-the-fold #top-level-buttons-computed yt-icon>.yt-icon-shape{display:none;}" +
 			// Fix comment hover action menu
 			"ytd-comment-view-model:not(:hover)>#body>#action-menu{visibility:hidden;}" +
 			// Updated live teaser breaks the viewmodel
@@ -109,8 +109,8 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			(SeriStyleSettings.VideoPage.NoLiveChat.Value ? "#panels-full-bleed-container,#chat-container{display:none;}" : "") +
 			// Hide scrubber unless hovered
 			"div.ytp-progress-bar:not(:hover) .ytp-scrubber-button{display:none;}" +
-			//
-			""
+			// Disable COVID and self-harm boxes below the video
+			"#clarify-box{display:none;}"
 		).replaceAll(/(?<!!important);/g, "!important;"),
 	"id": "seristyle-tf-videopage"
 }));
