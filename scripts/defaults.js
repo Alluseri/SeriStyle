@@ -349,6 +349,17 @@ this.SeriStyleSettings = {
 				"en-US": "$ms"
 			}
 		},
+		SelfHarmSkipperInterval: {
+			Kind: 2,
+			Range: [50, 5000],
+			Name: {
+				"en-US": "Self-harm skipper update interval"
+			},
+			Value: 200,
+			Format: {
+				"en-US": "$ms"
+			}
+		},
 		DispatcherInterval: {
 			Kind: 2,
 			Range: [0, 5000],

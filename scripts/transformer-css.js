@@ -1,7 +1,7 @@
 // jshint -W014, -W086
 
 var SelSubPassiveBtn = "#subscribe-button-shape>button";
-var SelSubContainer = "#subscribe-button>ytd-subscribe-button-renderer>yt-smartimation>div>__slot-el";
+var SelSubContainer = "#subscribe-button>ytd-subscribe-button-renderer>yt-smartimation>.smartimation__content";
 var SelMeta = "#meta.ytd-c4-tabbed-header-renderer";
 var SelMetaSpan = SelMeta + ">span.meta-item";
 
@@ -68,7 +68,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"#notification-preference-button div.yt-spec-button-shape-next__icon{pointer-events:none;margin-right:0px;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__icon
 			"#notification-preference-button div.yt-spec-button-shape-next__secondary-icon{display:none;}" + // widest: #notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button > div.yt-spec-button-shape-next__secondary-icon
 			"#notification-preference-button div.yt-spec-button-shape-next__button-text-content{display:none;}" +
-			// Fix notification bell
+			// Fix notification bell of the Subscribe button
 			SelSubContainer + "{display:flex;flex-direction:row;}" +
 			// Hide channel handles
 			"p.ytd-c4-tabbed-header-renderer{display:none;}" +
@@ -127,6 +127,8 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 				`ytd-rich-grid-renderer{--ytd-rich-grid-items-per-row:${SeriStyleSettings.HomePage.ForceHomePageColumns.Value};}` +
 				"ytd-rich-item-renderer[rendered-from-rich-grid][is-in-first-column]{margin-left:calc(var(--ytd-rich-grid-item-margin)/2);}"
 				: "") +
+			// Remove absolutely retarded video controls
+			".ytInlinePlayerControlsTopLeftControls,.ytInlinePlayerControlsBottomRightControls,.ytInlinePlayerControlsTopRightControls{display:none;}" +
 
 			/* Videoplayer */
 			// Recolor HD

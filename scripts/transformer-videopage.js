@@ -110,7 +110,11 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Hide scrubber unless hovered
 			"div.ytp-progress-bar:not(:hover) .ytp-scrubber-button{display:none;}" +
 			// Disable COVID and self-harm boxes below the video
-			"#clarify-box{display:none;}"
+			"#clarify-box{display:none;}" +
+			// Hide channels in recommended because what the fuck
+			"#items ytd-channel-renderer{display:none;}" +
+			// Fix error screen possibly not showing up
+			"yt-playability-error-supported-renderers{z-index:9999;display:flex;}"
 		).replaceAll(/(?<!!important);/g, "!important;"),
 	"id": "seristyle-tf-videopage"
 }));
@@ -249,5 +253,14 @@ if (!SeriStyleSettings.Advanced.LegacyPanels.Value) {
 var Description = $(SelDescription);
 $(SelBottomRow).appendChild(DomUtils.BuildElement("div", { className: Description.className, id: Description.id }, [Description.children[0]]));
 Description.remove();
+
+// Force skip self-harm warnings because no one needs them
+setInterval(function () {
+	var Button = $("#button.yt-player-error-message-renderer")?.querySelector("button");
+	if (Button && !Button.attributes.ss_skipped) {
+		Button.setAttribute("ss_skipped", true);
+		Button.click();
+	}
+}, SeriStyleSettings.Advanced.SelfHarmSkipperInterval.Value);
 
 Reinject();
