@@ -102,9 +102,10 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			"ytd-mini-guide-renderer.ytd-app{padding:0px;}" +
 			"ytd-mini-guide-renderer.ytd-app>#items>ytd-mini-guide-entry-renderer{border-radius:0px;background:none;}" +
 			// Fix video list margins
-			"ytd-compact-video-renderer,ytd-video-renderer{margin-bottom:8px;}" +
+			"yt-lockup-view-model{margin-bottom:8px;}" +
 			"iron-selector#chips{display:block;}" +
 			"#items.ytd-watch-next-secondary-results-renderer{gap:8px;}" + // actual observed value is 11 but lol
+			"yt-content-metadata-view-model>.yt-content-metadata-view-model-wiz__metadata-row--metadata-row-wrap{position:absolute;}" + // handles flairs
 
 			/* Homepage */
 			// Hide shorts shelf
@@ -116,8 +117,8 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Fix alerts
 			(SeriStyleSettings.Playlist.TrueOld.Value ? "#alerts.ytd-browse{padding-right:0px;}" : "") +
 			// Remove jam paddings
-			"yt-collections-stack{display:none;}" +
-			"ytd-compact-radio-renderer{margin-top:0px;}" + // Hints for selection: .use-ellipsis; has attr "collections" w/o value; TODO HIGH: Add jam remover
+			"[class*='collections-stack-wiz__collection-stack']{display:none;}" +
+			".yt-lockup-view-model-wiz--horizontal.yt-lockup-view-model-wiz--collection-stack-2{margin-top:0px;}" + // Hints for selection: is the first child of yt-lockup-view-model
 			// Remove highlighting
 			"ytd-rich-item-renderer{background:none;box-shadow:unset;}" +
 			// Remove preview video roundings
