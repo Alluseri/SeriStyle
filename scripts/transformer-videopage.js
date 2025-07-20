@@ -167,7 +167,8 @@ var TopLevelButtonsObserver = new MutationObserver(async Mutations => {
 			Reinject(Mb);
 		});
 		Mb.observe(Viewmodel, {
-			childList: true
+			childList: true,
+			subtree: true
 		});
 	} else console.log("[SeriStyle|Videopage] Warning: Failed to find l/d viewmodel, reinjection not possible: ", Inserted);
 });

@@ -12,7 +12,7 @@ document.head.appendChild(DomUtils.BuildElement("style", {
 			// Wtfard
 			"ytd-ad-slot-renderer{display:none;}" +
 			// Hide Shorts on search page
-			"ytd-reel-shelf-renderer{display:none;}" +
+			"grid-shelf-view-model{display:none;}" +
 			// Remove roundings for notification box
 			"#contentWrapper>ytd-multi-page-menu-renderer{border-radius:0px;}" +
 			// Remove roundings on many menus
