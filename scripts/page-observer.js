@@ -17,7 +17,7 @@ Environment.runtime.onMessage.addListener((Message) => {
 	window.dispatchEvent(new CustomEvent("historychange", { detail: Message.Args[0] }));
 });
 
-console.log("[SeriStyle] MOTD: People need to learn to appreciate music more");
+console.log("[SeriStyle] MOTD: Fire the fucking intern who puts in camelCase class names!");
 
 var VideoPageInterval = setInterval(() => {
 	if (document.querySelector("div#owner") && (document.querySelector(".view-count") || document.querySelector("#title > ytd-badge-supported-renderer > div > p"))) {
@@ -48,7 +48,7 @@ var ChannelPageInterval = setInterval(() => {
 	}
 }, SeriStyleSettings.Advanced.DispatcherInterval.Value);
 var GeneralInterval = setInterval(() => {
-	if (document.querySelector("button.ytSearchboxComponentSearchButton") && Array.from(document.querySelectorAll("yt-icon:not([class])")).some(k => k.closest("#voice-search-button"))) {
+	if (document.querySelector("#center>yt-searchbox>button div") && document.querySelector("button.ytSearchboxComponentSearchButton") && Array.from(document.querySelectorAll("yt-icon:not([class])")).some(k => k.closest("#voice-search-button"))) {
 		Environment.runtime.sendMessage({ Operation: "SeriStyle_LoadScript", Args: ["scripts/transformer-general.js"] });
 		clearInterval(GeneralInterval);
 		console.log("[SeriStyle|Interval] Fired transformer: General.");

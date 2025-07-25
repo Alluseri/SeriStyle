@@ -16,5 +16,3 @@ if (SeriStyleSettings.General.OldColors.Value) {
 
 	$$("[rounded-corners-large]").forEach(Element => Element.removeAttribute("rounded-corners-large"));
 }
-
-// TODO: Icon(prod, verif) transformer goes here?

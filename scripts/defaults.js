@@ -410,6 +410,7 @@ this.DomUtils = {
 	}
 };
 
+this.RETARDED_INTERN_YT_ICON = "span>span.yt-icon-shape>div";
 this.GetExel = (Element) => btoa(Element?.querySelector("path")?.attributes.d?.value);
 this.MatchesExel = (Element, ExelArg) => btoa(Element?.querySelector("path")?.attributes.d?.value) == ExelArg;
 this.FindByExel = (Elements, ExelArg) => Elements.find(x => btoa(x?.querySelector("path")?.attributes.d?.value) == ExelArg);

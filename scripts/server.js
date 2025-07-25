@@ -1,4 +1,6 @@
 (async () => {
+	const DEBUG_MODE = false;
+
 	var Environment = this.browser || this.chrome;
 
 	this.StorageMode = 0;
@@ -26,8 +28,23 @@
 		console.log(ex);
 	}
 
-	this.$ = document.querySelector.bind(document);
-	this.$$ = Query => Array.from(document.querySelectorAll(Query));
+	if (DEBUG_MODE) {
+		this.$ = function (Query) {
+			var o = document.querySelector(Query);
+			if (!o)
+				console.log("[SeriStyle|DEBUG] Failed to find a $ match for " + Query);
+			return o;
+		};
+		this.$$ = function (Query) {
+			var o = document.querySelectorAll(Query);
+			if (!o || o.length == 0)
+				console.log("[SeriStyle|DEBUG] Failed to find a $$ match for " + Query);
+			return Array.from(o);
+		};
+	} else {
+		this.$ = document.querySelector.bind(document);
+		this.$$ = Query => Array.from(document.querySelectorAll(Query));
+	}
 
 	if (!document.location.href.includes("youtube")) return;
 

@@ -11,7 +11,7 @@ var SelContextMenuButtons = "#items>ytd-menu-service-item-renderer";
 var SelContextMenuOpen = "#actions #button-shape button";
 var SelTopLevelButtons = "#actions-inner #top-level-buttons-computed";
 var SelShareBtn = SelTopLevelButtons + ">yt-button-view-model";
-var SelLikeButtons = "#actions-inner segmented-like-dislike-button-view-model button";
+var SelLikeButtons = SelTopLevelButtons + " .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button";
 var SelDescription = "#description.ytd-watch-metadata";
 var SelDropdown = "tp-yt-iron-dropdown.ytd-popup-container";
 var SelSubButton = "#owner>#subscribe-button";
@@ -173,23 +173,40 @@ var TopLevelButtonsObserver = new MutationObserver(async Mutations => {
 	} else console.log("[SeriStyle|Videopage] Warning: Failed to find l/d viewmodel, reinjection not possible: ", Inserted);
 });
 
+function OverrideSvg(Element, Svg) {
+	var k;
+	if (Element) {
+		k = Element.querySelector("yt-icon");
+		if (k) {
+			k.innerHTML = Svg;
+		} else {
+			k = Element.querySelector(RETARDED_INTERN_YT_ICON);
+			if (k) {
+				k.innerHTML = Svg;
+			}
+		}
+	}
+}
+
 const Reinject = (Cleanup) => { // TODO: Call on no internet
 	try {
+		console.log(Cleanup ? "Begin reinjection" : "Begin initial injection");
+
 		Cleanup?.disconnect();
 		ActionBarObserver.disconnect();
 		TopLevelButtonsObserver.disconnect();
 
 		// Apply old SVG to Share and Menu
-		if (_ = $(SelShareBtn)) _.querySelector("yt-icon").innerHTML = SvgShare;
-		$(SelContextMenuOpen).querySelector("yt-icon").innerHTML = SvgActionMenu;
+		OverrideSvg($(SelShareBtn), SvgShare);
+		OverrideSvg($(SelContextMenuOpen), SvgActionMenu);
 
 		// Apply old SVG to Like/Dislike buttons
 		var LikeDislikeArray = $$(SelLikeButtons);
-		LikeDislikeArray[0].querySelector("yt-icon").innerHTML = SvgLike;
-		LikeDislikeArray[1].querySelector("yt-icon").innerHTML = SvgDislike;
+		OverrideSvg(LikeDislikeArray[0], SvgLike);
+		OverrideSvg(LikeDislikeArray[1], SvgDislike);
 
 		// Remove RYD's border because it overrides SeriStyle's
-		if (_ = $(SelTopRow).attributes.style) _.value = "";
+		if (_ = $(SelTopRow)?.attributes?.style) _.value = "";
 
 		ActionBarObserver.observe($(SelFlexibleButtonsBar), {
 			childList: true,
@@ -202,8 +219,8 @@ const Reinject = (Cleanup) => { // TODO: Call on no internet
 		if (SeriStyleSettings.Advanced.ActionBarPlus.Value)
 			ActionBarFn(Array.from($(SelFlexibleButtonsBar).children));
 	} catch (Exception) {
-		console.log("[SeriStyle|Videopage] There was an error during the injection process:");
-		console.log(Exception);
+		console.error("[SeriStyle|Videopage] There was an error during the injection process:");
+		console.error(Exception);
 	}
 };
 
@@ -229,7 +246,7 @@ if (Views) {
 		"id": "seristyle-tf-fucksponsorships"
 	}));
 	// Test here: https://www.youtube.com/watch?v=WLoDdPLiArA
-	// Test for false positives here: https://www.youtube.com/watch?v=aQvGIIdgFDM
+	// Test for false positives here: https://www.youtube.com/watch?v=aQvGIIdgFDM - wait what?
 	if (_ = $("#title > ytd-badge-supported-renderer > div.badge-style-type-members-only > p")) _.innerText = "I AM CRINGE AND I WANT MONEY FOR MY CONTENT";
 	const FuckThisURL = document.location.href;
 	window.addEventListener("historychange", function (Deets) {
