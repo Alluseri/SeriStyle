@@ -1,6 +1,9 @@
 # SeriStyle
 Bring the early-2021 UI back to YouTube!
 
+## Warning
+This project is currently not being maintained due to me being a university student. I'll pick it back up on summer holidays and maybe rewrite a good portion of it as well.
+
 ## How to install? <!-- This could use a better English -->
 Warning: Firefox releases may be outdated! Current rolling release version: `v1.15.1`.
 ### Chrome and Chromium-based browsers
